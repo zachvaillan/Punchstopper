@@ -1,4 +1,4 @@
-export {postUser, postSession, deleteSession} from '../utils/session.js';
+export {postUser, postSession, deleteSession} from '../utils/session';
 
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const LOGOUT_USER = "LOGOUT_USER";
@@ -8,14 +8,12 @@ const receiveCurrentUser = user => ({
     user
 });
 
-const logoutUser = () => ({
+const endSession = () => ({
     type: LOGOUT_USER,
 });
 
-export const createUser = user => dispatch => (
-    postUser(user)
-        .then( (user) => dispatch(receiveCurrentUser(user)))
-);
+export const createUser = user => dispatch => postUser(user)
+        .then( user => dispatch(receiveCurrentUser(user)));
 
 export const loginUser = user => dispatch => (
     postSession(user)
@@ -24,5 +22,5 @@ export const loginUser = user => dispatch => (
 
 export const logoutUser = () => dispatch => (
     deleteSession()
-        .then( () => dispatch(logoutUser()))
+        .then( () => dispatch(endSession()))
 );
