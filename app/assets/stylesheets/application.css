@@ -92,14 +92,20 @@ a {
     Signup Styling BELOW 
  */
 
-.signup-form{
-    text-align: center;
+
+.signup-form li{
+    margin-bottom: 20px;
 }
 
 .signup-form input{
     border: 1px solid #DCDEDD;
     padding: 12px;
-    margin-bottom: 20px;
+    border-radius: 0;
+}
+
+.signup-form input[type=text], .signup-form input[type=password]{
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .signup-form input:focus{
@@ -107,25 +113,50 @@ a {
 }
 
 .bg-form {
-    background-color: #F7F7F6;
+    background-color: #F0F0F0;
 }
 
 .user-account-form-container {
     padding-top: 100px;
     padding-bottom: 100px;
-    border: 1px solid #F1EEEA;
-    border-radius: 2px;
 }
 
 .user-account-form {
-    max-width: 300px;
     margin: auto;
     background-color: white;
-    padding: 20px;
+    padding: 30px;
 }
 
-.login-form-header {
+.signup-form-header {
     margin-top: 10px;
     margin-bottom: 20px;
-    font-size: 18px;
+    font-size: 44px;
+}
+
+.signup-form > ul > li > div {
+    display: flex;
+    text-align: left;
+    position: relative;
+    margin-bottom: 5px;
+}
+
+.signup-form > ul > li > div > p {
+    margin-top: -4px;
+    line-height: 1.5;
+    margin-left: 3px;
+}
+
+.signup-form-switch{
+    background-color:rgba(241,238,234,0.2);
+    border-bottom: 1px solid #F1EEEA;
+    padding: 20px;
+    text-align: center;
+}
+
+.another-container{
+    max-width: 375px;
+    margin: auto;
+    border: 1px solid #F1EEEA;
+    border-radius: 2px;
+    background-color: white;
 }

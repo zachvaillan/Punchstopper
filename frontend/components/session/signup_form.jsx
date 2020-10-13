@@ -27,14 +27,42 @@ class SignupForm extends React.Component{
         return(
             <div className="bg-form">
                 <div className="user-account-form-container">
-                    <div className="user-account-form">
-                        <p className="login-form-header">Login</p>
-                        <form className="signup-form" onSubmit={this.handleSubmit}>
-                            <input type="text" autoFocus="autofocus" placeholder="Name" value={this.state.name} onChange={this.onSubmit("name")}/>
-                            <input type="text" placeholder="Email" value={this.state.email} onChange={this.onSubmit("email")}/>
-                            <input type="password" placeholder="Password" value={this.state.password} onChange={this.onSubmit("password")}/>
-                            <button type="submit">Signup</button>
-                        </form>
+                    <div className="another-container">
+                        <div className="signup-form-switch">
+                                <p>Already have an account? <a href="#">Log in</a></p>
+                        </div>
+                        <div className="user-account-form">
+                            <p className="signup-form-header">Sign up</p>
+                            <form className="signup-form" onSubmit={this.handleSubmit}>
+                                <ul>
+                                    <li>
+                                        <input type="text" autoFocus="autofocus" placeholder="Name" 
+                                        value={this.state.name} onChange={this.onSubmit("name")}/>
+                                    </li>
+                                    <li>
+                                        <input type="text" placeholder="Email" 
+                                        value={this.state.email} onChange={this.onSubmit("email")}/>
+                                    </li>
+                                    <li>
+                                        <input type="password" placeholder="Password" 
+                                        value={this.state.password} onChange={this.onSubmit("password")}/>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <input type="checkbox"/><p>Send me a weekly mix of handpicked projects, 
+                                            plus occasional Kickstarter news</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <input type="checkbox"/><p>Contact me about participating in 
+                                            Kickstarter research</p>
+                                        </div>
+                                    </li>
+                                    <li><button type="submit">Create account</button></li>
+                                </ul>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
