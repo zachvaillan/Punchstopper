@@ -90,7 +90,7 @@
 /*!*************************************!*\
   !*** ./frontend/actions/session.js ***!
   \*************************************/
-/*! exports provided: postUser, postSession, deleteSession, RECEIVE_CURRENT_USER, LOGOUT_USER, createUser, loginUser, logoutUser */
+/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_USER, createUser, loginUser, logoutUser */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -101,12 +101,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loginUser", function() { return loginUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logoutUser", function() { return logoutUser; });
 /* harmony import */ var _utils_session__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/session */ "./frontend/utils/session.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "postUser", function() { return _utils_session__WEBPACK_IMPORTED_MODULE_0__["postUser"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "postSession", function() { return _utils_session__WEBPACK_IMPORTED_MODULE_0__["postSession"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "deleteSession", function() { return _utils_session__WEBPACK_IMPORTED_MODULE_0__["deleteSession"]; });
-
 
 var RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 var LOGOUT_USER = "LOGOUT_USER";
@@ -126,21 +120,21 @@ var endSession = function endSession() {
 
 var createUser = function createUser(user) {
   return function (dispatch) {
-    return postUser(user).then(function (user) {
+    return Object(_utils_session__WEBPACK_IMPORTED_MODULE_0__["postUser"])(user).then(function (user) {
       return dispatch(receiveCurrentUser(user));
     });
   };
 };
 var loginUser = function loginUser(user) {
   return function (dispatch) {
-    return postSession(user).then(function (user) {
+    return Object(_utils_session__WEBPACK_IMPORTED_MODULE_0__["postSession"])(user).then(function (user) {
       return dispatch(receiveCurrentUser(user));
     });
   };
 };
 var logoutUser = function logoutUser() {
   return function (dispatch) {
-    return deleteSession().then(function () {
+    return Object(_utils_session__WEBPACK_IMPORTED_MODULE_0__["deleteSession"])().then(function () {
       return dispatch(endSession());
     });
   };

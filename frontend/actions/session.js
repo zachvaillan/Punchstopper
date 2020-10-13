@@ -1,4 +1,4 @@
-export {postUser, postSession, deleteSession} from '../utils/session';
+import {postUser, postSession, deleteSession} from '../utils/session';
 
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const LOGOUT_USER = "LOGOUT_USER";
@@ -12,8 +12,10 @@ const endSession = () => ({
     type: LOGOUT_USER,
 });
 
-export const createUser = user => dispatch => postUser(user)
-        .then( user => dispatch(receiveCurrentUser(user)));
+export const createUser = user => dispatch => (
+    postUser(user)
+        .then( user => dispatch(receiveCurrentUser(user)))
+);
 
 export const loginUser = user => dispatch => (
     postSession(user)
