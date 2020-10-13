@@ -67,22 +67,27 @@ a {
     Nav Bar Styling BELOW 
  */
 
-.nav{
-    margin: 20px;
-}
-
-.menu{
+.global-nav{
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #DCDEDD;
 }
 
-.menu > li{
-    margin: 0 10px;
+.global-logo{
+    width: 100%;
+    position: relative;
+    height: 60px;
+    padding: 20px 0;
+    display: flex;
+    position: relative;
 }
 
 .logo{
     width: 200px;
-    margin: -5px 100px 0px;
+}
+
+.specific-logo-container{
+    width: 100%;
 }
 
  /* Signup Styling BELOW
@@ -108,17 +113,13 @@ a {
     box-sizing: border-box;
 }
 
-.signup-form input:focus{
-    border: 1px solid #009E74;
-}
-
 .bg-form {
     background-color: #F0F0F0;
 }
 
 .user-account-form-container {
-    padding-top: 100px;
-    padding-bottom: 100px;
+    padding-top: 60px;
+    padding-bottom: 60px;
 }
 
 .user-account-form {
@@ -136,8 +137,6 @@ a {
 .signup-form > ul > li > div {
     display: flex;
     text-align: left;
-    position: relative;
-    margin-bottom: 5px;
 }
 
 .signup-form > ul > li > div > p {
@@ -153,10 +152,26 @@ a {
     text-align: center;
 }
 
+.signup-form-switch > p{
+    font-size: 14px;
+}
+
+.signup-form-switch > p > a{
+    font-weight: 700;
+    color: #2752ff;
+}
+
 .another-container{
-    max-width: 375px;
+    max-width: 400px;
     margin: auto;
     border: 1px solid #F1EEEA;
     border-radius: 2px;
     background-color: white;
+}
+
+.submit-form{
+    width: 100%;
+    color: white;
+    background-color: #028858;
+    padding: 15px;
 }

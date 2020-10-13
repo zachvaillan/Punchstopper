@@ -59,7 +59,7 @@ class SignupForm extends React.Component{
                                             Kickstarter research</p>
                                         </div>
                                     </li>
-                                    <li><button type="submit">Create account</button></li>
+                                    <li><button className="submit-form" type="submit">Create account</button></li>
                                 </ul>
                             </form>
                         </div>

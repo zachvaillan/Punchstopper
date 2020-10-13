@@ -1,13 +1,22 @@
 import React from 'react';
 
 export default () => (    
-    <div className="nav">
-        <ul className="menu">
-            <li><a href="#">Explore</a></li>
-            <li><a href="#">Start a project</a></li>
-            <li className="logo-li"><a href="#"><img className="logo" src="https://ksr-static.imgix.net/tq0sfld-kickstarter-logo-green.png?ixlib=rb-2.1.0&s=0cce952d7b55823ff451a58887a0c578"/></a></li>
-            <li><a href="#">Search</a></li>
-            <li><a href="#">Login</a></li>
-        </ul>
+    <div className="global-nav">
+        
+        <div className="global-logo">
+            <div className="specific-logo-container">
+                <img className="logo" src="https://ksr-static.imgix.net/tq0sfld-kickstarter-logo-green.png?ixlib=rb-2.1.0&s=0cce952d7b55823ff451a58887a0c578"/>
+            </div>
+        </div>
+
+        <div className="left-menu">
+            <a href="#">Explore</a>
+            <a href="#">Start a project</a>
+        </div>
+
+        <div className="right-menu">
+            <a href="#">Search</a>
+            <a href="#">Login</a>
+        </div>
     </div>
 );
