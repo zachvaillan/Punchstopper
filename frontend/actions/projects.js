@@ -33,7 +33,7 @@ export const fetchProjects = projects => dispatch => (
         .then( (projects) => dispatch(receiveAllProjects(projects)))
 );
 
-export const deleteProject = () => dispatch => (
+export const destroyProject = () => dispatch => (
     deleteProject()
         .then( () => dispatch(removeProject()))
 );

@@ -1,13 +1,20 @@
 import React from 'react';
+import ProjectIndexItem from './project_index_item';
 
-class Home extends React.Component{
+class Projects extends React.Component{
     constructor(props){
         super(props);
     }
 
     render(){
         return(
-            <ProjectIndexItem project={this.props.project}/>
+            <ul>
+                {this.props.projects.map( project => 
+                    <ProjectIndexItem project={project} key={project.id} />
+                )}
+            </ul>
         )
     }
 }
+
+export default Projects;

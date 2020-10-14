@@ -16,7 +16,7 @@ export default ({currentUser, logoutUser}) => {
         <div className="global-nav">
             <div className="left-menu">
                 <a href="#">Explore</a>
-                <a href="#">Start a project</a>
+                <Link to="/project/new">Start a project</Link>
             </div>
 
             <div className="global-logo">

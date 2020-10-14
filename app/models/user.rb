@@ -7,6 +7,10 @@ class User < ApplicationRecord
     attr_reader :password 
     after_initialize :ensure_session_token
 
+    has_many :projects,
+        foreign_key: :owner_id,
+        class_name: "Project"
+
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)
         if user && user.is_password?(password)

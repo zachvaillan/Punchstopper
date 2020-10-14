@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2020_10_14_180326) do
     t.text "description", null: false
     t.date "end_date", null: false
     t.integer "funding_goal", null: false
-    t.integer "funding_amount", null: false
+    t.integer "funding_amount", default: 0, null: false
     t.integer "owner_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -205,3 +205,18 @@ a {
     padding: 15px;
 }
 
+/* 
+PROJECT FORM
+
+*/
+
+.project-form-container{
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    width: 170px;
+}
+
+.project-form-container > form{
+    text-align: center;
+}
