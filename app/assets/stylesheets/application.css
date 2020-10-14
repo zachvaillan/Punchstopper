@@ -67,28 +67,17 @@ a {
     Nav Bar Styling BELOW 
  */
 
+
+.logo{
+    width: 500px;
+}
+
 .global-nav{
     display: flex;
     flex-wrap: wrap;
-    border-bottom: 1px solid #DCDEDD;
+    background-color: red;
 }
 
-.global-logo{
-    width: 100%;
-    position: relative;
-    height: 60px;
-    padding: 20px 0;
-    display: flex;
-    position: relative;
-}
-
-.logo{
-    width: 200px;
-}
-
-.specific-logo-container{
-    width: 100%;
-}
 
  /* Signup Styling BELOW
  
