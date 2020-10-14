@@ -28,15 +28,12 @@ class LoginForm extends React.Component{
             <div className="bg-form">
                 <div className="user-account-form-container">
                     <div className="another-container">
-                        <div className="signup-form-switch">
-                                <p>Already have an account? <Link to="/login">Log in</Link></p>
-                        </div>
                         <div className="user-account-form">
                             <p className="signup-form-header">Log in</p>
                             <form className="signup-form" onSubmit={this.handleSubmit}>
                                 <ul>
                                     <li>
-                                        <input type="text" placeholder="Email" 
+                                        <input type="text" placeholder="Email" autoFocus="autofocus"
                                         value={this.state.email} onChange={this.onSubmit("email")}/>
                                     </li>
                                     <li>
@@ -46,6 +43,9 @@ class LoginForm extends React.Component{
                                     <li><button className="submit-form" type="submit">Log in</button></li>
                                 </ul>
                             </form>
+                        </div>
+                        <div className="login-form-switch">
+                                <p>New to Kickstarter? <Link className="form-switch-btn" to="/signup">Sign up</Link></p>
                         </div>
                     </div>
                 </div>

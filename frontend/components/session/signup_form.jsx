@@ -30,7 +30,7 @@ class SignupForm extends React.Component{
                 <div className="user-account-form-container">
                     <div className="another-container">
                         <div className="signup-form-switch">
-                                <p>Already have an account? <Link to="/login">Log in</Link></p>
+                                <p>Already have an account? <Link className="form-switch-btn" to="/login">Log in</Link></p>
                         </div>
                         <div className="user-account-form">
                             <p className="signup-form-header">Sign up</p>

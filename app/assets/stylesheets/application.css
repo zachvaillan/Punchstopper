@@ -165,11 +165,18 @@ a {
     text-align: center;
 }
 
-.signup-form-switch > p{
+.login-form-switch{
+    background-color: white;
+    border-top: 1px solid #F1EEEA;
+    text-align: center;
+    padding: 30px
+}
+
+.signup-form-switch > p, .login-form-switch > p{
     font-size: 14px;
 }
 
-.signup-form-switch > p > a{
+.form-switch-btn{
     font-weight: 700;
     color: #2752ff;
 }
