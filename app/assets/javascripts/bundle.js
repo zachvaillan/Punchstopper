@@ -86,6 +86,17 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./frontend/actions/projects.js":
+/*!**************************************!*\
+  !*** ./frontend/actions/projects.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /home/zach/punchstopper/frontend/actions/projects.js: Identifier 'deleteProject' has already been declared (36:13)\n\n\u001b[0m \u001b[90m 34 | \u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 35 | \u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 36 | \u001b[39m\u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m deleteProject \u001b[33m=\u001b[39m () \u001b[33m=>\u001b[39m dispatch \u001b[33m=>\u001b[39m (\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 37 | \u001b[39m    deleteProject()\u001b[0m\n\u001b[0m \u001b[90m 38 | \u001b[39m        \u001b[33m.\u001b[39mthen( () \u001b[33m=>\u001b[39m dispatch(removeProject()))\u001b[0m\n\u001b[0m \u001b[90m 39 | \u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n    at Object._raise (/home/zach/punchstopper/node_modules/@babel/parser/lib/index.js:766:17)\n    at Object.raiseWithData (/home/zach/punchstopper/node_modules/@babel/parser/lib/index.js:759:17)\n    at Object.raise (/home/zach/punchstopper/node_modules/@babel/parser/lib/index.js:753:17)\n    at ScopeHandler.checkRedeclarationInScope (/home/zach/punchstopper/node_modules/@babel/parser/lib/index.js:4873:12)\n    at ScopeHandler.declareName (/home/zach/punchstopper/node_modules/@babel/parser/lib/index.js:4839:12)\n    at Object.checkLVal (/home/zach/punchstopper/node_modules/@babel/parser/lib/index.js:9422:22)\n    at Object.parseVarId (/home/zach/punchstopper/node_modules/@babel/parser/lib/index.js:12119:10)\n    at Object.parseVar (/home/zach/punchstopper/node_modules/@babel/parser/lib/index.js:12094:12)\n    at Object.parseVarStatement (/home/zach/punchstopper/node_modules/@babel/parser/lib/index.js:11906:10)\n    at Object.parseStatementContent (/home/zach/punchstopper/node_modules/@babel/parser/lib/index.js:11498:21)\n    at Object.parseStatement (/home/zach/punchstopper/node_modules/@babel/parser/lib/index.js:11431:17)\n    at Object.parseExportDeclaration (/home/zach/punchstopper/node_modules/@babel/parser/lib/index.js:12627:17)\n    at Object.maybeParseExportDeclaration (/home/zach/punchstopper/node_modules/@babel/parser/lib/index.js:12583:31)\n    at Object.parseExport (/home/zach/punchstopper/node_modules/@babel/parser/lib/index.js:12521:29)\n    at Object.parseStatementContent (/home/zach/punchstopper/node_modules/@babel/parser/lib/index.js:11537:27)\n    at Object.parseStatement (/home/zach/punchstopper/node_modules/@babel/parser/lib/index.js:11431:17)\n    at Object.parseBlockOrModuleBlockBody (/home/zach/punchstopper/node_modules/@babel/parser/lib/index.js:12013:25)\n    at Object.parseBlockBody (/home/zach/punchstopper/node_modules/@babel/parser/lib/index.js:11999:10)\n    at Object.parseTopLevel (/home/zach/punchstopper/node_modules/@babel/parser/lib/index.js:11362:10)\n    at Object.parse (/home/zach/punchstopper/node_modules/@babel/parser/lib/index.js:13045:10)\n    at parse (/home/zach/punchstopper/node_modules/@babel/parser/lib/index.js:13098:38)\n    at parser (/home/zach/punchstopper/node_modules/@babel/core/lib/parser/index.js:54:34)\n    at parser.next (<anonymous>)\n    at normalizeFile (/home/zach/punchstopper/node_modules/@babel/core/lib/transformation/normalize-file.js:99:38)\n    at normalizeFile.next (<anonymous>)\n    at run (/home/zach/punchstopper/node_modules/@babel/core/lib/transformation/index.js:31:50)\n    at run.next (<anonymous>)\n    at Function.transform (/home/zach/punchstopper/node_modules/@babel/core/lib/transform.js:27:41)\n    at transform.next (<anonymous>)\n    at step (/home/zach/punchstopper/node_modules/gensync/index.js:254:32)");
+
+/***/ }),
+
 /***/ "./frontend/actions/session.js":
 /*!*************************************!*\
   !*** ./frontend/actions/session.js ***!
@@ -649,6 +660,48 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /***/ }),
 
+/***/ "./frontend/reducers/projects_reducer.js":
+/*!***********************************************!*\
+  !*** ./frontend/reducers/projects_reducer.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_projects__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/projects */ "./frontend/actions/projects.js");
+/* harmony import */ var _actions_projects__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_actions_projects__WEBPACK_IMPORTED_MODULE_0__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+var projectsReducer = function projectsReducer() {
+  var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(oldState);
+
+  switch (action.type) {
+    case _actions_projects__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PROJECT"]:
+      return Object.assign({}, oldState, _defineProperty({}, action.project.id, action.project));
+
+    case _actions_projects__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_PROJECTS"]:
+      var projects = {};
+      action.projects.forEach(function (project) {
+        return projects[project.id] = project;
+      });
+      return projects;
+
+    default:
+      return oldState;
+  }
+
+  ;
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (projectsReducer);
+
+/***/ }),
+
 /***/ "./frontend/reducers/root_reducer.js":
 /*!*******************************************!*\
   !*** ./frontend/reducers/root_reducer.js ***!
@@ -659,11 +712,14 @@ document.addEventListener('DOMContentLoaded', function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _session_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./session_reducer */ "./frontend/reducers/session_reducer.js");
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var _projects_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./projects_reducer */ "./frontend/reducers/projects_reducer.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 
 
-var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_1__["combineReducers"])({
-  session: _session_reducer__WEBPACK_IMPORTED_MODULE_0__["default"]
+
+var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_2__["combineReducers"])({
+  session: _session_reducer__WEBPACK_IMPORTED_MODULE_0__["default"],
+  projects: _projects_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (rootReducer);
 

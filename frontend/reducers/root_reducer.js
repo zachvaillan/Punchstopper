@@ -1,8 +1,10 @@
 import sessionReducer from './session_reducer';
+import projectsReducer from './projects_reducer';
 import {combineReducers} from 'redux';
 
 const rootReducer = combineReducers({
-    session: sessionReducer
+    session: sessionReducer,
+    projects: projectsReducer
 });
 
 export default rootReducer;
