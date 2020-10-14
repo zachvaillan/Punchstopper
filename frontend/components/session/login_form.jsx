@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class LoginForm extends React.Component{
     constructor(props){
@@ -24,20 +25,30 @@ class LoginForm extends React.Component{
 
     render(){
         return(
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <label>Email
-                        <br/>
-                        <input type="text" value={this.state.email} onChange={this.onSubmit("email")}/>
-                        <br/>
-                    </label>
-                    <label>Password
-                        <br/>
-                        <input type="password" value={this.state.password} onChange={this.onSubmit("password")}/>
-                        <br/>
-                    </label>
-                    <button type="submit">Login</button>
-                </form>
+            <div className="bg-form">
+                <div className="user-account-form-container">
+                    <div className="another-container">
+                        <div className="signup-form-switch">
+                                <p>Already have an account? <Link to="/login">Log in</Link></p>
+                        </div>
+                        <div className="user-account-form">
+                            <p className="signup-form-header">Log in</p>
+                            <form className="signup-form" onSubmit={this.handleSubmit}>
+                                <ul>
+                                    <li>
+                                        <input type="text" placeholder="Email" 
+                                        value={this.state.email} onChange={this.onSubmit("email")}/>
+                                    </li>
+                                    <li>
+                                        <input type="password" placeholder="Password" 
+                                        value={this.state.password} onChange={this.onSubmit("password")}/>
+                                    </li>
+                                    <li><button className="submit-form" type="submit">Log in</button></li>
+                                </ul>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }

@@ -69,15 +69,39 @@ a {
 
 
 .logo{
-    width: 500px;
+    width: 200px;
 }
 
 .global-nav{
-    display: flex;
-    flex-wrap: wrap;
-    background-color: red;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    width: 100%;
 }
 
+.global-nav > div > a {
+    margin: 20px;
+}
+
+.left-menu {
+    text-align: left;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.right-menu {
+    text-align: right;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.global-logo {
+    padding-left: 20px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    text-align: center;
+}
 
  /* Signup Styling BELOW
  
