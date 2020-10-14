@@ -103,6 +103,15 @@ a {
     text-align: center;
 }
 
+.profile-pic{
+    width: 50px;
+    border-radius: 10px;
+}
+
+.logged-in-container{
+    display: inline;
+}
+
  /* Signup Styling BELOW
  
     Signup Styling BELOW
@@ -195,3 +204,4 @@ a {
     background-color: #028858;
     padding: 15px;
 }
+

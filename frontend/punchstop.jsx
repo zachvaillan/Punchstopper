@@ -4,7 +4,16 @@ import React from 'react';
 import Root from './components/root';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const store = configureStore();
+    let preloadedState = undefined;
+    if (window.currentUser) {
+        preloadedState = {
+        session: {
+            currentUser: window.currentUser
+        }
+        };
+    }
+    const store = configureStore(preloadedState);
     const root = document.getElementById("root");
-    ReactDOM.render(<Root store={store} />, root)
+    ReactDOM.render(<Root store={store} />, root);
+    window.getState = store.getState;
 });
