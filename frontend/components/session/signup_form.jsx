@@ -12,6 +12,10 @@ class SignupForm extends React.Component{
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentWillUnmount(){
+        this.props.clearErrors()
+    }
+
     onSubmit(field){
         return e => {
             this.setState({ [field]: e.target.value });
@@ -40,23 +44,17 @@ class SignupForm extends React.Component{
                                         <input type="text" autoFocus="autofocus" placeholder="Name" 
                                         value={this.state.name} onChange={this.onSubmit("name")}/>
                                     </li>
-                                    
-                                    <p className="error2">{this.props.errors[1]}</p>
                                    
                                     <li>
                                         <input type="text" placeholder="Email" 
                                         value={this.state.email} onChange={this.onSubmit("email")}/>
                                     </li>
-                          
-                                    <p className="error3">{this.props.errors[0]}</p>
                               
                                     <li>
                                         <input type="password" placeholder="Password" 
                                         value={this.state.password} onChange={this.onSubmit("password")}/>
                                     </li>
-                                    
-                                    <p className="error4">{this.props.errors[2]}</p>
-    
+                                    <ul className="errors-list">{this.props.errors.map((error, i) => <li key={i}>{error}</li>)}</ul>
                                     <li>
                                         <div className="margin-for-error">
                                             <input type="checkbox"/><p>Send me a weekly mix of handpicked projects, 

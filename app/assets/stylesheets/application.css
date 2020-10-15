@@ -214,6 +214,7 @@ body{
     color: white;
     background-color: #028858;
     padding: 15px;
+    margin-top: 10px;
 }
 
 .demo-btn{
@@ -228,35 +229,25 @@ body{
     position: relative;
 }
 
-.error1{
+.errors{
     color: red;
     position: absolute;
-    top: 105px;
     left: 80px;
+    top: 110px;
 }
 
-.error2{
+.errors-list{
     color: red;
     position: absolute;
-    top: 43px;
-    left: 90px;
+    bottom: 185px;
 }
 
-.error3{
-    color: red;
-    position: absolute;
-    top: 105px;
-    left: 90px;
-}
-
-.error4{
-    color: red;
-    position: absolute;
-    top: 170px;
+.errors-list > li{
+    margin: 2px;
 }
 
 .margin-for-error{
-    margin-top: 40px;
+    margin-top: 80px;
 }
 /* 
 PROJECT FORM

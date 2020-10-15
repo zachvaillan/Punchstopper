@@ -12,7 +12,7 @@ class LoginForm extends React.Component{
     }
 
     componentWillUnmount(){
-        
+        this.props.clearErrors()
     }
 
     onSubmit(field){
@@ -45,8 +45,10 @@ class LoginForm extends React.Component{
                                         value={this.state.password} onChange={this.onSubmit("password")}/>
                                     </li>
                                   
-                                    <p className="error1">{this.props.errors}</p>
-                                    
+                                    <li className="errors">
+                                        <p>{this.props.errors}</p>
+                                    </li>
+
                                     <li><button onClick={this.handleSubmit} className="submit-form" type="submit">Log in</button></li>
                                     
                                     <li><button className="demo-btn"

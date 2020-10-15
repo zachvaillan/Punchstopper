@@ -14,27 +14,27 @@ const endSession = () => ({
     type: LOGOUT_USER,
 });
 
-const receiveLoginErrors = errors => ({
+export const receiveSessionErrors = errors => ({
     type: RECEIVE_SESSION_ERRORS,
     errors
 });
 
-const receiveSignupErrors = errors => ({
-    type: RECEIVE_SIGNUP_ERRORS,
-    errors
-});
+// const receiveSignupErrors = errors => ({
+//     type: RECEIVE_SIGNUP_ERRORS,
+//     errors
+// });
 
 export const createUser = user => dispatch => (
     postUser(user)
         .then( user => dispatch(receiveCurrentUser(user)),
-        errors => dispatch(receiveSignupErrors(errors.responseJSON))
+        errors => dispatch(receiveSessionErrors(errors.responseJSON))
         )
 );
 
 export const loginUser = user => dispatch => (
     postSession(user)
         .then( (user) => dispatch(receiveCurrentUser(user)),
-        errors => dispatch(receiveLoginErrors(errors.responseJSON))
+        errors => dispatch(receiveSessionErrors(errors.responseJSON))
         )
 );
 
