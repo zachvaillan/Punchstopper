@@ -49,6 +49,9 @@ class SignupForm extends React.Component{
                                         value={this.state.password} onChange={this.onSubmit("password")}/>
                                     </li>
                                     <li>
+                                        <p className="errors">{this.props.errors}</p>
+                                    </li>
+                                    <li>
                                         <div>
                                             <input type="checkbox"/><p>Send me a weekly mix of handpicked projects, 
                                             plus occasional Kickstarter news</p>

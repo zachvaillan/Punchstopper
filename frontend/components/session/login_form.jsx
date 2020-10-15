@@ -40,10 +40,13 @@ class LoginForm extends React.Component{
                                         <input type="password" placeholder="Password" 
                                         value={this.state.password} onChange={this.onSubmit("password")}/>
                                     </li>
+                                    <li>
+                                        <p className="errors">{this.props.errors}</p>
+                                    </li>
                                     <li><button className="submit-form" type="submit">Log in</button></li>
                                     
                                     <li><button className="demo-btn"
-                                    onClick={() => this.props.loginUser({"email":"mrme@gmail.com", "password":"Deab50199"}).then(() => this.props.history.push('/'))}>
+                                    onClick={() => this.props.loginUser({"email":"demo", "password":"demodemo"}).then(() => this.props.history.push('/'))}>
                                     Demo User</button></li>
 
                                 </ul>

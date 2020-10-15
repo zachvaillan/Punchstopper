@@ -60,13 +60,20 @@ a {
     text-decoration: none;
     color: black;
 }
+
+body{
+    font-family: sans-serif;
+}
+
  /* Nav Bar Styling BELOW
  
     Nav Bar Styling BELOW
 
     Nav Bar Styling BELOW 
  */
-
+ button{
+    cursor: pointer;
+ }
 
 .logo{
     width: 200px;
@@ -106,6 +113,10 @@ a {
 .profile-pic{
     width: 50px;
     border-radius: 10px;
+}
+
+.login-nav{
+    display: inline;
 }
 
 .logged-in-container{
@@ -153,7 +164,7 @@ a {
 .signup-form-header {
     margin-top: 10px;
     margin-bottom: 20px;
-    font-size: 44px;
+    font-size: 30px;
 }
 
 .signup-form > ul > li > div {
@@ -214,6 +225,10 @@ a {
 
 .signup-form > ul {
     text-align: center;
+}
+
+.errors{
+    color: red;
 }
 /* 
 PROJECT FORM
