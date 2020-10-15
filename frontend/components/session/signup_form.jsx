@@ -41,15 +41,21 @@ class SignupForm extends React.Component{
                                         value={this.state.name} onChange={this.onSubmit("name")}/>
                                     </li>
                                     <li>
+                                        <p className="errors">{this.props.errors[1]}</p>
+                                    </li>
+                                    <li>
                                         <input type="text" placeholder="Email" 
                                         value={this.state.email} onChange={this.onSubmit("email")}/>
+                                    </li>
+                                    <li>
+                                        <p className="errors">{this.props.errors[0]}</p>
                                     </li>
                                     <li>
                                         <input type="password" placeholder="Password" 
                                         value={this.state.password} onChange={this.onSubmit("password")}/>
                                     </li>
                                     <li>
-                                        <p className="errors">{this.props.errors}</p>
+                                        <p className="errors">{this.props.errors[2]}</p>
                                     </li>
                                     <li>
                                         <div>
