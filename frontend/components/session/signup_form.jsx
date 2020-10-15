@@ -54,7 +54,11 @@ class SignupForm extends React.Component{
                                         <input type="password" placeholder="Password" 
                                         value={this.state.password} onChange={this.onSubmit("password")}/>
                                     </li>
-                                    <ul className="errors-list">{this.props.errors.map((error, i) => <li key={i}>{error}</li>)}</ul>
+                                    
+                                    <li className="errors-signup">
+                                        <p>{this.props.errors}</p>
+                                    </li>
+
                                     <li>
                                         <div className="margin-for-error">
                                             <input type="checkbox"/><p>Send me a weekly mix of handpicked projects, 

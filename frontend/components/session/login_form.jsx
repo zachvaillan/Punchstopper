@@ -49,7 +49,7 @@ class LoginForm extends React.Component{
                                         <p>{this.props.errors}</p>
                                     </li>
 
-                                    <li><button onClick={this.handleSubmit} className="submit-form" type="submit">Log in</button></li>
+                                    <li><button onClick={this.handleSubmit} className="submit-form" id="margin-for-error" type="submit">Log in</button></li>
                                     
                                     <li><button className="demo-btn"
                                     onClick={() => this.props.loginUser({"email":"demo", "password":"demodemo"}).then(() => this.props.history.push('/'))}>
