@@ -73,6 +73,8 @@ body{
  */
  button{
     cursor: pointer;
+    box-shadow: none;
+    border: none;
  }
 
 .logo{
