@@ -225,10 +225,38 @@ body{
 
 .signup-form > ul {
     text-align: center;
+    position: relative;
 }
 
-.errors{
+.error1{
     color: red;
+    position: absolute;
+    top: 105px;
+    left: 80px;
+}
+
+.error2{
+    color: red;
+    position: absolute;
+    top: 43px;
+    left: 90px;
+}
+
+.error3{
+    color: red;
+    position: absolute;
+    top: 105px;
+    left: 90px;
+}
+
+.error4{
+    color: red;
+    position: absolute;
+    top: 170px;
+}
+
+.margin-for-error{
+    margin-top: 40px;
 }
 /* 
 PROJECT FORM

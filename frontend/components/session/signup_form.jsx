@@ -40,25 +40,25 @@ class SignupForm extends React.Component{
                                         <input type="text" autoFocus="autofocus" placeholder="Name" 
                                         value={this.state.name} onChange={this.onSubmit("name")}/>
                                     </li>
-                                    <li>
-                                        <p className="errors">{this.props.errors[1]}</p>
-                                    </li>
+                                    
+                                    <p className="error2">{this.props.errors[1]}</p>
+                                   
                                     <li>
                                         <input type="text" placeholder="Email" 
                                         value={this.state.email} onChange={this.onSubmit("email")}/>
                                     </li>
-                                    <li>
-                                        <p className="errors">{this.props.errors[0]}</p>
-                                    </li>
+                          
+                                    <p className="error3">{this.props.errors[0]}</p>
+                              
                                     <li>
                                         <input type="password" placeholder="Password" 
                                         value={this.state.password} onChange={this.onSubmit("password")}/>
                                     </li>
+                                    
+                                    <p className="error4">{this.props.errors[2]}</p>
+    
                                     <li>
-                                        <p className="errors">{this.props.errors[2]}</p>
-                                    </li>
-                                    <li>
-                                        <div>
+                                        <div className="margin-for-error">
                                             <input type="checkbox"/><p>Send me a weekly mix of handpicked projects, 
                                             plus occasional Kickstarter news</p>
                                         </div>

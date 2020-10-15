@@ -11,6 +11,10 @@ class LoginForm extends React.Component{
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentWillUnmount(){
+        
+    }
+
     onSubmit(field){
         return e => {
             this.setState({ [field]: e.target.value });
@@ -30,7 +34,7 @@ class LoginForm extends React.Component{
                     <div className="another-container">
                         <div className="user-account-form">
                             <p className="signup-form-header">Log in</p>
-                            <form className="signup-form" onSubmit={this.handleSubmit}>
+                            <form className="signup-form" onSubmit={(e) => e.preventDefault()}>
                                 <ul>
                                     <li>
                                         <input type="text" placeholder="Email" autoFocus="autofocus"
@@ -40,10 +44,10 @@ class LoginForm extends React.Component{
                                         <input type="password" placeholder="Password" 
                                         value={this.state.password} onChange={this.onSubmit("password")}/>
                                     </li>
-                                    <li>
-                                        <p className="errors">{this.props.errors}</p>
-                                    </li>
-                                    <li><button className="submit-form" type="submit">Log in</button></li>
+                                  
+                                    <p className="error1">{this.props.errors}</p>
+                                    
+                                    <li><button onClick={this.handleSubmit} className="submit-form" type="submit">Log in</button></li>
                                     
                                     <li><button className="demo-btn"
                                     onClick={() => this.props.loginUser({"email":"demo", "password":"demodemo"}).then(() => this.props.history.push('/'))}>
