@@ -20,7 +20,7 @@ export default ({currentUser, logoutUser}) => {
             </div>
 
             <div className="global-logo">
-                <img className="logo" src="https://ksr-static.imgix.net/tq0sfld-kickstarter-logo-green.png?ixlib=rb-2.1.0&s=0cce952d7b55823ff451a58887a0c578"/>
+                <Link to="/"><img className="logo" src="https://ksr-static.imgix.net/tq0sfld-kickstarter-logo-green.png?ixlib=rb-2.1.0&s=0cce952d7b55823ff451a58887a0c578"/></Link>
             </div>
 
             <div className="right-menu">
