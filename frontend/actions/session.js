@@ -1,5 +1,4 @@
 import {postUser, postSession, deleteSession} from '../utils/session';
-import { RECEIVE_PROJECT } from './projects';
 
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const LOGOUT_USER = "LOGOUT_USER";
@@ -21,14 +20,12 @@ const receiveErrors = errors => ({
 
 export const createUser = user => dispatch => (
     postUser(user)
-        .then( user => dispatch(receiveCurrentUser(user))),
-        err => dispatch(receiveErrors(err.responseJSON))
+        .then( user => dispatch(receiveCurrentUser(user)))
 );
 
 export const loginUser = user => dispatch => (
     postSession(user)
-        .then( (user) => dispatch(receiveCurrentUser(user))),
-        err => dispatch(receiveErrors(err.responseJSON))
+        .then( (user) => dispatch(receiveCurrentUser(user)))
 );
 
 export const logoutUser = () => dispatch => (

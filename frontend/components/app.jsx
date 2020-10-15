@@ -10,13 +10,10 @@ import { AuthRoute } from '../utils/route_utils';
 
 export default () => (
     <div>
-        <Switch>
-            <Route path="/" component={NavBarContainer} />
-            <Route exact path="/" component={Home} />
-            <Route path="/project/new" component={ProjectFormContainer} />
-            <AuthRoute path="/login" component={LoginFormContainer} />
-            <AuthRoute path="/signup" component={SignupFormContainer} />
-            <Route component={NotFound} />
-        </Switch>
+        <Route path="/" component={NavBarContainer} />
+        <Route exact path="/" component={Home} />
+        <Route path="/project/new" component={ProjectFormContainer} />
+        <AuthRoute path="/login" component={LoginFormContainer} />
+        <AuthRoute path="/signup" component={SignupFormContainer} />
     </div>
 );

@@ -205,6 +205,16 @@ a {
     padding: 15px;
 }
 
+.demo-btn{
+    width: 50%;
+    color: white;
+    background-color: black;
+    padding: 15px;
+}
+
+.signup-form > ul {
+    text-align: center;
+}
 /* 
 PROJECT FORM
 
@@ -220,3 +230,4 @@ PROJECT FORM
 .project-form-container > form{
     text-align: center;
 }
+
