@@ -132,6 +132,11 @@ body{
     Signup Styling BELOW 
  */
 
+.signup-form{
+    display: flex;
+    width: 300px;
+    justify-content: center;
+}
 
 .signup-form li{
     margin-bottom: 20px;
@@ -161,12 +166,25 @@ body{
     margin: auto;
     background-color: white;
     padding: 30px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.user-account-form {
+    text-align: left;
 }
 
 .signup-form-header {
     margin-top: 10px;
     margin-bottom: 20px;
     font-size: 30px;
+}
+
+.form-header{
+    display: flex;
+    justify-content: left;
+    width: 300px;
 }
 
 .signup-form > ul > li > div {
@@ -216,7 +234,6 @@ body{
     color: white;
     background-color: #028858;
     padding: 15px;
-    margin-top: 10px;
 }
 
 .demo-btn{
@@ -229,13 +246,27 @@ body{
 .signup-form > ul {
     text-align: center;
     position: relative;
+    width: 300px;
 }
 
-.errors{
+.signup-form > ul > li {
+    margin: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.signup-form > ul > li.errors{
     color: red;
-    position: absolute;
-    left: 80px;
-    top: 110px;
+    margin: 0px;
+}
+
+.signup-form > ul > li.remove-margin{
+    margin: 0px;
+    padding-bottom: 10px;
+}
+
+.signup-form > ul > li.add-padding-after{
+    padding-bottom: 20px;
 }
 
 .errors-signup{
@@ -262,6 +293,16 @@ body{
 
 .margin-for-error{
     margin-top: 50px;
+}
+
+.error-space{
+    height: 16px;
+    margin: auto;
+}
+
+.error-space-password{
+    height: 36px;
+    margin: auto;
 }
 /* 
 PROJECT FORM

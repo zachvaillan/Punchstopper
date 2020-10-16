@@ -29,6 +29,16 @@ class SignupForm extends React.Component{
     }
 
     render(){
+
+        let passwordErrs = "";
+        this.props.errors.forEach( error => error.includes("Password") ? passwordErrs = error : null)
+
+        let emailErrs = "";
+        this.props.errors.forEach( error => error.includes("Email") ? emailErrs = error : null)
+
+        let nameErrs = "";
+        this.props.errors.forEach( error => error.includes("Name") ? nameErrs = error : null)
+
         return(
             <div className="bg-form">
                 <div className="user-account-form-container">
@@ -39,46 +49,34 @@ class SignupForm extends React.Component{
                         <div className="user-account-form">
                             <p className="signup-form-header">Sign up</p>
                             <form className="signup-form" onSubmit={this.handleSubmit}>
-                                <ul>
+                                <ul className="signup-ul">
                                     <li>
                                         <input type="text" autoFocus="autofocus" placeholder="Name" 
                                         value={this.state.name} onChange={this.onSubmit("name")}/>
                                     </li>
 
-                                    <ul className="errors-signup">
-                                        {this.props.errors.map( error => error.includes("Name") ? <li className="name-error">{error}</li> : <li></li>)}
-                                    </ul>
+                                    <li className="errors">
+                                        <p className="error-space">{nameErrs}</p>
+                                    </li>
                                    
                                     <li>
                                         <input type="text" placeholder="Email" 
                                         value={this.state.email} onChange={this.onSubmit("email")}/>
                                     </li>
 
-                                    <ul className="errors-signup">
-                                        {this.props.errors.map( error => error.includes("Email") ? <li className="email-error">{error}</li> : <li></li>)}
-                                    </ul>
+                                    <li className="errors">
+                                        <p className="error-space">{emailErrs}</p>
+                                    </li>
                               
                                     <li>
                                         <input type="password" placeholder="Password" 
                                         value={this.state.password} onChange={this.onSubmit("password")}/>
                                     </li>
                                     
-                                    <ul className="errors-signup">
-                                        {this.props.errors.map( error => error.includes("Password") ? <li className="password-error">{error}</li> : <li></li>)}
-                                    </ul>
+                                    <li className="errors">
+                                        <p className="error-space-password">{passwordErrs}</p>
+                                    </li>
 
-                                    <li>
-                                        <div className="margin-for-error">
-                                            <input type="checkbox"/><p>Send me a weekly mix of handpicked projects, 
-                                            plus occasional Kickstarter news</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div>
-                                            <input type="checkbox"/><p>Contact me about participating in 
-                                            Kickstarter research</p>
-                                        </div>
-                                    </li>
                                     <li><button className="submit-form" type="submit">Create account</button></li>
                                 </ul>
                             </form>

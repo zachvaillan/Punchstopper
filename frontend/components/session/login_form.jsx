@@ -33,20 +33,23 @@ class LoginForm extends React.Component{
                 <div className="user-account-form-container">
                     <div className="another-container">
                         <div className="user-account-form">
-                            <p className="signup-form-header">Log in</p>
+                            <div className="form-header">
+                                <p className="signup-form-header">Log in</p>
+                            </div>
                             <form className="signup-form" onSubmit={(e) => e.preventDefault()}>
                                 <ul>
-                                    <li>
+                                    <li className="add-padding-after">
                                         <input type="text" placeholder="Email" autoFocus="autofocus"
                                         value={this.state.email} onChange={this.onSubmit("email")}/>
                                     </li>
-                                    <li>
+
+                                    <li className="remove-margin">
                                         <input type="password" placeholder="Password" 
                                         value={this.state.password} onChange={this.onSubmit("password")}/>
                                     </li>
                                   
                                     <li className="errors">
-                                        <p>{this.props.errors}</p>
+                                        <p className="error-space">{this.props.errors}</p>
                                     </li>
 
                                     <li><button onClick={this.handleSubmit} className="submit-form" id="margin-for-error" type="submit">Log in</button></li>
