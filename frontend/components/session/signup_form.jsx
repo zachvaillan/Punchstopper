@@ -44,20 +44,28 @@ class SignupForm extends React.Component{
                                         <input type="text" autoFocus="autofocus" placeholder="Name" 
                                         value={this.state.name} onChange={this.onSubmit("name")}/>
                                     </li>
+
+                                    <ul className="errors-signup">
+                                        {this.props.errors.map( error => error.includes("Name") ? <li className="name-error">{error}</li> : <li></li>)}
+                                    </ul>
                                    
                                     <li>
                                         <input type="text" placeholder="Email" 
                                         value={this.state.email} onChange={this.onSubmit("email")}/>
                                     </li>
+
+                                    <ul className="errors-signup">
+                                        {this.props.errors.map( error => error.includes("Email") ? <li className="email-error">{error}</li> : <li></li>)}
+                                    </ul>
                               
                                     <li>
                                         <input type="password" placeholder="Password" 
                                         value={this.state.password} onChange={this.onSubmit("password")}/>
                                     </li>
                                     
-                                    <li className="errors-signup">
-                                        <p>{this.props.errors}</p>
-                                    </li>
+                                    <ul className="errors-signup">
+                                        {this.props.errors.map( error => error.includes("Password") ? <li className="password-error">{error}</li> : <li></li>)}
+                                    </ul>
 
                                     <li>
                                         <div className="margin-for-error">

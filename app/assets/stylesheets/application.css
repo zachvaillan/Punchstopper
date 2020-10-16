@@ -235,22 +235,32 @@ body{
     color: red;
     position: absolute;
     left: 80px;
-    top: 130px;
+    top: 110px;
 }
 
 .errors-signup{
     color: red;
-    position: absolute;
-    left: 80px;
-    bottom: 180px;
+    bottom: 200px;
 }
 
+.name-error{
+    position: absolute;
+    bottom: 320px;
+    left: 90px;
+}
+
+.email-error{
+    position: absolute;
+    bottom: 256px;
+    left: 90px;
+}
+
+.password-error{
+    position: absolute;
+    bottom: 175px;
+}
 
 .margin-for-error{
-    margin-top: 50px;
-}
-
-#margin-for-error{
     margin-top: 50px;
 }
 /* 
