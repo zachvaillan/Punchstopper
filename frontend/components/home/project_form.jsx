@@ -7,7 +7,8 @@ class ProjectForm extends React.Component{
             title: "",
             description: "",
             end_date: "",
-            funding_goal: ""
+            funding_goal: "",
+            image_url: ""
         };
         this.handleSubmit = this.handleSubmit.bind(this);
     };
@@ -40,6 +41,9 @@ class ProjectForm extends React.Component{
                     <label>Funding Goal</label>
                     <input type="number" value={this.state.funding_goal} onChange={this.onSubmit("funding_goal")} />
                     
+                    <label>Image</label>
+                    <input type="text" value={this.state.image_url} onChange={this.onSubmit("image_url")} />
+
                     <button type="submit">Create Project</button>
                 </form>
             </div>

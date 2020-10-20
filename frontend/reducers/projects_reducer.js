@@ -3,10 +3,12 @@ import {RECEIVE_ALL_PROJECTS, RECEIVE_PROJECT, DELETE_PROJECT} from '../actions/
 
 const projectsReducer = ( oldState = {}, action ) => {
     Object.freeze(oldState);
+    let nextState = Object.assign({}, oldState)
 
     switch(action.type){
         case RECEIVE_PROJECT:
-            return Object.assign({}, oldState, {[action.project.id]: action.project});
+            nextState[action.project.id] = action.project;
+            return nextState;
         case RECEIVE_ALL_PROJECTS:
             const projects = {};
             action.projects.forEach( project => projects[project.id] = project);

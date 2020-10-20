@@ -6,6 +6,7 @@ class CreateProjects < ActiveRecord::Migration[5.2]
       t.date :end_date, null: false 
       t.integer :funding_goal, null: false
       t.integer :funding_amount, null: false, :default => 0
+      t.string :image_url, null: false
       t.integer :owner_id, null: false 
       t.timestamps
     end

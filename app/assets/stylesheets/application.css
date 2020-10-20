@@ -85,6 +85,7 @@ body{
     display: grid;
     grid-template-columns: 33% 33% 33%;
     width: 100%;
+    border-bottom: 1px solid #E8E8E8;
 }
 
 .global-nav > div > a {
@@ -167,7 +168,7 @@ body{
     background-color: white;
     padding: 30px;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     flex-wrap: wrap;
 }
 
@@ -320,3 +321,138 @@ PROJECT FORM
     text-align: center;
 }
 
+.project-cats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+}
+
+.project-cats > li {
+    margin-left: 15px;
+    margin-right: 15px;
+    font-size: 16px; 
+    color: #656969;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+}
+
+.project-cats > li:hover {
+    color: black;
+    border-bottom: 2px solid black;
+}
+
+.project-cats-container {
+    height: 60px;
+    display: flex;
+    border-bottom: 1px solid #E8E8E8;
+}
+
+.projects{
+    display: flex;
+    margin: 40px;
+}
+
+.featured{
+    width: 650px;
+    border-right: 1px solid #E8E8E8;
+    padding-left: 20px;
+}
+
+.recommended {
+    padding-left: 40px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.recommended > h4{
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.subscribe-wrapper{
+    display: flex;
+    width: 100%;
+    border-top: 1px solid #E8E8E8;
+    border-bottom: 1px solid #E8E8E8;
+    padding: 60px 0px;
+}
+
+.subscribe-container{
+    margin: auto;
+    width: 700px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.subscribe-container > h2 {
+    font-size: 26px;
+}
+
+.subscribe-container > h4 {
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    margin: 30px 0px;
+}
+
+.subscribe-container > form {
+    display: flex;
+    justify-content: space-between;
+    width: 550px;
+}
+
+.subscribe-btn{
+    background-color: #464646;
+    color: white;
+    padding: 15px;
+}
+
+.subscribe-btn:hover{
+    background-color: black;   
+}
+
+.email-subscribe-input{
+    width: 410px;
+    border: 1px solid #E8E8E8;
+    padding: 15px;
+}
+
+.recommended-img{
+    width: 100px;
+    padding-right: 10px;
+}
+
+.rec-proj{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.rec-proj-title{
+    margin-bottom: 5px;
+}
+
+.rec-proj-perc{
+    margin-bottom: 5px;
+}
+
+.rec-proj-cont{
+    width: 100%;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #E8E8E8;
+    margin-bottom: 20px;
+}
+
+.rec-idx-nav-cont {
+    display: flex;
+    justify-content: right;
+}
+
+.rec-idx-nav > button{
+    background-color: transparent;
+}
+
+.rec-idx-nav > button:focus{
+    outline: transparent;
+}

@@ -4,7 +4,7 @@ class Api::ProjectsController < ApplicationController
         @project = Project.new(project_params)
         @project.owner_id = current_user.id
         if @project.save
-            render :show
+            render :index
         else
             render json: @project.errors.full_messages
         end
@@ -20,7 +20,7 @@ class Api::ProjectsController < ApplicationController
     end
 
     def project_params
-        params.require(:project).permit(:title, :description, :end_date, :funding_goal, :funding_amount)
+        params.require(:project).permit(:title, :description, :end_date, :funding_goal, :funding_amount, :image_url)
     end
 
 end
