@@ -9,6 +9,12 @@ class RecommendedProjectsIndex extends React.Component {
         }
     }
 
+    onClick(page_num){
+        return e => {
+            this.setState({ page: page_num });
+        };
+    }
+
     render(){
 
         let projectsArray = this.props.projects;
@@ -22,7 +28,7 @@ class RecommendedProjectsIndex extends React.Component {
         if (this.state.page === 2){
             showcase = (
             <div>
-                {projectsArray.slice(2, 7).map( project => { 
+                {projectsArray.slice(3, 7).map( project => { 
                     return (<RecommendedProjectsIndexItem project={project} key={project.id} />) 
                 })}
             </div>)
@@ -33,9 +39,9 @@ class RecommendedProjectsIndex extends React.Component {
                 {showcase}
                 <div className="rec-idx-nav-cont">
                     <div className="rec-idx-nav">
-                        <button>1</button>
-                        <button>2</button>
-                        <button>3</button>
+                        <button onClick={this.onClick(1)}>1</button>
+                        <button onClick={this.onClick(2)}>2</button>
+                        <button onClick={this.onClick(3)}>3</button>
                     </div>
                 </div>
             </div>

@@ -29,7 +29,7 @@ class NavBar extends React.Component {
             <div className="global-nav">
                 <div className="left-menu">
                     <a href="#">Explore</a>
-                    <Link to="/project/new">Start a project</Link>
+                    <Link to="/projects/new">Start a project</Link>
                 </div>
     
                 <div className="global-logo">

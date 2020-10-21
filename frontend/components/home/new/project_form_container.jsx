@@ -1,8 +1,8 @@
-import { fetchProject } from '../../actions/session';
+import { fetchProject } from '../../../actions/session';
 import React from 'react';
 import { connect } from 'react-redux';
 import ProjectForm from './project_form';
-import { createProject } from '../../actions/projects';
+import { createProject } from '../../../actions/projects';
 
 
 const mapDispatchToProps = dispatch => ({

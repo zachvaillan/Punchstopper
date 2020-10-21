@@ -1,5 +1,6 @@
 import React from 'react';
 import RecommendedProjectsIndex from './recommended_projects_idx';
+import FeaturedProject from './featured_proj';
 
 
 class Projects extends React.Component{
@@ -12,13 +13,6 @@ class Projects extends React.Component{
     }
 
     render(){
-
-        let featuredProject = 1;
-        this.props.projects.forEach( project => {
-            if (project.id === featuredProject){
-                featuredProject = project;
-            }
-        });        
 
         return(
             <div>
@@ -36,11 +30,11 @@ class Projects extends React.Component{
                 </div>
                 <div className="projects">
                     <div className="featured">
-                        <h4>Featured Project</h4>
-                        <div>{featuredProject.title}</div>
+                        <h4>FEATURED PROJECT</h4>
+                        <FeaturedProject projects={this.props.projects}/>
                     </div>
                     <ul className="recommended">
-                        <h4>Recommended for you</h4>
+                        <h4>RECOMMENDED FOR YOU</h4>
                         <RecommendedProjectsIndex projects={this.props.projects}/>
                     </ul>
                 </div>
