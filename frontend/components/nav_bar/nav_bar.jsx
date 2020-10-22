@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { logoutUser } from '../../actions/session';
 
 class NavBar extends React.Component { 
     
@@ -18,6 +19,8 @@ class NavBar extends React.Component {
             <div className="user-nav">
                 <div className="prof-img-cont">
                     <img className="profile-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Color_icon_green.svg/1200px-Color_icon_green.svg.png"/>
+                    <h2>My projects</h2>
+                    <button className="logout-btn" onClick={() => this.props.logoutUser()}>Logout</button>
                 </div>
             </div>
         ) : (
@@ -34,13 +37,10 @@ class NavBar extends React.Component {
             </div>
 
             <div className="global-logo">
-                <Link to="/"><img className="logo" src="https://ksr-static.imgix.net/tq0sfld-kickstarter-logo-green.png?ixlib=rb-2.1.0&s=0cce952d7b55823ff451a58887a0c578"/></Link>
+                <Link to="/"><h1 className="proj-name">PunchStopper</h1></Link>
             </div>
 
             <div className="right-menu">
-                <div>
-                    <a href="#">Search</a>
-                </div>
                 {topRightNav}
             </div>
         </div>);
@@ -52,7 +52,7 @@ class NavBar extends React.Component {
                     <div className="left-menu">
                     </div>
                     <div className="global-logo">
-                        <Link to="/"><img className="logo" src="https://ksr-static.imgix.net/tq0sfld-kickstarter-logo-green.png?ixlib=rb-2.1.0&s=0cce952d7b55823ff451a58887a0c578"/></Link>
+                        <Link to="/"><h1 className="proj-name">PunchStopper</h1></Link>
                     </div>
                     <div className="right-menu">
                     </div>

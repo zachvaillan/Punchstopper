@@ -62,7 +62,7 @@ class LoginForm extends React.Component{
                             </form>
                         </div>
                         <div className="login-form-switch">
-                                <p>New to Kickstarter? <Link className="form-switch-btn" to="/signup">Sign up</Link></p>
+                                <p>New to PunchStopper? <Link className="form-switch-btn" to="/signup">Sign up</Link></p>
                         </div>
                     </div>
                 </div>

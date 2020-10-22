@@ -19,6 +19,11 @@ class Api::ProjectsController < ApplicationController
         render :show
     end
 
+    def edit
+        @project = Project.find_by(id:  params[:id])
+        render :edit
+    end
+
     def project_params
         params.require(:project).permit(:title, :location, :launched, :category, :description, :end_date, :funding_goal, :funding_amount, :image_url)
     end
