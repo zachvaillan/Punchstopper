@@ -9,12 +9,15 @@ import React from 'react';
 import { AuthRoute } from '../utils/route_utils';
 
 export default () => (
+    
     <div>
-        <Route path="/" component={NavBarContainer} />
-        <Route exact path="/" component={Home} />
-        <Route path="/projects/new" component={ProjectFormContainer} />
-        <Route path="/projects/:projectId" component={ProjectShowContainer} />
-        <AuthRoute path="/login" component={LoginFormContainer} />
-        <AuthRoute path="/signup" component={SignupFormContainer} />
+        <NavBarContainer />
+        <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/projects/new" component={ProjectFormContainer} />
+            <Route path="/projects/:projectId" component={ProjectShowContainer} />
+            <AuthRoute path="/login" component={LoginFormContainer} />
+            <AuthRoute path="/signup" component={SignupFormContainer} />
+        </Switch>
     </div>
 );

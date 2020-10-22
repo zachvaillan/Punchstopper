@@ -8,44 +8,101 @@ class ProjectForm extends React.Component{
             description: "",
             end_date: "",
             funding_goal: "",
-            image_url: ""
+            image_url: "",
+            page: 1
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleNext = this.handleNext.bind(this);
+        this.handlePrev = this.handlePrev.bind(this);
     };
 
-    onSubmit(field){
+    handleUpdate(field){
         return e => {
             this.setState({ [field]: e.target.value });
         };
     }
 
+    handleNext(e){
+        e.preventDefault();
+        this.setState( (prevState) => ({page: prevState.page + 1}) )
+    }
+
+    handlePrev(e){
+        e.preventDefault();
+        this.setState( (prevState) => ({page: prevState.page - 1}) )
+    }
+
     handleSubmit(e){
         e.preventDefault();
-        this.props.createProject(this.state)
+        let project = Object.assign({}, this.state);
+        delete project.page;
+        this.props.createProject(project)
             .then(() => this.props.history.push('/'));
     }
 
     render(){
-        return(
-            <div className="project-form-container">
-                <form onSubmit={this.handleSubmit}>
-                    <label>Title</label>
-                    <input type="text" value={this.state.title} onChange={this.onSubmit("title")} />
-                    
-                    <label>Description</label>
-                    <textarea value={this.state.description} onChange={this.onSubmit("description")} />
-                    
-                    <label>End Date</label>
-                    <input type="date" value={this.state.end_date} onChange={this.onSubmit("end_date")} />
-                    
-                    <label>Funding Goal</label>
-                    <input type="number" value={this.state.funding_goal} onChange={this.onSubmit("funding_goal")} />
-                    
-                    <label>Image</label>
-                    <input type="text" value={this.state.image_url} onChange={this.onSubmit("image_url")} />
 
-                    <button type="submit">Create Project</button>
-                </form>
+        const categoryForm = (
+            <div className="proj-cre-form">
+                <h2 className="proj-form-heading">First, let’s get you set up.</h2>
+                <p className="proj-form-subheading">Pick a project category to connect with a specific community. You can always update this later.</p>
+                <select className="proj-form-select" placeholder="Select your category">
+                    <option>Art</option>
+                    <option>Comics</option>
+                    <option>Crafts</option>
+                    <option>Art</option>
+                    <option>Art</option>
+                </select>
+                <div className="proj-form-btn-cont">
+                    <button className="proj-form-btn" onClick={this.handleNext}>Next: Project idea</button>
+                </div>
+            </div>
+            
+        );
+
+        const descForm = (
+            <div className="proj-cre-form">
+                <h2 className="proj-form-heading">Describe what you'll be creating.</h2>
+                <p className="proj-form-subheading">And don't worry, you can edit this later too.</p>
+                <textarea className="desc-form-input" placeholder="A short claymation about boba"/>
+                <div className="proj-form-btn-cont-desc">
+                    <button className="proj-form-go-back" onClick={this.handlePrev}>Category</button>
+                    <button className="proj-form-btn" onClick={this.handleNext}>Next: Location</button>
+                </div>
+            </div>
+        );
+
+        const countryForm = (
+            <div className="proj-cre-form">
+                <p>{console.log(this.state)}</p>
+                <h2 className="proj-form-heading">Finally, let’s confirm your eligibility.</h2>
+                <p className="proj-form-subheading">And don't worry, you can edit this later too.</p>
+                <select className="proj-form-select">
+                    <option>United States</option>
+                </select>
+                <div className="proj-form-btn-cont-desc">
+                    <button className="proj-form-go-back" onClick={this.handlePrev}>Category</button>
+                    <button className="proj-form-btn" onClick={this.handleNext}>Continue</button>
+                </div>
+            </div>
+        );
+
+        let formDisplay = categoryForm;
+
+        if (this.state.page === 2){
+            formDisplay = descForm;
+        } else if (this.state.page === 3){
+            formDisplay = countryForm; 
+        }
+
+        return(
+            <div>
+                <p className="proj-form-pgnum">{this.state.page} of 3</p>
+                <div className="project-form-container">
+                    <form onSubmit={this.handleSubmit}>
+                        {formDisplay}
+                    </form>
+                </div>
             </div>
         )
     }

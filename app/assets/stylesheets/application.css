@@ -81,6 +81,18 @@ body{
     width: 200px;
 }
 
+.project-nav{
+    margin-left: 40px; 
+    margin-right: 40px;
+    border-bottom: 1px solid #E8E8E8;
+}
+
+.global-nav-proj-form{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    width: 100%;
+}
+
 .global-nav{
     display: grid;
     grid-template-columns: 33% 33% 33%;
@@ -126,6 +138,8 @@ body{
     display: inline;
 }
 
+
+
  /* Signup Styling BELOW
  
     Signup Styling BELOW
@@ -135,7 +149,7 @@ body{
 
 .signup-form{
     display: flex;
-    width: 300px;
+    width: 100%;
     justify-content: center;
 }
 
@@ -147,6 +161,11 @@ body{
     border: 1px solid #DCDEDD;
     padding: 12px;
     border-radius: 0;
+}
+
+.signup-form input:focus{
+    outline: none;
+    border-color: #028858;
 }
 
 .signup-form input[type=text], .signup-form input[type=password]{
@@ -185,7 +204,7 @@ body{
 .form-header{
     display: flex;
     justify-content: left;
-    width: 300px;
+    width: 100%;
 }
 
 .signup-form > ul > li > div {
@@ -247,7 +266,7 @@ body{
 .signup-form > ul {
     text-align: center;
     position: relative;
-    width: 300px;
+    width: 100%;
 }
 
 .signup-form > ul > li {
@@ -310,12 +329,6 @@ PROJECT FORM
 
 */
 
-.project-form-container{
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-    width: 170px;
-}
 
 .project-form-container > form{
     text-align: center;
@@ -598,3 +611,127 @@ PROJECT SHOW
 /* .proj-body-nav-actions{
 
 } */
+
+
+/* 
+FORM
+*/
+
+.proj-form{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 30px;
+    width: 550px;
+    border-bottom: 1px solid #E8E8E8;
+}
+
+.proj-form-pgnum{
+    padding-left: 40px;
+    padding-top: 10px;
+}
+
+.proj-form-heading{
+    font-size: 30px;
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+.proj-form-subheading{
+    width: 100%;
+    padding-bottom: 40px;
+    color: rgba(0,0,0,0.6);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.desc-form-input{
+    width: 100%;
+    height: 80px;
+    padding: 15px;
+    border: 1px solid #E8E8E8;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+}
+
+.desc-form-input:hover{
+    border-color: #009E74;
+}
+
+.desc-form-input:focus{
+    outline: none;
+    border-color: black;
+}
+
+.project-form-container{
+    display: flex;
+    justify-content: center;
+    padding-top: 85px;
+    width: 520px;
+    margin: auto;
+}
+
+.proj-form-select{
+    width: 100%;
+    font-size: 18px;
+    padding: 13px;
+    box-shadow: 0 2px 6px 0 rgba(0,0,0,0.17);
+    border: none;
+    margin-bottom: 80px;
+    color: #282828;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    border-radius: 2px;
+}
+
+.proj-form-select > option:focus-visible{
+    background-color: black;
+    outline: none;
+}
+
+.proj-form-select:hover{
+    transform: translateY(-1px);
+    border-color: #282828;
+    transition-duration: 600ms;
+}
+
+.proj-form-select:focus{
+    border-color: #282828;
+    transition-duration: 600ms;
+}
+
+
+.proj-form-btn-cont{
+    width: 100%;
+    text-align: right;
+    padding-top: 20px;
+    border-top: 1px solid #E8E8E8;
+}
+
+.proj-form-btn{
+    background-color: #464646;
+    color: white;
+    padding: 15px;
+    font-size: 15px;
+}
+
+.proj-form-btn-cont-desc{
+    padding-top: 20px;
+    display: flex;
+    border-top: 1px solid #E8E8E8;
+    justify-content: space-between;
+}
+
+.proj-form-go-back{
+    background-color: transparent;
+    border: none;
+}
+
+.proj-form-go-back:focus{
+    outline: none;
+}
+
+.project-form-container > form{
+    width: 100%;
+}
