@@ -16,12 +16,16 @@ ActiveRecord::Schema.define(version: 2020_10_14_180326) do
   enable_extension "plpgsql"
 
   create_table "projects", force: :cascade do |t|
-    t.string "title", null: false
+    t.string "title"
+    t.string "category", null: false
+    t.boolean "launched", default: false, null: false
+    t.text "story"
     t.text "description", null: false
-    t.date "end_date", null: false
-    t.integer "funding_goal", null: false
-    t.integer "funding_amount", default: 0, null: false
-    t.string "image_url", null: false
+    t.string "location", null: false
+    t.date "end_date"
+    t.integer "funding_goal"
+    t.integer "funding_amount", default: 0
+    t.string "image_url"
     t.integer "owner_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -1,13 +1,17 @@
 class CreateProjects < ActiveRecord::Migration[5.2]
   def change
     create_table :projects do |t|
-      t.string :title, null: false 
-      t.text :description, null: false 
-      t.date :end_date, null: false 
-      t.integer :funding_goal, null: false
-      t.integer :funding_amount, null: false, :default => 0
-      t.string :image_url, null: false
-      t.integer :owner_id, null: false 
+      t.string :title
+      t.string :category, null: false
+      t.boolean :launched, null: false, :default => false
+      t.text :story
+      t.text :description, null: false
+      t.string :location, null: false
+      t.date :end_date
+      t.integer :funding_goal
+      t.integer :funding_amount, :default => 0
+      t.string :image_url
+      t.integer :owner_id, null: false
       t.timestamps
     end
     add_index :projects, :owner_id

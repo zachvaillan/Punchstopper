@@ -21,15 +21,30 @@ class RecommendedProjectsIndex extends React.Component {
         let showcase = (
             <div>
                 {projectsArray.slice(0, 3).map( project => { 
-                    return (<RecommendedProjectsIndexItem project={project} key={project.id} />) 
+                    if (project.launched){
+                        return (<RecommendedProjectsIndexItem project={project} key={project.id} />) 
+                    }
                 })}
             </div>)
 
         if (this.state.page === 2){
             showcase = (
             <div>
-                {projectsArray.slice(3, 7).map( project => { 
-                    return (<RecommendedProjectsIndexItem project={project} key={project.id} />) 
+                {projectsArray.slice(3, 6).map( project => { 
+                    if(project.launched){
+                        return (<RecommendedProjectsIndexItem project={project} key={project.id} />) 
+                    }
+                })}
+            </div>)
+        }
+
+        if (this.state.page === 3){
+            showcase = (
+            <div>
+                {projectsArray.slice(6, 9).map( project => { 
+                    if(project.launched){
+                        return (<RecommendedProjectsIndexItem project={project} key={project.id} />) 
+                    }
                 })}
             </div>)
         }

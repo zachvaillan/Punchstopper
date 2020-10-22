@@ -15,9 +15,10 @@ class NavBar extends React.Component {
         (<Link to="/login">Login</Link>);
 
         const topRightNav = this.props.currentUser ? (
-            <div className="logged-in-container">
-                <a href="#">Hello, {this.props.currentUser.name} </a>
-                <button onClick={this.props.logoutUser}>Logout</button>
+            <div className="user-nav">
+                <div className="prof-img-cont">
+                    <img className="profile-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Color_icon_green.svg/1200px-Color_icon_green.svg.png"/>
+                </div>
             </div>
         ) : (
             <div className="login-nav">
@@ -37,7 +38,9 @@ class NavBar extends React.Component {
             </div>
 
             <div className="right-menu">
-                <a href="#">Search</a>
+                <div>
+                    <a href="#">Search</a>
+                </div>
                 {topRightNav}
             </div>
         </div>);
