@@ -36,7 +36,7 @@ class ProjectForm extends React.Component{
         let project = Object.assign({}, this.state);
         delete project.page;
         this.props.createProject(project)
-            .then( action => this.props.history.push(`/projects/${action.project.id}/edit`));
+            .then( () => this.props.history.push(`/${this.props.currentUser.id}/projects`));
     }
 
     render(){
@@ -76,7 +76,6 @@ class ProjectForm extends React.Component{
 
         const countryForm = (
             <div className="proj-cre-form">
-                <p>{console.log(this.state)}</p>
                 <h2 className="proj-form-heading">Finally, let’s confirm your eligibility.</h2>
                 <p className="proj-form-subheading">And don't worry, you can edit this later too.</p>
                 <select onChange={this.handleUpdate("location")} className="proj-form-select">

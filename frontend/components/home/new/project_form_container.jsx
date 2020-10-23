@@ -5,8 +5,12 @@ import ProjectForm from './project_form';
 import { createProject } from '../../../actions/projects';
 
 
+const mapStateToProps = state => ({
+    currentUser: state.session.currentUser
+});
+
 const mapDispatchToProps = dispatch => ({
     createProject: project => dispatch(createProject(project))
 });
 
-export default connect(null, mapDispatchToProps)(ProjectForm);
+export default connect(mapStateToProps, mapDispatchToProps)(ProjectForm);

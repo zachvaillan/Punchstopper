@@ -19,7 +19,7 @@ class NavBar extends React.Component {
             <div className="user-nav">
                 <div className="prof-img-cont">
                     <img className="profile-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Color_icon_green.svg/1200px-Color_icon_green.svg.png"/>
-                    <h2>My projects</h2>
+                    <Link to={`/${this.props.currentUser.id}/projects`}>My projects</Link>
                     <button className="logout-btn" onClick={() => this.props.logoutUser()}>Logout</button>
                 </div>
             </div>
