@@ -1,0 +1,56 @@
+
+.logo{
+    width: 200px;
+}
+
+.project-nav{
+    margin-left: 40px; 
+    margin-right: 40px;
+    border-bottom: 1px solid #E8E8E8;
+}
+
+.global-nav-proj-form{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    width: 100%;
+}
+
+.global-nav{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    width: 100%;
+    border-bottom: 1px solid #E8E8E8;
+}
+
+.global-nav > div > a {
+    margin: 20px;
+}
+
+.left-menu {
+    text-align: left;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.right-menu {
+    text-align: right;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    padding-right: 20px;
+}
+
+.global-logo {
+    padding-bottom: 20px;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.profile-pic{
+    width: 50px;
+    border-radius: 10px;
+}
+
+.prof-img-cont{
+    padding-left: 20px;
+}

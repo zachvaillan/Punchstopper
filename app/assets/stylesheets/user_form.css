@@ -1,0 +1,178 @@
+
+.signup-form{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.signup-form li{
+    margin-bottom: 20px;
+}
+
+.signup-form input{
+    border: 1px solid #DCDEDD;
+    padding: 12px;
+    border-radius: 0;
+}
+
+.signup-form input:focus{
+    outline: none;
+    border-color: #028858;
+}
+
+.signup-form input[type=text], .signup-form input[type=password]{
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.bg-form {
+    background-color: #F0F0F0;
+}
+
+.user-account-form-container {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.user-account-form {
+    margin: auto;
+    background-color: white;
+    padding: 30px;
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+}
+
+.user-account-form {
+    text-align: left;
+}
+
+.signup-form-header {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+.form-header{
+    display: flex;
+    justify-content: left;
+    width: 100%;
+}
+
+.signup-form > ul > li > div {
+    display: flex;
+    text-align: left;
+}
+
+.signup-form > ul > li > div > p {
+    margin-top: -4px;
+    line-height: 1.5;
+    margin-left: 3px;
+}
+
+.signup-form-switch{
+    background-color:rgba(241,238,234,0.2);
+    border-bottom: 1px solid #F1EEEA;
+    padding: 20px;
+    text-align: center;
+}
+
+.login-form-switch{
+    background-color: white;
+    border-top: 1px solid #F1EEEA;
+    text-align: center;
+    padding: 30px
+}
+
+.signup-form-switch > p, .login-form-switch > p{
+    font-size: 14px;
+}
+
+.form-switch-btn{
+    font-weight: 700;
+    color: #2752ff;
+}
+
+.another-container{
+    max-width: 400px;
+    margin: auto;
+    border: 1px solid #F1EEEA;
+    border-radius: 2px;
+    background-color: white;
+}
+
+.submit-form{
+    width: 100%;
+    color: white;
+    background-color: #028858;
+    padding: 15px;
+}
+
+.demo-btn{
+    width: 50%;
+    color: white;
+    background-color: black;
+    padding: 15px;
+}
+
+.signup-form > ul {
+    text-align: center;
+    position: relative;
+    width: 100%;
+}
+
+.signup-form > ul > li {
+    margin: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.signup-form > ul > li.errors{
+    color: red;
+    margin: 0px;
+}
+
+.signup-form > ul > li.remove-margin{
+    margin: 0px;
+    padding-bottom: 10px;
+}
+
+.signup-form > ul > li.add-padding-after{
+    padding-bottom: 20px;
+}
+
+.errors-signup{
+    color: red;
+    bottom: 200px;
+}
+
+.name-error{
+    position: absolute;
+    bottom: 320px;
+    left: 90px;
+}
+
+.email-error{
+    position: absolute;
+    bottom: 256px;
+    left: 90px;
+}
+
+.password-error{
+    position: absolute;
+    bottom: 175px;
+}
+
+.margin-for-error{
+    margin-top: 50px;
+}
+
+.error-space{
+    height: 16px;
+    margin: auto;
+}
+
+.error-space-password{
+    height: 36px;
+    margin: auto;
+}
