@@ -46,6 +46,7 @@ class ProjectForm extends React.Component{
                 <h2 className="proj-form-heading">First, let’s get you set up.</h2>
                 <p className="proj-form-subheading">Pick a project category to connect with a specific community. You can always update this later.</p>
                 <select onChange={this.handleUpdate("category")} className="proj-form-select" placeholder="Select your category">
+                    <option value="" disabled selected>Select Category</option>
                     <option value="art">Art</option>
                     <option value="comics">Comics & Illustration</option>
                     <option value="tech">Design & Tech</option>
@@ -79,6 +80,7 @@ class ProjectForm extends React.Component{
                 <h2 className="proj-form-heading">Finally, let’s confirm your eligibility.</h2>
                 <p className="proj-form-subheading">And don't worry, you can edit this later too.</p>
                 <select onChange={this.handleUpdate("location")} className="proj-form-select">
+                    <option value="" disabled selected>Select Location</option>
                     <option value="australia">Australia</option>
                     <option value="belgium">Belgium</option>
                     <option value="canada">Canada</option>

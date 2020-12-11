@@ -25,7 +25,7 @@ class UserProj extends React.Component{
                         <div>{projectTitle}</div>
                         <div>{project.description}</div>
                     </div>
-                    <Link to="#" className="edit-button">EDIT</Link>
+                    <Link to={`/projects/${project.id}/edit`} className="edit-button">EDIT</Link>
                 </li>
             })
         )

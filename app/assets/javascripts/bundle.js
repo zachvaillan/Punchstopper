@@ -661,6 +661,10 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
         className: "proj-form-select",
         placeholder: "Select your category"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "",
+        disabled: true,
+        selected: true
+      }, "Select Category"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "art"
       }, "Art"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "comics"
@@ -711,6 +715,10 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
         onChange: this.handleUpdate("location"),
         className: "proj-form-select"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "",
+        disabled: true,
+        selected: true
+      }, "Select Location"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "australia"
       }, "Australia"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "belgium"
@@ -2066,7 +2074,7 @@ var UserProj = /*#__PURE__*/function (_React$Component) {
         }, projectImage, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "user-proj-info-cont"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, projectTitle), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, project.description)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-          to: "#",
+          to: "/projects/".concat(project.id, "/edit"),
           className: "edit-button"
         }, "EDIT"));
       });
