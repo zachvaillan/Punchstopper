@@ -20,20 +20,30 @@ class NavBar extends React.Component {
                 <div className="prof-img-cont">
                     <img className="profile-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Color_icon_green.svg/1200px-Color_icon_green.svg.png"/>
                 </div>
-                <Link to={`/${this.props.currentUser.id}/projects`}>My projects</Link>
-                <button className="logout-btn" onClick={() => this.props.logoutUser()}>Logout</button>
+                <div className="nav-items-wrapper">
+                    <Link to={`/${this.props.currentUser.id}/projects`}>My projects</Link>
+                    <button className="logout-btn" onClick={() => this.props.logoutUser()}>Logout</button>
+                </div>
             </div>
         ) : (
-            <div className="login-nav">
+            <div className="right-menu">
                 {loginCorner}
             </div>
+        );
+
+        const newProjectLink = this.props.currentUser ? (
+            <Link to="/projects/new">Start a project</Link>
+        ) : (
+            <Link to="/signup">Start a project</Link>
         );
 
         let display = 
         (<div className="global-nav">
             <div className="left-menu">
-                <a href="#">Explore</a>
-                <Link to="/projects/new">Start a project</Link>
+                <div className="nav-items-wrapper">
+                    <a href="#">Explore</a>
+                    {newProjectLink}
+                </div>
             </div>
 
             <div className="global-logo">

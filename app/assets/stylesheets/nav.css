@@ -22,7 +22,7 @@
     border-bottom: 1px solid #E8E8E8;
 }
 
-.global-nav > div > a {
+.nav-items-wrapper > a {
     margin: 20px;
 }
 
@@ -46,7 +46,12 @@
 .global-logo {
     padding-bottom: 20px;
     padding-top: 20px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.global-logo > a {
+    margin: auto;
 }
 
 .profile-img{
@@ -57,4 +62,15 @@
 
 .prof-img-cont{
     display: flex;
+    margin: 0 20px;
+}
+
+.logout-btn{
+    font-size: 16px;
+    font-family: sans-serif;
+    margin: 0 20px;
+}
+
+.nav-items-wrapper{
+    margin: auto 0 auto 0;
 }
