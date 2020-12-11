@@ -14,7 +14,9 @@ class UserProj extends React.Component{
                 let projectImage = project.image_url ? (
                     <div className="project-image-container"><img src={project.image_url} className="project-image"></img></div>
                 ) : (
-                    <div className="project-image-placeholder"></div>
+                    <div className="project-image-placeholder">
+                        <div className="proj-img-instruct">Edit to add image</div>
+                    </div>
                 );
 
                 return <li key={project.id} className="user-project">

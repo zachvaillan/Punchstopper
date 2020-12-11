@@ -2057,7 +2057,9 @@ var UserProj = /*#__PURE__*/function (_React$Component) {
           className: "project-image"
         })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "project-image-placeholder"
-        });
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "proj-img-instruct"
+        }, "Edit to add image"));
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: project.id,
           className: "user-project"
