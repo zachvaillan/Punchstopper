@@ -28,6 +28,12 @@ class ProjectBuild extends React.Component{
     render(){
         if (!this.props.project) return null;
 
+        let locations = ["Australia", "Belgium", "Canada", "Denmark", "France",
+            "Germany", "Hong-Kong", "Japan", "United-States"];
+        
+        let categories = ["Art", "Comics", "Tech", "Film", "Craft", "Games", 
+            "Music", "Publishing"];
+
         return(
             <div className="edit-form">
                 <div>{console.log(this.props.project)}</div>
@@ -37,44 +43,43 @@ class ProjectBuild extends React.Component{
                         <h4 className="edit-subhead">Choose a picture that represents your project.</h4>
                         <input type="text" placeholder="website.com/picture.png"/>
                     </div>
+
                     <div className="spacer">
                         <h2 className="edit-heading">Project title</h2>
                         <h4 className="edit-subhead">Write a clear brief title that helps people quickly understand the gist of your project.</h4>
                         <input type="text" placeholder=""/>
                     </div>
+
                     <div className="spacer">
                         <h2 className="edit-heading">Project category</h2>
                         <h4 className="edit-subhead">Choose the category that most closely aligns with your project.</h4>
                         <select>
-                            <option value="Art">Art</option>
-                            <option value="Comics">Comics & Illustration</option>
-                            <option value="Tech">Design & Tech</option>
-                            <option value="Film">Film</option>
-                            <option value="Craft">Food & Craft</option>
-                            <option value="Games">Games</option>
-                            <option value="Music">Music</option>
-                            <option value="Publishing">Publishing</option>
+                            <option value={this.props.project.category}>
+                                {this.props.project.category}
+                            </option>
+                            {categories.map( cat => {
+                                if (cat != this.props.category){
+                                    return <option value={cat}>{cat}</option>
+                                }
+                            })}
                         </select>
                     </div>
+
                     <div className="spacer">
                         <h2 className="edit-heading">Project location</h2>
                         <h4 className="edit-subhead">Enter the location that best describes where your country is based.</h4>
                         <select onChange={this.handleUpdate("location")}>
-                            <option value={this.props.project.location}>{
-                                this.props.project.location.slice(0, 1).toUpperCase() + 
-                                this.props.project.location.slice(1)
-                            }</option>
-                            <option value="Australia">Australia</option>
-                            <option value="Belgium">Belgium</option>
-                            <option value="Canada">Canada</option>
-                            <option value="Denmark">Denmark</option>
-                            <option value="France">France</option>
-                            <option value="Germany">Germany</option>
-                            <option value="Hong-Kong">Hong Kong</option>
-                            <option value="Japan">Japan</option>
-                            <option value="United-States">United States</option>
+                            <option value={this.props.project.location}>
+                                {this.props.project.location}
+                            </option>
+                            {locations.map( loc => {
+                                if(loc != this.props.project.location){
+                                    return <option value={loc}>{loc.split("-").join(" ")}</option>
+                                }
+                            })}
                         </select>
                     </div>
+
                     <div className="spacer">
                         <h2 className="edit-heading">Funding goal</h2>
                         <h4 className="edit-subhead">Set an achievable goal that covers what you need to complete your project.</h4>
