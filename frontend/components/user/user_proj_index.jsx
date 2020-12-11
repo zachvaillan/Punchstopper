@@ -12,13 +12,18 @@ class UserProjects extends React.Component{
     }
 
     render(){
-        if (!this.props.user) return null;
+        if (!this.props.userPage) return null;
+
+        let projects = !this.props.userPage.projects ? (
+            null
+        ) : (
+            <UserProj userPage={this.props.userPage} />
+        )
 
         return(
             <ul>
-                {console.log(this.props.userPage.projects)}
-                {/* <UserProj currentUser={this.props.currentUser} projects={this.props.projects}/>  */}
-            </ul>
+                {projects}
+            </ul>   
         )
     }
 }

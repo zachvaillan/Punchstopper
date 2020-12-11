@@ -7,15 +7,13 @@ class UserProj extends React.Component{
     }
 
     render(){
+
         return(
-            <li>
-                {this.props.projects.map( project => {
-                    console.log(project)
-                    if (project.owner_id === this.props.currentUser.id){
-                        return <Link to={`/projects/${this.props.project.id}`}>{this.props.project.title}</Link>         
-                    } 
+            <ul>
+                {Object.values(this.props.userPage.projects).map( project => {
+                    return <li>{project.description}</li>
                 })}
-            </li>
+            </ul>
         )
     }
 }

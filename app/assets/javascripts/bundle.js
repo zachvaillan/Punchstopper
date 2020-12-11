@@ -2042,16 +2042,8 @@ var UserProj = /*#__PURE__*/function (_React$Component) {
   _createClass(UserProj, [{
     key: "render",
     value: function render() {
-      var _this = this;
-
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, this.props.projects.map(function (project) {
-        console.log(project);
-
-        if (project.owner_id === _this.props.currentUser.id) {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-            to: "/projects/".concat(_this.props.project.id)
-          }, _this.props.project.title);
-        }
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, Object.values(this.props.userPage.projects).map(function (project) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, project.description);
       }));
     }
   }]);
@@ -2159,8 +2151,11 @@ var UserProjects = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      if (!this.props.user) return null;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, console.log(this.props.userPage.projects));
+      if (!this.props.userPage) return null;
+      var projects = !this.props.userPage.projects ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_user_proj__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        userPage: this.props.userPage
+      });
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, projects);
     }
   }]);
 
