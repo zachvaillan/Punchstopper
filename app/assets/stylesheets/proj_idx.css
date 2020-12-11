@@ -137,6 +137,8 @@
 
 .rec-idx-nav > button{
     background-color: transparent;
+    padding: 0px 20px;
+
 }
 
 .rec-idx-nav > button:focus{

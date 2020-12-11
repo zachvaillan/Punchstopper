@@ -117,15 +117,6 @@
     width: 100%;
 }
 
-.profile-img{
-    width: 30px;
-    border-radius: 30px;
-}
-
-.prof-img-cont{
-    width: 100%;
-}
-
 .logout-btn{
     background-color: white;
 }
