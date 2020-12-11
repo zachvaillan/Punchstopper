@@ -1,5 +1,0 @@
-array of projects for recommended projects index 
-
-array = [project1, project2, ...]
-
-pages = {}

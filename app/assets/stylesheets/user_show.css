@@ -1,0 +1,40 @@
+.user-project-list{
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 50px;
+}
+
+.user-project{
+    width: 100%;
+    display: flex;
+}
+
+.user-project > div {
+    margin: 20px 0;
+}
+
+.project-image-placeholder {
+    width: 33.33%;
+    background-color: gray;
+}
+
+.user-proj-info-cont{
+    display: flex;
+    flex-wrap: wrap;
+    width: 33.33%;
+    padding: 20px;
+}
+
+.user-proj-info-cont > div {
+    width: 100%;
+    padding: 10px;
+}
+
+.edit-button{
+    margin: auto;
+    background-color: #028858;
+    padding: 15px;
+    color: white;
+}

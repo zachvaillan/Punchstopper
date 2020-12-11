@@ -19,8 +19,11 @@ class UserProj extends React.Component{
 
                 return <li key={project.id} className="user-project">
                     {projectImage}
-                    <div>{projectTitle}</div>
-                    <div>{project.description}</div>
+                    <div className="user-proj-info-cont">
+                        <div>{projectTitle}</div>
+                        <div>{project.description}</div>
+                    </div>
+                    <Link to="#" className="edit-button">EDIT</Link>
                 </li>
             })
         )

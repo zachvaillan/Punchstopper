@@ -21,7 +21,7 @@ class UserProjects extends React.Component{
         )
 
         return(
-            <ul>
+            <ul className="user-project-list">
                 {projects}
             </ul>   
         )
