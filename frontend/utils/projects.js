@@ -26,3 +26,9 @@ export const deleteProject = () => {
         method: `DELETE`
     });
 };
+
+export const getUserProjects = (userId) => {
+    return $.ajax({
+        url: `api/`
+    })
+}

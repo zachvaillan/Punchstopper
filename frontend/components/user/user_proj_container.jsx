@@ -1,15 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import UserProjects from './home/user_proj_index';
-import { fetchProjects } from '../../actions/projects';
+import UserProjects from './user_proj_index';
+import { fetchUser } from '../../actions/user';
 
-const mapStateToProps = state => ({
-    projects: state.projects,
-    currentUser: state.session.currentUser
+const mapStateToProps = (state, ownProps) => ({
+    user: ownProps.match.params.userId,
+    userPage: state.user
 });
 
 const mapDispatchToProps = dispatch => ({
-    fetchProjects: projects => dispatch(fetchProjects(projects))
+    fetchUser: userId => dispatch(fetchUser(userId))
 });
 
 

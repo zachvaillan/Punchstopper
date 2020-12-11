@@ -8,13 +8,16 @@ class UserProjects extends React.Component{
     }
 
     componentDidMount(){
-        this.props.fetchProjects();
+        this.props.fetchUser(this.props.user);
     }
 
     render(){
+        if (!this.props.user) return null;
+
         return(
             <ul>
-                <UserProj currentUser={this.props.currentUser} projects={this.props.projects}/> 
+                {console.log(this.props.userPage.projects)}
+                {/* <UserProj currentUser={this.props.currentUser} projects={this.props.projects}/>  */}
             </ul>
         )
     }
