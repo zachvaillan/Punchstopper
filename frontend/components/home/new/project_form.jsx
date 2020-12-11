@@ -47,14 +47,14 @@ class ProjectForm extends React.Component{
                 <p className="proj-form-subheading">Pick a project category to connect with a specific community. You can always update this later.</p>
                 <select onChange={this.handleUpdate("category")} className="proj-form-select" placeholder="Select your category">
                     <option value="" disabled selected>Select Category</option>
-                    <option value="art">Art</option>
-                    <option value="comics">Comics & Illustration</option>
-                    <option value="tech">Design & Tech</option>
-                    <option value="film">Film</option>
-                    <option value="craft">Food & Craft</option>
-                    <option value="games">Games</option>
-                    <option value="music">Music</option>
-                    <option value="publishing">Publishing</option>
+                    <option value="Art">Art</option>
+                    <option value="Comics">Comics & Illustration</option>
+                    <option value="Tech">Design & Tech</option>
+                    <option value="Film">Film</option>
+                    <option value="Craft">Food & Craft</option>
+                    <option value="Games">Games</option>
+                    <option value="Music">Music</option>
+                    <option value="Publishing">Publishing</option>
                 </select>
                 <div className="proj-form-btn-cont">
                     <button className="proj-form-btn" onClick={this.handleNext}>Next: Project idea</button>
@@ -81,15 +81,15 @@ class ProjectForm extends React.Component{
                 <p className="proj-form-subheading">And don't worry, you can edit this later too.</p>
                 <select onChange={this.handleUpdate("location")} className="proj-form-select">
                     <option value="" disabled selected>Select Location</option>
-                    <option value="australia">Australia</option>
-                    <option value="belgium">Belgium</option>
-                    <option value="canada">Canada</option>
-                    <option value="denmark">Denmark</option>
-                    <option value="france">France</option>
-                    <option value="germany">Germany</option>
-                    <option value="hongkong">Hong Kong</option>
-                    <option value="japan">Japan</option>
-                    <option value="unitedstates">United States</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Belgium">Belgium</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Denmark">Denmark</option>
+                    <option value="France">France</option>
+                    <option value="Germany">Germany</option>
+                    <option value="Hong-Kong">Hong Kong</option>
+                    <option value="Japan">Japan</option>
+                    <option value="United-States">United States</option>
                 </select>
                 <div className="proj-form-btn-cont-desc">
                     <button className="proj-form-go-back" onClick={this.handlePrev}>Category</button>

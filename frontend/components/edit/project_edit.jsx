@@ -30,6 +30,7 @@ class ProjectBuild extends React.Component{
 
         return(
             <div className="edit-form">
+                <div>{console.log(this.props.project)}</div>
                 <form onSubmit={this.handleSubmit}>
                     <div className="spacer">
                         <h2 className="edit-heading">Image URL</h2>
@@ -45,29 +46,33 @@ class ProjectBuild extends React.Component{
                         <h2 className="edit-heading">Project category</h2>
                         <h4 className="edit-subhead">Choose the category that most closely aligns with your project.</h4>
                         <select>
-                            <option value="art">Art</option>
-                            <option value="comics">Comics & Illustration</option>
-                            <option value="tech">Design & Tech</option>
-                            <option value="film">Film</option>
-                            <option value="craft">Food & Craft</option>
-                            <option value="games">Games</option>
-                            <option value="music">Music</option>
-                            <option value="publishing">Publishing</option>
+                            <option value="Art">Art</option>
+                            <option value="Comics">Comics & Illustration</option>
+                            <option value="Tech">Design & Tech</option>
+                            <option value="Film">Film</option>
+                            <option value="Craft">Food & Craft</option>
+                            <option value="Games">Games</option>
+                            <option value="Music">Music</option>
+                            <option value="Publishing">Publishing</option>
                         </select>
                     </div>
                     <div className="spacer">
                         <h2 className="edit-heading">Project location</h2>
                         <h4 className="edit-subhead">Enter the location that best describes where your country is based.</h4>
                         <select onChange={this.handleUpdate("location")}>
-                            <option value="australia">Australia</option>
-                            <option value="belgium">Belgium</option>
-                            <option value="canada">Canada</option>
-                            <option value="denmark">Denmark</option>
-                            <option value="france">France</option>
-                            <option value="germany">Germany</option>
-                            <option value="hongkong">Hong Kong</option>
-                            <option value="japan">Japan</option>
-                            <option value="unitedstates">United States</option>
+                            <option value={this.props.project.location}>{
+                                this.props.project.location.slice(0, 1).toUpperCase() + 
+                                this.props.project.location.slice(1)
+                            }</option>
+                            <option value="Australia">Australia</option>
+                            <option value="Belgium">Belgium</option>
+                            <option value="Canada">Canada</option>
+                            <option value="Denmark">Denmark</option>
+                            <option value="France">France</option>
+                            <option value="Germany">Germany</option>
+                            <option value="Hong-Kong">Hong Kong</option>
+                            <option value="Japan">Japan</option>
+                            <option value="United-States">United States</option>
                         </select>
                     </div>
                     <div className="spacer">
