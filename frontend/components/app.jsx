@@ -16,12 +16,12 @@ export default () => (
         <NavBarContainer />
         <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/projects/new" component={ProjectFormContainer} />
-            <Route path="/projects/:projectId/edit" component={ProjectEditContainer} />
-            <Route path="/projects/:projectId" component={ProjectShowContainer} />
-            <Route path="/:userId" component={UserProjectsContainer} />
-            <AuthRoute path="/login" component={LoginFormContainer} />
-            <AuthRoute path="/signup" component={SignupFormContainer} />
+            <Route exact path="/projects/new" component={ProjectFormContainer} />
+            <Route exact path="/projects/:projectId/edit" component={ProjectEditContainer} />
+            <Route exact path="/projects/:projectId" component={ProjectShowContainer} />
+            <AuthRoute exact path="/login" component={LoginFormContainer} />
+            <AuthRoute exact path="/signup" component={SignupFormContainer} />
+            <Route exact path="/:userId" component={UserProjectsContainer} />
         </Switch>
     </div>
 );

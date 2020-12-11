@@ -9,11 +9,20 @@ class UserProj extends React.Component{
     render(){
 
         return(
-            <ul>
-                {Object.values(this.props.userPage.projects).map( project => {
-                    return <li>{project.description}</li>
-                })}
-            </ul>
+            Object.values(this.props.userPage.projects).map( project => {
+                let projectTitle = project.title ? project.title : "Edit to add title!";
+                let projectImage = project.image_url ? (
+                    <div className="project-image-container"><img src={project.image_url} className="project-image"></img></div>
+                ) : (
+                    <div className="project-image-placeholder"></div>
+                );
+
+                return <li key={project.id} className="user-project">
+                    {projectImage}
+                    <div>{projectTitle}</div>
+                    <div>{project.description}</div>
+                </li>
+            })
         )
     }
 }
