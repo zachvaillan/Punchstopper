@@ -36,7 +36,7 @@ class ProjectForm extends React.Component{
         let project = Object.assign({}, this.state);
         delete project.page;
         this.props.createProject(project)
-            .then( () => this.props.history.push(`/${this.props.currentUser.id}/projects`));
+            .then( () => this.props.history.push(`/${this.props.currentUser.id}`));
     }
 
     render(){

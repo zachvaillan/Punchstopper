@@ -630,7 +630,7 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
       var project = Object.assign({}, this.state);
       delete project.page;
       this.props.createProject(project).then(function () {
-        return _this3.props.history.push("/".concat(_this3.props.currentUser.id, "/projects"));
+        return _this3.props.history.push("/".concat(_this3.props.currentUser.id));
       });
     }
   }, {
