@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :users, only: [ :index, :create, :show ] 
     resources :projects, only: [ :create, :index, :show, :update ]
     resource :session
+    resources :projects, path: '/projects/:category', only: [ :index ]
   end
 
   root to: "static_pages#root"

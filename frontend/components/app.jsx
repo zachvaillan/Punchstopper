@@ -7,6 +7,7 @@ import Home from './home/splash/projects_index_container';
 import ProjectShowContainer from './home/show/show_container';
 import ProjectEditContainer from './edit/project_edit_form_container';
 import UserProjectsContainer from './user/user_proj_container';
+import CategoryContainer from './categories/category_container';
 import React from 'react';
 import { AuthRoute } from '../utils/route_utils';
 
@@ -22,6 +23,7 @@ export default () => (
             <AuthRoute exact path="/login" component={LoginFormContainer} />
             <AuthRoute exact path="/signup" component={SignupFormContainer} />
             <Route exact path="/:userId" component={UserProjectsContainer} />
+            <Route exact path="/projects/:category" component={CategoryContainer} />
         </Switch>
     </div>
 );
