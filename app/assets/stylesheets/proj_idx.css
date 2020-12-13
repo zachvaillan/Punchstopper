@@ -35,6 +35,8 @@
     padding: 0px 60px;
     box-sizing: border-box;
     width: 54%;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .featured-proj-img{
@@ -48,7 +50,6 @@
 }
 
 .recommended > h4{
-    margin: 20px 0px;
     font-family: "Maison Neue Book", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #656969;
     font-weight: 560;
@@ -166,4 +167,8 @@
 
 .featured-proj-desc{
     margin-bottom: 20px;
+}
+
+.featured-inner{
+    width: 560px;
 }

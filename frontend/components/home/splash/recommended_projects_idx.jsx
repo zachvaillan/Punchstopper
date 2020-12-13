@@ -44,7 +44,7 @@ class RecommendedProjectsIndex extends React.Component {
         }
 
         return(
-            <div>
+            <div className="featured-inner">
                 {showcase}
                 <div className="rec-idx-nav-cont">
                     <div className="rec-idx-nav">

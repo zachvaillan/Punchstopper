@@ -20,6 +20,7 @@
     grid-template-columns: 33.33% 33.33% 33.33%;
     width: 100%;
     border-bottom: 1px solid #E8E8E8;
+    padding: 15px 0px;
 }
 
 .nav-items-wrapper > a {
@@ -27,25 +28,19 @@
 }
 
 .left-menu {
+    padding-left: 10px;
     text-align: left;
-    padding-left: 20px;
-    padding-bottom: 20px;
-    padding-top: 20px;
     display: flex;
 }
 
 .right-menu {
+    padding-right: 15px;
     text-align: right;
-    padding-bottom: 20px;
-    padding-top: 20px;
-    padding-right: 20px;
     display: flex;
     justify-content: flex-end;
 }
 
 .global-logo {
-    padding-bottom: 20px;
-    padding-top: 20px;
     display: flex;
     justify-content: center;
 }
@@ -66,11 +61,17 @@
 }
 
 .logout-btn{
-    font-size: 16px;
+    font-size: 15px;
+    color: #656969;
     font-family: sans-serif;
     margin: 0 20px;
 }
 
 .nav-items-wrapper{
     margin: auto 0 auto 0;
+}
+
+.nav-items-wrapper > a{
+    font-size: 15px;
+    color: #656969;
 }

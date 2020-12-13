@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import ProjectBuild from './project_edit';
 
 const mapStateToProps = (state, ownProps) => ({
-    project: state.projects[ownProps.match.params.projectId]
+    project: state.projects[ownProps.match.params.projectId],
+    currentUser: state.session.currentUser
 })
 
 const mapDispatchToProps = dispatch => ({

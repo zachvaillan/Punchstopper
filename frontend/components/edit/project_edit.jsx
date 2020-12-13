@@ -23,7 +23,7 @@ class ProjectBuild extends React.Component{
         e.preventDefault();
         console.log(this.props.project);
         this.props.updateProject(this.props.project.id, this.state)
-            .then(() => this.props.history.push(`/`));
+            .then(() => this.props.history.push(`/${this.props.currentUser.id}`));
     }
 
     render(){
@@ -41,19 +41,19 @@ class ProjectBuild extends React.Component{
                     <div className="spacer">
                         <h2 className="edit-heading">Image URL</h2>
                         <h4 className="edit-subhead">Choose a picture that represents your project.</h4>
-                        <input type="text" placeholder="website.com/picture.png"/>
+                        <input type="text" placeholder={this.props.project.image_url || "website.com/picture.png"} onChange={this.handleUpdate("image_url")}/>
                     </div>
 
                     <div className="spacer">
                         <h2 className="edit-heading">Project title</h2>
                         <h4 className="edit-subhead">Write a clear brief title that helps people quickly understand the gist of your project.</h4>
-                        <input type="text" placeholder="" onChange={this.handleUpdate("title")}/>
+                        <input type="text" placeholder={this.props.project.title || "No title yet!"} onChange={this.handleUpdate("title")}/>
                     </div>
 
                     <div className="spacer">
                         <h2 className="edit-heading">Project category</h2>
                         <h4 className="edit-subhead">Choose the category that most closely aligns with your project.</h4>
-                        <select>
+                        <select onChange={this.handleUpdate("category")}>
                             <option value={this.props.project.category}>
                                 {this.props.project.category}
                             </option>
@@ -83,7 +83,7 @@ class ProjectBuild extends React.Component{
                     <div className="spacer">
                         <h2 className="edit-heading">Funding goal</h2>
                         <h4 className="edit-subhead">Set an achievable goal that covers what you need to complete your project.</h4>
-                        <input type="text" placeholder="10,000"/>
+                        <input type="text" placeholder={this.props.project.funding_goal || "10,000"} onChange={this.handleUpdate("funding_goal")}/>
                     </div>
                     <button className="update-btn" type="submit" onClick={this.handleSubmit}>Update Info</button>
                 </form>

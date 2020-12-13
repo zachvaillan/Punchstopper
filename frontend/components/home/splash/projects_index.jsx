@@ -30,8 +30,10 @@ class Projects extends React.Component{
                 </div>
                 <div className="projects">
                     <div className="featured">
-                        <h4>FEATURED PROJECT</h4>
-                        <FeaturedProject projects={this.props.projects}/>
+                        <div className="featured-inner">
+                            <h4>FEATURED PROJECT</h4>
+                            <FeaturedProject projects={this.props.projects}/>
+                        </div>
                     </div>
                     <ul className="recommended">
                         <h4>RECOMMENDED FOR YOU</h4>

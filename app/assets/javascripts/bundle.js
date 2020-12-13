@@ -419,7 +419,7 @@ var ProjectBuild = /*#__PURE__*/function (_React$Component) {
       e.preventDefault();
       console.log(this.props.project);
       this.props.updateProject(this.props.project.id, this.state).then(function () {
-        return _this4.props.history.push("/");
+        return _this4.props.history.push("/".concat(_this4.props.currentUser.id));
       });
     }
   }, {
@@ -442,7 +442,8 @@ var ProjectBuild = /*#__PURE__*/function (_React$Component) {
         className: "edit-subhead"
       }, "Choose a picture that represents your project."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
-        placeholder: "website.com/picture.png"
+        placeholder: this.props.project.image_url || "website.com/picture.png",
+        onChange: this.handleUpdate("image_url")
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "spacer"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
@@ -451,7 +452,7 @@ var ProjectBuild = /*#__PURE__*/function (_React$Component) {
         className: "edit-subhead"
       }, "Write a clear brief title that helps people quickly understand the gist of your project."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
-        placeholder: "",
+        placeholder: this.props.project.title || "No title yet!",
         onChange: this.handleUpdate("title")
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "spacer"
@@ -459,7 +460,9 @@ var ProjectBuild = /*#__PURE__*/function (_React$Component) {
         className: "edit-heading"
       }, "Project category"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
         className: "edit-subhead"
-      }, "Choose the category that most closely aligns with your project."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      }, "Choose the category that most closely aligns with your project."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        onChange: this.handleUpdate("category")
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: this.props.project.category
       }, this.props.project.category), categories.map(function (cat) {
         if (cat != _this5.props.category) {
@@ -491,7 +494,8 @@ var ProjectBuild = /*#__PURE__*/function (_React$Component) {
         className: "edit-subhead"
       }, "Set an achievable goal that covers what you need to complete your project."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
-        placeholder: "10,000"
+        placeholder: this.props.project.funding_goal || "10,000",
+        onChange: this.handleUpdate("funding_goal")
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "update-btn",
         type: "submit",
@@ -528,7 +532,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    project: state.projects[ownProps.match.params.projectId]
+    project: state.projects[ownProps.match.params.projectId],
+    currentUser: state.session.currentUser
   };
 };
 
@@ -1193,9 +1198,11 @@ var Projects = /*#__PURE__*/function (_React$Component) {
         className: "projects"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "featured"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "featured-inner"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "FEATURED PROJECT"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_featured_proj__WEBPACK_IMPORTED_MODULE_2__["default"], {
         projects: this.props.projects
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "recommended"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "RECOMMENDED FOR YOU"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_recommended_projects_idx__WEBPACK_IMPORTED_MODULE_1__["default"], {
         projects: this.props.projects
@@ -1355,7 +1362,9 @@ var RecommendedProjectsIndex = /*#__PURE__*/function (_React$Component) {
         }));
       }
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, showcase, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "featured-inner"
+      }, showcase, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "rec-idx-nav-cont"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "rec-idx-nav"
