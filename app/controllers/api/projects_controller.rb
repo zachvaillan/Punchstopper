@@ -11,7 +11,15 @@ class Api::ProjectsController < ApplicationController
     end
 
     def index 
-        @projects = Project.all
+        if (params[:category])
+            @projects = Project.where(category: params[:category])
+            puts "CATEGORY CALL"
+            puts @projects
+        else
+            @projects = Project.all 
+            puts "GENERAL INDEX CALL"
+            puts @projects
+        end
     end
 
     def show 

@@ -39,7 +39,7 @@ export const fetchProjects = projects => dispatch => (
         .then( (projects) => dispatch(receiveAllProjects(projects)))
 );
 
-export const fetchProjectByCategory = projects => dispatch => {
+export const fetchProjectsByCategory = projects => dispatch => {
     getProjectsByCategory(projects)
         .then( (projects) => dispatch(receiveAllProjects(projects)))
 }

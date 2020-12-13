@@ -23,7 +23,7 @@ export default () => (
             <AuthRoute exact path="/login" component={LoginFormContainer} />
             <AuthRoute exact path="/signup" component={SignupFormContainer} />
             <Route exact path="/:userId" component={UserProjectsContainer} />
-            <Route exact path="/projects/:category" component={CategoryContainer} />
+            <Route exact path="/projectsin/:category" component={CategoryContainer} />
         </Switch>
     </div>
 );
