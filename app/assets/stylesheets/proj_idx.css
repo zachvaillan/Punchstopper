@@ -43,6 +43,14 @@
     max-width: 560px;
 }
 
+.featured-inner > h4 {
+    font-family: "Maison Neue Book", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #656969;
+    font-weight: 560;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
 .recommended {
     padding: 0px 60px;
     box-sizing: border-box;
@@ -55,6 +63,7 @@
     font-weight: 560;
     font-size: 13px;
     width: 100%;
+    margin-bottom: 20px;
 }
 
 .subscribe-wrapper{
@@ -132,7 +141,7 @@
 }
 
 .rec-idx-nav-cont {
-    display: flex;
+    display: flex; 
     justify-content: right;
 }
 
