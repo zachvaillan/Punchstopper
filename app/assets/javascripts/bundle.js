@@ -90,7 +90,7 @@
 /*!**************************************!*\
   !*** ./frontend/actions/projects.js ***!
   \**************************************/
-/*! exports provided: RECEIVE_ALL_PROJECTS, RECEIVE_PROJECT, DELETE_PROJECT, createProject, updateProject, fetchProject, fetchProjects, destroyProject */
+/*! exports provided: RECEIVE_ALL_PROJECTS, RECEIVE_PROJECT, DELETE_PROJECT, createProject, updateProject, fetchProject, fetchProjects, fetchProjectByCategory, destroyProject */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -102,6 +102,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateProject", function() { return updateProject; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchProject", function() { return fetchProject; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchProjects", function() { return fetchProjects; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchProjectByCategory", function() { return fetchProjectByCategory; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "destroyProject", function() { return destroyProject; });
 /* harmony import */ var _utils_projects__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/projects */ "./frontend/utils/projects.js");
 
@@ -153,6 +154,13 @@ var fetchProject = function fetchProject(projectId) {
 var fetchProjects = function fetchProjects(projects) {
   return function (dispatch) {
     return Object(_utils_projects__WEBPACK_IMPORTED_MODULE_0__["getProjects"])(projects).then(function (projects) {
+      return dispatch(receiveAllProjects(projects));
+    });
+  };
+};
+var fetchProjectByCategory = function fetchProjectByCategory(projects) {
+  return function (dispatch) {
+    Object(_utils_projects__WEBPACK_IMPORTED_MODULE_0__["getProjectsByCategory"])(projects).then(function (projects) {
       return dispatch(receiveAllProjects(projects));
     });
   };
@@ -368,14 +376,15 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     currentUser: state.session.currentUser,
-    category: ownProps.match.params.category
+    category: ownProps.match.params.category,
+    projects: Object.values(state.projects)
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    fetchProjects: function fetchProjects() {
-      return dispatch(Object(_actions_projects__WEBPACK_IMPORTED_MODULE_3__["fetchProjects"])());
+    fetchProjectsByCategory: function fetchProjectsByCategory(category) {
+      return dispatch(Object(_actions_projects__WEBPACK_IMPORTED_MODULE_3__["fetchProjectsByCategory"])(category));
     }
   };
 };
@@ -2596,12 +2605,13 @@ var configureStore = function configureStore() {
 /*!************************************!*\
   !*** ./frontend/utils/projects.js ***!
   \************************************/
-/*! exports provided: getProjects, getProject, postProject, deleteProject, patchProject */
+/*! exports provided: getProjects, getProjectsByCategory, getProject, postProject, deleteProject, patchProject */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getProjects", function() { return getProjects; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getProjectsByCategory", function() { return getProjectsByCategory; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getProject", function() { return getProject; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "postProject", function() { return postProject; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteProject", function() { return deleteProject; });
@@ -2609,6 +2619,12 @@ __webpack_require__.r(__webpack_exports__);
 var getProjects = function getProjects() {
   return $.ajax({
     url: "api/projects",
+    method: "GET"
+  });
+};
+var getProjectsByCategory = function getProjectsByCategory(category) {
+  return $.ajax({
+    url: "api/projects/".concat(category),
     method: "GET"
   });
 };

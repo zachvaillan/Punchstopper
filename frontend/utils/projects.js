@@ -5,6 +5,13 @@ export const getProjects = () => {
     });
 };
 
+export const getProjectsByCategory = category => {
+    return $.ajax({
+        url: `api/projects/${category}`,
+        method: `GET`
+    });
+};
+
 export const getProject = projectId => {
     return $.ajax({
         url: `api/projects/${projectId}`,

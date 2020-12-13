@@ -1,4 +1,5 @@
-import {postProject, getProjects, getProject, deleteProject, patchProject} from '../utils/projects';
+import {postProject, getProjects, getProject, deleteProject, patchProject,
+    getProjectsByCategory} from '../utils/projects';
 
 export const RECEIVE_ALL_PROJECTS = "RECEIVE_ALL_PROJECTS";
 export const RECEIVE_PROJECT = "RECEIVE_PROJECT";
@@ -37,6 +38,11 @@ export const fetchProjects = projects => dispatch => (
     getProjects(projects)
         .then( (projects) => dispatch(receiveAllProjects(projects)))
 );
+
+export const fetchProjectByCategory = projects => dispatch => {
+    getProjectsByCategory(projects)
+        .then( (projects) => dispatch(receiveAllProjects(projects)))
+}
 
 export const destroyProject = () => dispatch => (
     deleteProject()
