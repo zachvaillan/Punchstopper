@@ -19,9 +19,14 @@ class Api::ProjectsController < ApplicationController
         render :show
     end
 
-    def edit
-        @project = Project.find_by(id:  params[:id])
-        render :edit
+    def update
+        @project = Project.find_by(id: params[:id])
+        @project.update(project_params)
+        if @project.save
+            render :show
+        else 
+            render json: @project.errors.full_messages 
+        end
     end
 
     def project_params

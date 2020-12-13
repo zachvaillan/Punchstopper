@@ -27,8 +27,10 @@ export const deleteProject = () => {
     });
 };
 
-export const getUserProjects = (userId) => {
+export const patchProject = (projectId, project) => {
     return $.ajax({
-        url: `api/`
-    })
-}
+        url: `api/projects/${projectId}`,
+        method: `PATCH`,
+        data: { project }
+    });
+};

@@ -90,7 +90,7 @@
 /*!**************************************!*\
   !*** ./frontend/actions/projects.js ***!
   \**************************************/
-/*! exports provided: RECEIVE_ALL_PROJECTS, RECEIVE_PROJECT, DELETE_PROJECT, createProject, fetchProject, fetchProjects, destroyProject */
+/*! exports provided: RECEIVE_ALL_PROJECTS, RECEIVE_PROJECT, DELETE_PROJECT, createProject, updateProject, fetchProject, fetchProjects, destroyProject */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -99,6 +99,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_PROJECT", function() { return RECEIVE_PROJECT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_PROJECT", function() { return DELETE_PROJECT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createProject", function() { return createProject; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateProject", function() { return updateProject; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchProject", function() { return fetchProject; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchProjects", function() { return fetchProjects; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "destroyProject", function() { return destroyProject; });
@@ -132,6 +133,13 @@ var createProject = function createProject(project) {
   return function (dispatch) {
     return Object(_utils_projects__WEBPACK_IMPORTED_MODULE_0__["postProject"])(project).then(function (project) {
       return dispatch(receiveProject(project));
+    });
+  };
+};
+var updateProject = function updateProject(projectId, project) {
+  return function (dispatch) {
+    return Object(_utils_projects__WEBPACK_IMPORTED_MODULE_0__["patchProject"])(projectId, project).then(function (project) {
+      return console.log(project);
     });
   };
 };
@@ -380,7 +388,7 @@ var ProjectBuild = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, ProjectBuild);
 
     _this = _super.call(this, props);
-    _this.state = _this.props.project;
+    _this.state = {};
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -388,40 +396,43 @@ var ProjectBuild = /*#__PURE__*/function (_React$Component) {
   _createClass(ProjectBuild, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchProject(this.props.match.params.projectId);
+      var _this2 = this;
+
+      this.props.fetchProject(this.props.match.params.projectId).then(function () {
+        return _this2.setState(_this2.props.project);
+      });
     }
   }, {
     key: "handleUpdate",
     value: function handleUpdate(field) {
-      var _this2 = this;
+      var _this3 = this;
 
       return function (e) {
-        _this2.setState(_defineProperty({}, field, e.target.value));
+        _this3.setState(_defineProperty({}, field, e.target.value));
       };
     }
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
-      var _this3 = this;
+      var _this4 = this;
 
       e.preventDefault();
-      var project = Object.assign({}, this.state);
-      delete project.page;
-      this.props.createProject(project).then(function () {
-        return _this3.props.history.push("/");
+      console.log(this.props.project);
+      this.props.updateProject(this.props.project.id, this.state).then(function () {
+        return _this4.props.history.push("/");
       });
     }
   }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
+      var _this5 = this;
 
       if (!this.props.project) return null;
       var locations = ["Australia", "Belgium", "Canada", "Denmark", "France", "Germany", "Hong-Kong", "Japan", "United-States"];
       var categories = ["Art", "Comics", "Tech", "Film", "Craft", "Games", "Music", "Publishing"];
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "edit-form"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, console.log(this.props.project)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "spacer"
@@ -440,7 +451,8 @@ var ProjectBuild = /*#__PURE__*/function (_React$Component) {
         className: "edit-subhead"
       }, "Write a clear brief title that helps people quickly understand the gist of your project."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
-        placeholder: ""
+        placeholder: "",
+        onChange: this.handleUpdate("title")
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "spacer"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
@@ -450,7 +462,7 @@ var ProjectBuild = /*#__PURE__*/function (_React$Component) {
       }, "Choose the category that most closely aligns with your project."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: this.props.project.category
       }, this.props.project.category), categories.map(function (cat) {
-        if (cat != _this4.props.category) {
+        if (cat != _this5.props.category) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
             value: cat
           }, cat);
@@ -466,7 +478,7 @@ var ProjectBuild = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: this.props.project.location
       }, this.props.project.location), locations.map(function (loc) {
-        if (loc != _this4.props.project.location) {
+        if (loc != _this5.props.project.location) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
             value: loc
           }, loc.split("-").join(" "));
@@ -482,7 +494,8 @@ var ProjectBuild = /*#__PURE__*/function (_React$Component) {
         placeholder: "10,000"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "update-btn",
-        type: "submit"
+        type: "submit",
+        onClick: this.handleSubmit
       }, "Update Info")));
     }
   }]);
@@ -523,6 +536,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchProject: function fetchProject(project) {
       return dispatch(Object(_actions_projects__WEBPACK_IMPORTED_MODULE_0__["fetchProject"])(project));
+    },
+    updateProject: function updateProject(projectId, project) {
+      return dispatch(Object(_actions_projects__WEBPACK_IMPORTED_MODULE_0__["updateProject"])(projectId, project));
     }
   };
 };
@@ -2267,6 +2283,7 @@ var projectsReducer = function projectsReducer() {
 
   switch (action.type) {
     case _actions_projects__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PROJECT"]:
+      console.log(action);
       nextState[action.project.id] = action.project;
       return nextState;
 
@@ -2448,7 +2465,7 @@ var configureStore = function configureStore() {
 /*!************************************!*\
   !*** ./frontend/utils/projects.js ***!
   \************************************/
-/*! exports provided: getProjects, getProject, postProject, deleteProject, getUserProjects */
+/*! exports provided: getProjects, getProject, postProject, deleteProject, patchProject */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2457,7 +2474,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getProject", function() { return getProject; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "postProject", function() { return postProject; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteProject", function() { return deleteProject; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getUserProjects", function() { return getUserProjects; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "patchProject", function() { return patchProject; });
 var getProjects = function getProjects() {
   return $.ajax({
     url: "api/projects",
@@ -2485,9 +2502,13 @@ var deleteProject = function deleteProject() {
     method: "DELETE"
   });
 };
-var getUserProjects = function getUserProjects(userId) {
+var patchProject = function patchProject(projectId, project) {
   return $.ajax({
-    url: "api/"
+    url: "api/projects/".concat(projectId),
+    method: "PATCH",
+    data: {
+      project: project
+    }
   });
 };
 

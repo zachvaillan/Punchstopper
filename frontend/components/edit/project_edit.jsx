@@ -3,12 +3,14 @@ import React from 'react';
 class ProjectBuild extends React.Component{
     constructor(props){
         super(props);
-        this.state = this.props.project;
+        this.state = {
+        };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount(){
         this.props.fetchProject(this.props.match.params.projectId)
+            .then( () => this.setState(this.props.project))
     }
 
     handleUpdate(field){
@@ -19,9 +21,8 @@ class ProjectBuild extends React.Component{
 
     handleSubmit(e){
         e.preventDefault();
-        let project = Object.assign({}, this.state);
-        delete project.page;
-        this.props.createProject(project)
+        console.log(this.props.project);
+        this.props.updateProject(this.props.project.id, this.state)
             .then(() => this.props.history.push(`/`));
     }
 
@@ -36,7 +37,6 @@ class ProjectBuild extends React.Component{
 
         return(
             <div className="edit-form">
-                <div>{console.log(this.props.project)}</div>
                 <form onSubmit={this.handleSubmit}>
                     <div className="spacer">
                         <h2 className="edit-heading">Image URL</h2>
@@ -47,7 +47,7 @@ class ProjectBuild extends React.Component{
                     <div className="spacer">
                         <h2 className="edit-heading">Project title</h2>
                         <h4 className="edit-subhead">Write a clear brief title that helps people quickly understand the gist of your project.</h4>
-                        <input type="text" placeholder=""/>
+                        <input type="text" placeholder="" onChange={this.handleUpdate("title")}/>
                     </div>
 
                     <div className="spacer">
@@ -85,7 +85,7 @@ class ProjectBuild extends React.Component{
                         <h4 className="edit-subhead">Set an achievable goal that covers what you need to complete your project.</h4>
                         <input type="text" placeholder="10,000"/>
                     </div>
-                    <button className="update-btn" type="submit">Update Info</button>
+                    <button className="update-btn" type="submit" onClick={this.handleSubmit}>Update Info</button>
                 </form>
             </div>
         )

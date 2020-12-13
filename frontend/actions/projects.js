@@ -1,4 +1,4 @@
-import {postProject, getProjects, getProject, deleteProject} from '../utils/projects';
+import {postProject, getProjects, getProject, deleteProject, patchProject} from '../utils/projects';
 
 export const RECEIVE_ALL_PROJECTS = "RECEIVE_ALL_PROJECTS";
 export const RECEIVE_PROJECT = "RECEIVE_PROJECT";
@@ -22,6 +22,11 @@ export const createProject = project => dispatch => (
     postProject(project)
         .then( project => dispatch(receiveProject(project)))
 );
+
+export const updateProject = (projectId, project) => dispatch => (
+    patchProject(projectId, project)
+        .then( project => console.log(project))
+)
 
 export const fetchProject = projectId => dispatch => (
     getProject(projectId)
