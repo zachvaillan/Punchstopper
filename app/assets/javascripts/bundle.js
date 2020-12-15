@@ -160,7 +160,7 @@ var fetchProjects = function fetchProjects(projects) {
 };
 var fetchProjectsByCategory = function fetchProjectsByCategory(projects) {
   return function (dispatch) {
-    Object(_utils_projects__WEBPACK_IMPORTED_MODULE_0__["getProjectsByCategory"])(projects).then(function (projects) {
+    return Object(_utils_projects__WEBPACK_IMPORTED_MODULE_0__["getProjectsByCategory"])(projects).then(function (projects) {
       return dispatch(receiveAllProjects(projects));
     });
   };
@@ -446,16 +446,36 @@ var CategoryIndex = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      page: null
+      projects: null
     };
+    _this.getProjects = _this.getProjects.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(CategoryIndex, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchProjectsByCategory(this.props.category.slice(0, 1).toUpperCase() + this.props.category.slice(1));
+      this.getProjects();
     }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (this.props.category != prevProps.category) {
+        this.getProjects();
+      }
+    }
+  }, {
+    key: "getProjects",
+    value: function getProjects() {
+      var _this2 = this;
+
+      return this.props.fetchProjectsByCategory(this.props.category.slice(0, 1).toUpperCase() + this.props.category.slice(1)).then(function (projects) {
+        return _this2.setState({
+          projects: projects
+        });
+      });
+    } // Project list using state // setState to fetched projects // render based on state // keep track of prev url and new url, if different refetch and reset state 
+
   }, {
     key: "render",
     value: function render() {

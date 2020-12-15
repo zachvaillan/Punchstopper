@@ -8,14 +8,28 @@ class CategoryIndex extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            page: null
+            projects: null
         };
+        this.getProjects = this.getProjects.bind(this);
     }
 
     componentDidMount() {
-        this.props.fetchProjectsByCategory(this.props.category.slice(0, 1).toUpperCase()
-        + this.props.category.slice(1));
+        this.getProjects()
     }
+
+    componentDidUpdate(prevProps){
+        if (this.props.category != prevProps.category){
+            this.getProjects()
+        }
+    }
+
+    getProjects(){
+        return this.props.fetchProjectsByCategory(this.props.category.slice(0, 1).toUpperCase()
+            + this.props.category.slice(1))
+        .then(projects => this.setState({ projects: projects }))
+    }
+
+    // Project list using state // setState to fetched projects // render based on state // keep track of prev url and new url, if different refetch and reset state 
 
     render() {
         if (!this.props.projects) return null;

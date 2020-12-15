@@ -39,10 +39,10 @@ export const fetchProjects = projects => dispatch => (
         .then( (projects) => dispatch(receiveAllProjects(projects)))
 );
 
-export const fetchProjectsByCategory = projects => dispatch => {
+export const fetchProjectsByCategory = projects => dispatch => (
     getProjectsByCategory(projects)
         .then( (projects) => dispatch(receiveAllProjects(projects)))
-}
+);
 
 export const destroyProject = () => dispatch => (
     deleteProject()
