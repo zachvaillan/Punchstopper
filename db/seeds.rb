@@ -14,6 +14,12 @@ guest = User.create!({
   password: 'demodemo'
 })
 
+# require 'open-uri'
+
+# file = open('https://punchstopper-seeds.s3-us-west-1.amazonaws.com/F9FE2A1E-A1D0-4B25-B79C-581FFB4D2E7A.png')
+
+# guest.photo.attach(io: file, filename: 'F9FE2A1E-A1D0-4B25-B79C-581FFB4D2E7A.png')
+
 project_maker = User.create!({
   id: 4,
   name: 'Project Man',

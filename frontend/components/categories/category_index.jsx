@@ -36,6 +36,7 @@ class CategoryIndex extends React.Component {
 
         return (
             <div>
+                <div>{this.props.currentUser.photo}</div>
                 <div className="project-cats-container">
                     <ul className="project-cats">
                         <li><Link className="cat-link" to="/projectsin/arts">Arts</Link></li>
