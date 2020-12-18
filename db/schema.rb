@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2020_12_16_212955) do
   create_table "backs", force: :cascade do |t|
     t.integer "backer_id", null: false
     t.integer "reward_id", null: false
+    t.integer "backing_amount", null: false
   end
 
   create_table "projects", force: :cascade do |t|
