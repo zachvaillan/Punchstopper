@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 2020_12_16_212955) do
     t.integer "backer_id", null: false
     t.integer "reward_id", null: false
     t.integer "backing_amount", null: false
+    t.index ["backer_id"], name: "index_backs_on_backer_id"
+    t.index ["reward_id"], name: "index_backs_on_reward_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -66,6 +68,7 @@ ActiveRecord::Schema.define(version: 2020_12_16_212955) do
     t.date "deliver_date", null: false
     t.integer "backer_count", default: 0, null: false
     t.integer "project_id", null: false
+    t.index ["project_id"], name: "index_rewards_on_project_id"
   end
 
   create_table "users", force: :cascade do |t|

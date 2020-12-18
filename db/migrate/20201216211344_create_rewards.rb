@@ -8,5 +8,6 @@ class CreateRewards < ActiveRecord::Migration[5.2]
       t.integer :backer_count, null: false, :default => 0
       t.integer :project_id, null: false
     end
+    add_index :rewards, :project_id
   end
 end
