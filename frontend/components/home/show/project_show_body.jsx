@@ -8,6 +8,7 @@ class ProjectShowBody extends React.Component{
     render(){
         return(
             <div>
+                {console.log(this.props.project.rewards)}
                 <div className="proj-body-nav">
                     <div className="proj-body-nav-tabs">
                         <a href="#">Campaign</a>
