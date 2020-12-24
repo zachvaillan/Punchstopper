@@ -1,4 +1,5 @@
 import React from 'react';
+import RewardBuild from './reward_build';
 
 class ProjectBuild extends React.Component{
     constructor(props){
@@ -96,8 +97,15 @@ class ProjectBuild extends React.Component{
                         <h4 className="edit-subhead">Set an achievable goal that covers what you need to complete your project.</h4>
                         <input type="text" placeholder={this.props.project.funding_goal || "10,000"} onChange={this.handleUpdate("funding_goal")}/>
                     </div>
+
                     <button className="update-btn" type="submit" onClick={this.handleSubmit}>Update Info</button>
                 </form>
+
+                <div className="spacer">
+                    <h2 className="edit-heading">Add reward</h2>
+                    <RewardBuild project={this.props.project} projectId={this.props.project.id} createReward={this.props.createReward} />
+                </div>
+
             </div>
         )
     }
