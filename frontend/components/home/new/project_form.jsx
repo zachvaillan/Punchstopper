@@ -13,6 +13,7 @@ class ProjectForm extends React.Component{
         this.handleNext = this.handleNext.bind(this);
         this.handlePrev = this.handlePrev.bind(this);
         this.handleUpdate = this.handleUpdate.bind(this);
+        this.handleFile = this.handleFile.bind(this);
     };
 
     handleUpdate(field){
@@ -33,10 +34,19 @@ class ProjectForm extends React.Component{
 
     handleSubmit(e){
         e.preventDefault();
-        let project = Object.assign({}, this.state);
-        delete project.page;
-        this.props.createProject(project)
+        let formData = new FormData();
+        formData.append('project[category]', this.state.category);
+        formData.append('project[location]', this.state.location);
+        formData.append('project[description]', this.state.description);
+        formData.append('project[photo]', this.state.photoFile);
+        this.props.createProject(formData)
             .then( () => this.props.history.push(`/${this.props.currentUser.id}`));
+    }
+
+    handleFile() {
+        return e => {
+            this.setState({ photoFile: e.target.files[0] })
+        }
     }
 
     render(){
@@ -77,7 +87,7 @@ class ProjectForm extends React.Component{
 
         const countryForm = (
             <div className="proj-cre-form">
-                <h2 className="proj-form-heading">Finally, let’s confirm your eligibility.</h2>
+                <h2 className="proj-form-heading">Let’s confirm your eligibility.</h2>
                 <p className="proj-form-subheading">And don't worry, you can edit this later too.</p>
                 <select onChange={this.handleUpdate("location")} className="proj-form-select">
                     <option value="" disabled selected>Select Location</option>
@@ -93,10 +103,22 @@ class ProjectForm extends React.Component{
                 </select>
                 <div className="proj-form-btn-cont-desc">
                     <button className="proj-form-go-back" onClick={this.handlePrev}>Category</button>
-                    <button className="proj-form-btn" onClick={this.handleSubmit}>Continue</button>
+                    <button className="proj-form-btn" onClick={this.handleNext}>Continue</button>
                 </div>
             </div>
         );
+
+        const imageForm = (
+            <div className="proj-cre-form">
+                <h2 className="proj-form-heading">Finally, add a picture that represents your project.</h2>
+                <p className="proj-form-subheading">And don't worry, you can edit this later too.</p>
+                <input type="file" onChange={this.handleFile()} />
+                <div className="proj-form-btn-cont-desc">
+                    <button className="proj-form-go-back" onClick={this.handlePrev}>Location</button>
+                    <button className="proj-form-btn" onClick={this.handleSubmit}>Create!</button>
+                </div>
+            </div>
+        )
 
         let formDisplay = categoryForm;
 
@@ -104,11 +126,13 @@ class ProjectForm extends React.Component{
             formDisplay = descForm;
         } else if (this.state.page === 3){
             formDisplay = countryForm; 
+        } else if (this.state.page === 4){
+            formDisplay = imageForm;
         }
 
         return(
             <div>
-                <p className="proj-form-pgnum">{this.state.page} of 3</p>
+                <p className="proj-form-pgnum">{this.state.page} of 4</p>
                 <div className="project-form-container">
                     <form onSubmit={this.handleSubmit}>
                         {formDisplay}

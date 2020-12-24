@@ -25,7 +25,9 @@ export const postProject = project => {
     return $.ajax({
         url: `api/projects`,
         method: `POST`,
-        data: { project }
+        data: project,
+        contentType: false,
+        processData: false
     });
 };
 
@@ -40,6 +42,8 @@ export const patchProject = (projectId, project) => {
     return $.ajax({
         url: `api/projects/${projectId}`,
         method: `PATCH`,
-        data: { project }
+        data: project,
+        contentType: false,
+        processData: false
     });
 };

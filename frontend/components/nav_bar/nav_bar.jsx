@@ -7,7 +7,7 @@ class NavBar extends React.Component {
     constructor(props){
         super(props);
     }
-    
+
     render(){
 
         const loginCorner = (this.props.location.pathname === "/login") ? (
@@ -18,7 +18,8 @@ class NavBar extends React.Component {
         const topRightNav = this.props.currentUser ? (
             <div className="right-menu">
                 <div className="prof-img-cont">
-                    <img className="profile-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Color_icon_green.svg/1200px-Color_icon_green.svg.png"/>
+                    {console.log(this.props.currentUser.photoUrl)}
+                    <img className="profile-img" src={this.props.currentUser.photoUrl}/>
                 </div>
                 <div className="nav-items-wrapper">
                     <Link to={`/${this.props.currentUser.id}`}>My projects</Link>

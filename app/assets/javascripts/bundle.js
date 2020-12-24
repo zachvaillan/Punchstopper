@@ -592,6 +592,7 @@ var ProjectBuild = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {};
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleFile = _this.handleFile.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -614,20 +615,36 @@ var ProjectBuild = /*#__PURE__*/function (_React$Component) {
       };
     }
   }, {
-    key: "handleSubmit",
-    value: function handleSubmit(e) {
+    key: "handleFile",
+    value: function handleFile() {
       var _this4 = this;
 
+      return function (e) {
+        _this4.setState({
+          photoFile: e.target.files[0]
+        });
+      };
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      var _this5 = this;
+
       e.preventDefault();
-      console.log(this.props.project);
-      this.props.updateProject(this.props.project.id, this.state).then(function () {
-        return _this4.props.history.push("/".concat(_this4.props.currentUser.id));
+      var formData = new FormData();
+      formData.append('project[category]', this.state.category);
+      formData.append('project[location]', this.state.location);
+      formData.append('project[funding_goal]', this.state.description);
+      formData.append('project[photo]', this.state.photoFile);
+      formData.append('project[title]', this.state.title);
+      this.props.updateProject(this.props.match.params.projectId, formData).then(function () {
+        return _this5.props.history.push("/".concat(_this5.props.currentUser.id));
       });
     }
   }, {
     key: "render",
     value: function render() {
-      var _this5 = this;
+      var _this6 = this;
 
       if (!this.props.project) return null;
       var locations = ["Australia", "Belgium", "Canada", "Denmark", "France", "Germany", "Hong-Kong", "Japan", "United-States"];
@@ -640,12 +657,11 @@ var ProjectBuild = /*#__PURE__*/function (_React$Component) {
         className: "spacer"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "edit-heading"
-      }, "Image URL"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+      }, "Image"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
         className: "edit-subhead"
       }, "Choose a picture that represents your project."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        placeholder: this.props.project.image_url || "website.com/picture.png",
-        onChange: this.handleUpdate("image_url")
+        type: "file",
+        onChange: this.handleFile()
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "spacer"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
@@ -667,7 +683,7 @@ var ProjectBuild = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: this.props.project.category
       }, this.props.project.category), categories.map(function (cat) {
-        if (cat != _this5.props.category) {
+        if (cat != _this6.props.category) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
             value: cat
           }, cat);
@@ -683,7 +699,7 @@ var ProjectBuild = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: this.props.project.location
       }, this.props.project.location), locations.map(function (loc) {
-        if (loc != _this5.props.project.location) {
+        if (loc != _this6.props.project.location) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
             value: loc
           }, loc.split("-").join(" "));
@@ -812,6 +828,7 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
     _this.handleNext = _this.handleNext.bind(_assertThisInitialized(_this));
     _this.handlePrev = _this.handlePrev.bind(_assertThisInitialized(_this));
     _this.handleUpdate = _this.handleUpdate.bind(_assertThisInitialized(_this));
+    _this.handleFile = _this.handleFile.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -850,11 +867,25 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
       var _this3 = this;
 
       e.preventDefault();
-      var project = Object.assign({}, this.state);
-      delete project.page;
-      this.props.createProject(project).then(function () {
+      var formData = new FormData();
+      formData.append('project[category]', this.state.category);
+      formData.append('project[location]', this.state.location);
+      formData.append('project[description]', this.state.description);
+      formData.append('project[photo]', this.state.photoFile);
+      this.props.createProject(formData).then(function () {
         return _this3.props.history.push("/".concat(_this3.props.currentUser.id));
       });
+    }
+  }, {
+    key: "handleFile",
+    value: function handleFile() {
+      var _this4 = this;
+
+      return function (e) {
+        _this4.setState({
+          photoFile: e.target.files[0]
+        });
+      };
     }
   }, {
     key: "render",
@@ -918,7 +949,7 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
         className: "proj-cre-form"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "proj-form-heading"
-      }, "Finally, let\u2019s confirm your eligibility."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, "Let\u2019s confirm your eligibility."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "proj-form-subheading"
       }, "And don't worry, you can edit this later too."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         onChange: this.handleUpdate("location"),
@@ -952,19 +983,39 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
         onClick: this.handlePrev
       }, "Category"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "proj-form-btn",
-        onClick: this.handleSubmit
+        onClick: this.handleNext
       }, "Continue")));
+      var imageForm = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "proj-cre-form"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "proj-form-heading"
+      }, "Finally, add a picture that represents your project."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "proj-form-subheading"
+      }, "And don't worry, you can edit this later too."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "file",
+        onChange: this.handleFile()
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "proj-form-btn-cont-desc"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "proj-form-go-back",
+        onClick: this.handlePrev
+      }, "Location"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "proj-form-btn",
+        onClick: this.handleSubmit
+      }, "Create!")));
       var formDisplay = categoryForm;
 
       if (this.state.page === 2) {
         formDisplay = descForm;
       } else if (this.state.page === 3) {
         formDisplay = countryForm;
+      } else if (this.state.page === 4) {
+        formDisplay = imageForm;
       }
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "proj-form-pgnum"
-      }, this.state.page, " of 3"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.state.page, " of 4"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "project-form-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
@@ -1321,7 +1372,7 @@ var FeaturedProject = function FeaturedProject(props) {
     to: "/projects/".concat(props.projects[0].id)
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "featured-proj-img",
-    src: props.projects[0].image_url
+    src: props.projects[0].photoUrl
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "featured-proj-title"
   }, props.projects[0].title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
@@ -1633,11 +1684,11 @@ var RecommendedProjectsIndexItem = function RecommendedProjectsIndexItem(props) 
     className: "rec-proj-cont"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "rec-proj"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+  }, console.log(props.project.photo), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/projects/".concat(props.project.id)
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "recommended-img",
-    src: props.project.image_url
+    src: props.project.photoUrl
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "rec-proj-info"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -1715,9 +1766,9 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
         className: "right-menu"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "prof-img-cont"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, console.log(this.props.currentUser.photoUrl), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "profile-img",
-        src: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Color_icon_green.svg/1200px-Color_icon_green.svg.png"
+        src: this.props.currentUser.photoUrl
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "nav-items-wrapper"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -2297,10 +2348,11 @@ var UserProj = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       return Object.values(this.props.userPage.projects).map(function (project) {
         var projectTitle = project.title ? project.title : "Edit to add title!";
-        var projectImage = project.image_url ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        console.log(project);
+        var projectImage = project.photo ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "project-image-container"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: project.image_url,
+          src: project.photo,
           className: "project-image"
         })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "project-image-placeholder"
@@ -2739,9 +2791,9 @@ var postProject = function postProject(project) {
   return $.ajax({
     url: "api/projects",
     method: "POST",
-    data: {
-      project: project
-    }
+    data: project,
+    contentType: false,
+    processData: false
   });
 };
 var deleteProject = function deleteProject() {
@@ -2754,9 +2806,9 @@ var patchProject = function patchProject(projectId, project) {
   return $.ajax({
     url: "api/projects/".concat(projectId),
     method: "PATCH",
-    data: {
-      project: project
-    }
+    data: project,
+    contentType: false,
+    processData: false
   });
 };
 

@@ -3,9 +3,9 @@ import React from 'react';
 class ProjectBuild extends React.Component{
     constructor(props){
         super(props);
-        this.state = {
-        };
+        this.state = {};
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleFile = this.handleFile.bind(this);
     }
 
     componentDidMount(){
@@ -19,10 +19,21 @@ class ProjectBuild extends React.Component{
         };
     }
 
+    handleFile(){
+        return e => {
+            this.setState({ photoFile: e.target.files[0] })
+        }
+    }
+
     handleSubmit(e){
         e.preventDefault();
-        console.log(this.props.project);
-        this.props.updateProject(this.props.project.id, this.state)
+        let formData = new FormData();
+        formData.append('project[category]', this.state.category);
+        formData.append('project[location]', this.state.location);
+        formData.append('project[funding_goal]', this.state.description);
+        formData.append('project[photo]', this.state.photoFile);
+        formData.append('project[title]', this.state.title);
+        this.props.updateProject(this.props.match.params.projectId, formData)
             .then(() => this.props.history.push(`/${this.props.currentUser.id}`));
     }
 
@@ -39,9 +50,9 @@ class ProjectBuild extends React.Component{
             <div className="edit-form">
                 <form onSubmit={this.handleSubmit}>
                     <div className="spacer">
-                        <h2 className="edit-heading">Image URL</h2>
+                        <h2 className="edit-heading">Image</h2>
                         <h4 className="edit-subhead">Choose a picture that represents your project.</h4>
-                        <input type="text" placeholder={this.props.project.image_url || "website.com/picture.png"} onChange={this.handleUpdate("image_url")}/>
+                        <input type="file" onChange={this.handleFile()}/>
                     </div>
 
                     <div className="spacer">

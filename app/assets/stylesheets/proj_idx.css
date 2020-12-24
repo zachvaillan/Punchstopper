@@ -116,7 +116,9 @@
 }
 
 .recommended-img{
+    object-fit: cover;
     width: 140px;
+    max-height: 100px;
     padding-right: 10px;
 }
 
