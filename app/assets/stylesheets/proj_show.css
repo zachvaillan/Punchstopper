@@ -127,4 +127,52 @@
     width: 25%;
     display: flex;
     justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+.support{
+    width: 100%;
+    font-size: 20px;
+    font-weight: 300;
+    margin-bottom: 40px;
+}
+
+.no-reward-cont{
+    display: flex;
+    border: 1px solid black;
+    flex-wrap: wrap;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.gradient-cont{
+    background-color: pink;
+    width: 100%;
+    padding: 10px;
+}
+
+.backing-input-cont{
+    width: 100%;
+    display: flex;
+}
+
+.dollar{
+    padding: 10px;
+    border-left: 1px solid #DCDEDD;
+    border-top: 1px solid #DCDEDD;
+    border-bottom: 1px solid #DCDEDD;
+    width: 10%;
+    color: #DCDEDD;
+    text-align: center;
+}
+
+.backing-input{
+    width: 90%;
+    outline: none;
+    border: 1px solid #DCDEDD;
+}
+
+.backing-input:focus{
+    border-color: #028858;
 }

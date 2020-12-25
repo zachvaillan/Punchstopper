@@ -17,6 +17,18 @@ class ProjectShowBody extends React.Component{
                 <p className="story">Hello</p>
 
                 <div className="rewards-index-sidebar">
+                    <p className="support">Support</p>
+                    <div className="no-reward-cont">
+                        <p className="reward-amount">Pledge without a reward</p>
+                        <div className="backing-input-cont">
+                            <p className="dollar">$</p>
+                            <input className="backing-input" type="number"/>
+                        </div>
+                        <div className="gradient-cont">
+                            <p>Back it because you believe in it.</p>
+                            <p>Support the project for no reward, just because it speaks to you.</p>
+                        </div>
+                    </div>
                     <RewardsIndex rewards={this.props.project.rewards} />
                 </div>
             </div>
