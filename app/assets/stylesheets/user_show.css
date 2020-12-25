@@ -1,5 +1,4 @@
 .user-project-list{
-    width: 50%;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
@@ -7,30 +6,31 @@
 }
 
 .user-project{
-    width: 100%;
     display: flex;
-}
-
-.user-project > div {
-    margin: 20px 0;
-}
-
-.project-image-placeholder {
-    width: 33.33%;
-    background-color: gray;
-    display: flex;
+    margin: auto;
+    width: 40%;
+    background-color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #DCDEDD;
 }
 
 .user-proj-info-cont{
     display: flex;
     flex-wrap: wrap;
-    width: 33.33%;
     padding: 20px;
+    width: 100%;
 }
 
 .user-proj-info-cont > div {
     width: 100%;
     padding: 10px;
+}
+
+.edit-button-cont{
+    display: flex;
 }
 
 .edit-button{
@@ -44,4 +44,26 @@
     color: white;
     margin: auto;
     font-size: 20px;
+}
+
+.project-image-container{
+    display: flex;
+    background-color: black;
+}
+
+.project-image{
+    object-fit: cover;
+    width: 140px;
+    height: 78.75px;
+    margin: auto;
+}
+
+.space-between{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.user-show-bg{
+    background-color: #F0F0F0;
 }

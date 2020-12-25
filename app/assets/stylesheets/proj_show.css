@@ -139,22 +139,27 @@
 
 .no-reward-cont{
     display: flex;
-    border: 1px solid black;
+    border: 1px solid #DCDEDD;
     flex-wrap: wrap;
-    padding: 10px;
+    padding: 20px;
     width: 100%;
     margin-bottom: 20px;
 }
 
 .gradient-cont{
-    background-color: pink;
+    background-image: -webkit-linear-gradient(top, #DBE7FF, #FFF2EC);
     width: 100%;
-    padding: 10px;
+    padding: 20px;
 }
 
 .backing-input-cont{
     width: 100%;
     display: flex;
+    margin-bottom: 20px;
+}
+
+.backing-input-cont:hover > *{
+    border-color: #028858;
 }
 
 .dollar{
@@ -175,4 +180,25 @@
 
 .backing-input:focus{
     border-color: #028858;
+}
+
+.back-it-bc{
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 20px;
+    width: 100%;
+    color: rgba(0, 0, 0, 0.842);
+}
+
+.support-back{
+    width: 100%;
+    background-color: #028858;
+    color: white;
+    padding: 15px;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.support-back:focus{
+    outline: none;
 }

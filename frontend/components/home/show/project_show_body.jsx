@@ -25,9 +25,10 @@ class ProjectShowBody extends React.Component{
                             <input className="backing-input" type="number"/>
                         </div>
                         <div className="gradient-cont">
-                            <p>Back it because you believe in it.</p>
-                            <p>Support the project for no reward, just because it speaks to you.</p>
+                            <p className="back-it-bc">Back it because you believe in it.</p>
+                            <p className="reward-info">Support the project for no reward, just because it speaks to you.</p>
                         </div>
+                        <button className="support-back">Continue</button>
                     </div>
                     <RewardsIndex rewards={this.props.project.rewards} />
                 </div>

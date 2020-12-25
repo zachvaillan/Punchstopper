@@ -15,8 +15,8 @@
 }
 
 .cat-link:hover {
-    color: black;
-    border-bottom: 2px solid black;
+    color: rgba(0, 0, 0, 0.815);
+    border-bottom: 2px solid #028858;
 }
 
 .project-cats-container {

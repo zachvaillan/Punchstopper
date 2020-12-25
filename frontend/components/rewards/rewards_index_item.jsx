@@ -21,6 +21,7 @@ class RewardsIndexItem extends React.Component{
                         <p className="reward-info-header">SHIPS TO</p>
                         <p className="reward-info">Anywhere in the world</p>
                     </div>
+                    <p className="backers-count">### backers</p>
                 </div>
             </div>
         )

@@ -21,9 +21,11 @@ class UserProjects extends React.Component{
         )
 
         return(
-            <ul className="user-project-list">
-                {projects}
-            </ul>   
+            <div className="user-show-bg">
+                <ul className="user-project-list">
+                    {projects}
+                </ul>   
+            </div>
         )
     }
 }
