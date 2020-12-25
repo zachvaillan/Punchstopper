@@ -6,6 +6,18 @@ class NavBar extends React.Component {
     
     constructor(props){
         super(props);
+        this.state = {
+            menu: "closed"
+        };
+        this.showMenu = this.showMenu.bind(this);
+    }
+
+    showMenu(){
+        if(this.state.menu === "closed"){
+            this.setState({ menu: "open" });
+        } else {
+            this.setState({ menu: "closed" });
+        }
     }
 
     render(){
@@ -15,11 +27,21 @@ class NavBar extends React.Component {
         ) : 
         (<Link to="/login">Login</Link>);
 
+        const dropDownMenu = (this.state.menu === "open") ? (
+            <div className="menu" onMouseLeave={() => this.showMenu()}>
+                <p>HELLLLLOOOOOO</p>
+            </div>
+        ) : (
+            null
+        );
+
         const topRightNav = this.props.currentUser ? (
             <div className="right-menu">
                 <div className="prof-img-cont">
+                    {console.log(this.props.currentUser)}
                     {console.log(this.props.currentUser.photoUrl)}
-                    <img className="profile-img" src={this.props.currentUser.photoUrl}/>
+                    <img className="profile-img" src={this.props.currentUser.photoUrl} onMouseEnter={() => this.showMenu()}/>
+                    {dropDownMenu}
                 </div>
                 <div className="nav-items-wrapper">
                     <Link to={`/${this.props.currentUser.id}`}>My projects</Link>

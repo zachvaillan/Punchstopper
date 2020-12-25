@@ -1915,34 +1915,63 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(NavBar);
 
   function NavBar(props) {
+    var _this;
+
     _classCallCheck(this, NavBar);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.state = {
+      menu: "closed"
+    };
+    _this.showMenu = _this.showMenu.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(NavBar, [{
+    key: "showMenu",
+    value: function showMenu() {
+      if (this.state.menu === "closed") {
+        this.setState({
+          menu: "open"
+        });
+      } else {
+        this.setState({
+          menu: "closed"
+        });
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this = this;
+      var _this2 = this;
 
       var loginCorner = this.props.location.pathname === "/login" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/login"
       }, "Login");
+      var dropDownMenu = this.state.menu === "open" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "menu",
+        onMouseLeave: function onMouseLeave() {
+          return _this2.showMenu();
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "HELLLLLOOOOOO")) : null;
       var topRightNav = this.props.currentUser ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "right-menu"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "prof-img-cont"
-      }, console.log(this.props.currentUser.photoUrl), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, console.log(this.props.currentUser), console.log(this.props.currentUser.photoUrl), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "profile-img",
-        src: this.props.currentUser.photoUrl
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        src: this.props.currentUser.photoUrl,
+        onMouseEnter: function onMouseEnter() {
+          return _this2.showMenu();
+        }
+      }), dropDownMenu), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "nav-items-wrapper"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/".concat(this.props.currentUser.id)
       }, "My projects"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "logout-btn",
         onClick: function onClick() {
-          return _this.props.logoutUser();
+          return _this2.props.logoutUser();
         }
       }, "Logout"))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "right-menu"
@@ -2991,6 +3020,9 @@ var sessionReducer = function sessionReducer() {
 
   switch (action.type) {
     case _actions_session__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
+      console.log("RECEIVIE CURRENT USER");
+      console.log(action.user);
+      console.log(oldState);
       return Object.assign({}, {
         currentUser: action.user
       });
