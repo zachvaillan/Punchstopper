@@ -40,7 +40,9 @@
 }
 
 .featured-proj-img{
-    max-width: 560px;
+    width: 622.22px;
+    height: 350px;
+    object-fit: cover;
 }
 
 .featured-inner > h4 {
@@ -118,7 +120,7 @@
 .recommended-img{
     object-fit: cover;
     width: 140px;
-    max-height: 100px;
+    height: 78.75px;
     padding-right: 10px;
 }
 
@@ -157,11 +159,6 @@
     outline: transparent;
 }
 
-.featured-proj-img{
-    max-height: 340px;
-    margin-bottom: 20px;
-}
-
 .featured > h4{
     margin: 20px 0px;
     font-family: "Maison Neue Book", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -180,6 +177,6 @@
     margin-bottom: 20px;
 }
 
-.featured-inner{
+/* .featured-inner{
     width: 560px;
-}
+} */

@@ -16,6 +16,7 @@ class ProjectShow extends React.Component{
         
         return(
             <div>
+                {console.log(this.props.project)}
                 <ProjectShowHeader project={this.props.project}/>
                 <ProjectShowBody project={this.props.project}/>
             </div>
