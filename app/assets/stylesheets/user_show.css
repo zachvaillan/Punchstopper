@@ -7,14 +7,19 @@
 
 .user-project{
     display: flex;
-    margin: auto;
-    width: 40%;
     background-color: white;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-right: 10px;
     border-radius: 5px;
     border: 1px solid #DCDEDD;
+    width: 100%;
+    margin: 10px 0px;
+}
+
+.row-width{
+    width: 40%;
+    margin: auto;
 }
 
 .user-proj-info-cont{

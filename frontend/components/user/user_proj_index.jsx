@@ -22,9 +22,11 @@ class UserProjects extends React.Component{
 
         return(
             <div className="user-show-bg">
-                <ul className="user-project-list">
-                    {projects}
-                </ul>   
+                <div className="row-width">
+                    <ul className="user-project-list">
+                        {projects}
+                    </ul>   
+                </div>
             </div>
         )
     }
