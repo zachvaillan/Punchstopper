@@ -23,6 +23,16 @@ class UserProjects extends React.Component{
         return(
             <div className="user-show-bg">
                 <div className="row-width">
+                    <div className="current-user-nav">
+                        <p>Activity</p>
+                        <p>Backed projects</p>
+                        <p>Created projects</p>
+                        <p>Settings</p>
+                        <p>Profile</p>
+                    </div>
+                    <p className="created-projects">Created projects</p>
+                    <p className="created-projects-subhead">A place to keep track of all your created projects</p>
+                    <p className="started">Started</p>
                     <ul className="user-project-list">
                         {projects}
                     </ul>   

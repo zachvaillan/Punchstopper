@@ -2,7 +2,6 @@
     margin: auto;
     display: flex;
     flex-wrap: wrap;
-    padding-top: 50px;
 }
 
 .user-project{
@@ -18,7 +17,7 @@
 }
 
 .row-width{
-    width: 40%;
+    width: 50%;
     margin: auto;
 }
 
@@ -71,4 +70,30 @@
 
 .user-show-bg{
     background-color: #F0F0F0;
+}
+
+.current-user-nav{
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 75px;
+}
+
+.current-user-nav > p{
+    margin: 0px 10px;
+}
+
+.created-projects{
+    font-size: 42px;
+    margin: 20px 0px;
+}
+
+.created-projects-subhead{
+    font-size: 22px;
+    font-weight: 300;
+}
+
+.started{
+    margin-top: 60px;
+    margin-bottom: 10px;
+    font-size: 22px;
 }
