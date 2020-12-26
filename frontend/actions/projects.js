@@ -1,5 +1,5 @@
 import {postProject, getProjects, getProject, deleteProject, patchProject,
-    getProjectsByCategory} from '../utils/projects';
+    getProjectsByCategory, patchProjectBacking} from '../utils/projects';
 
 export const RECEIVE_ALL_PROJECTS = "RECEIVE_ALL_PROJECTS";
 export const RECEIVE_PROJECT = "RECEIVE_PROJECT";
@@ -27,7 +27,12 @@ export const createProject = project => dispatch => (
 export const updateProject = (projectId, project) => dispatch => (
     patchProject(projectId, project)
         .then( project => console.log(project))
-)
+);
+
+export const addBackingAmount = (projectId, project) => dispatch => (
+    patchProjectBacking(projectId, project)
+        .then( project => console.log(project))
+);
 
 export const fetchProject = projectId => dispatch => (
     getProject(projectId)

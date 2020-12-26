@@ -86,11 +86,41 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./frontend/actions/backs.js":
+/*!***********************************!*\
+  !*** ./frontend/actions/backs.js ***!
+  \***********************************/
+/*! exports provided: createBack */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createBack", function() { return createBack; });
+/* harmony import */ var _utils_back__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/back */ "./frontend/utils/back.js");
+
+
+var receiveBack = function receiveBack(back) {
+  return {
+    type: "hello",
+    back: back
+  };
+};
+
+var createBack = function createBack(back) {
+  return function (dispatch) {
+    return Object(_utils_back__WEBPACK_IMPORTED_MODULE_0__["postBack"])(back).then(function (back) {
+      return dispatch(receiveBack(back));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/projects.js":
 /*!**************************************!*\
   !*** ./frontend/actions/projects.js ***!
   \**************************************/
-/*! exports provided: RECEIVE_ALL_PROJECTS, RECEIVE_PROJECT, DELETE_PROJECT, createProject, updateProject, fetchProject, fetchProjects, fetchProjectsByCategory, destroyProject */
+/*! exports provided: RECEIVE_ALL_PROJECTS, RECEIVE_PROJECT, DELETE_PROJECT, createProject, updateProject, addBackingAmount, fetchProject, fetchProjects, fetchProjectsByCategory, destroyProject */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -100,6 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_PROJECT", function() { return DELETE_PROJECT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createProject", function() { return createProject; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateProject", function() { return updateProject; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addBackingAmount", function() { return addBackingAmount; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchProject", function() { return fetchProject; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchProjects", function() { return fetchProjects; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchProjectsByCategory", function() { return fetchProjectsByCategory; });
@@ -140,6 +171,13 @@ var createProject = function createProject(project) {
 var updateProject = function updateProject(projectId, project) {
   return function (dispatch) {
     return Object(_utils_projects__WEBPACK_IMPORTED_MODULE_0__["patchProject"])(projectId, project).then(function (project) {
+      return console.log(project);
+    });
+  };
+};
+var addBackingAmount = function addBackingAmount(projectId, project) {
+  return function (dispatch) {
+    return Object(_utils_projects__WEBPACK_IMPORTED_MODULE_0__["patchProjectBacking"])(projectId, project).then(function (project) {
       return console.log(project);
     });
   };
@@ -1264,24 +1302,45 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(ProjectShow);
 
   function ProjectShow(props) {
+    var _this;
+
     _classCallCheck(this, ProjectShow);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.state = {};
+    _this.addBack = _this.addBack.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(ProjectShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchProject(this.props.match.params.projectId);
+      var _this2 = this;
+
+      this.props.fetchProject(this.props.match.params.projectId).then(function (project) {
+        return _this2.setState({
+          project: project
+        });
+      });
+    }
+  }, {
+    key: "addBack",
+    value: function addBack(projectId, newProject, back) {
+      this.props.createBack(back);
+      this.props.addBackingAmount(projectId, newProject).then(function (project) {
+        return console.log(project);
+      });
     }
   }, {
     key: "render",
     value: function render() {
       if (!this.props.project) return null;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, console.log(this.props.project), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_show_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_show_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
         project: this.props.project
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_show_body__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        project: this.props.project
+        project: this.props.project,
+        addBack: this.addBack,
+        currentUser: this.props.currentUser
       }));
     }
   }]);
@@ -1336,14 +1395,42 @@ var ProjectShowBody = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(ProjectShowBody);
 
   function ProjectShowBody(props) {
+    var _this;
+
     _classCallCheck(this, ProjectShowBody);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.state = {
+      project: _this.props.project,
+      back: null
+    };
+    _this.handleUpdate = _this.handleUpdate.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(ProjectShowBody, [{
+    key: "handleUpdate",
+    value: function handleUpdate() {
+      var _this2 = this;
+
+      console.log("hello");
+      return function (e) {
+        console.log(_this2.state);
+
+        _this2.setState({
+          back: {
+            backing_amount: e.target.value,
+            backer_id: _this2.props.currentUser.id,
+            reward_id: 1
+          }
+        });
+      };
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       if (!this.props.project.rewards) return null;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "proj-body-container"
@@ -1365,7 +1452,8 @@ var ProjectShowBody = /*#__PURE__*/function (_React$Component) {
         className: "dollar"
       }, "$"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "backing-input",
-        type: "number"
+        type: "number",
+        onChange: this.handleUpdate()
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "gradient-cont"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
@@ -1373,7 +1461,10 @@ var ProjectShowBody = /*#__PURE__*/function (_React$Component) {
       }, "Back it because you believe in it."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "reward-info"
       }, "Support the project for no reward, just because it speaks to you.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "support-back"
+        className: "support-back",
+        onClick: function onClick() {
+          return _this3.props.addBack(_this3.props.project.id, _this3.state.project, _this3.state.back);
+        }
       }, "Continue")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rewards_rewards_index__WEBPACK_IMPORTED_MODULE_1__["default"], {
         rewards: this.props.project.rewards
       })));
@@ -1508,10 +1599,12 @@ var ProjectShowHeader = /*#__PURE__*/function (_React$Component) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_projects__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../actions/projects */ "./frontend/actions/projects.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _project_show__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./project_show */ "./frontend/components/home/show/project_show.jsx");
+/* harmony import */ var _actions_backs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../actions/backs */ "./frontend/actions/backs.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _project_show__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./project_show */ "./frontend/components/home/show/project_show.jsx");
+
 
 
 
@@ -1519,7 +1612,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    project: state.projects[ownProps.match.params.projectId]
+    project: state.projects[ownProps.match.params.projectId],
+    currentUser: state.session.currentUser
   };
 };
 
@@ -1527,11 +1621,17 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchProject: function fetchProject(projectId) {
       return dispatch(Object(_actions_projects__WEBPACK_IMPORTED_MODULE_0__["fetchProject"])(projectId));
+    },
+    addBackingAmount: function addBackingAmount(projectId, project) {
+      return dispatch(Object(_actions_projects__WEBPACK_IMPORTED_MODULE_0__["addBackingAmount"])(projectId, project));
+    },
+    createBack: function createBack(back) {
+      return dispatch(Object(_actions_backs__WEBPACK_IMPORTED_MODULE_1__["createBack"])(back));
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, mapDispatchToProps)(_project_show__WEBPACK_IMPORTED_MODULE_3__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(mapStateToProps, mapDispatchToProps)(_project_show__WEBPACK_IMPORTED_MODULE_4__["default"]));
 
 /***/ }),
 
@@ -1979,7 +2079,7 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
         className: "right-menu"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "prof-img-cont"
-      }, console.log(this.props.currentUser), console.log(this.props.currentUser.photoUrl), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "profile-img",
         src: this.props.currentUser.photoUrl,
         onMouseEnter: function onMouseEnter() {
@@ -3129,11 +3229,33 @@ var configureStore = function configureStore() {
 
 /***/ }),
 
+/***/ "./frontend/utils/back.js":
+/*!********************************!*\
+  !*** ./frontend/utils/back.js ***!
+  \********************************/
+/*! exports provided: postBack */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "postBack", function() { return postBack; });
+var postBack = function postBack(back) {
+  return $.ajax({
+    url: "api/backs",
+    method: "POST",
+    data: {
+      back: back
+    }
+  });
+};
+
+/***/ }),
+
 /***/ "./frontend/utils/projects.js":
 /*!************************************!*\
   !*** ./frontend/utils/projects.js ***!
   \************************************/
-/*! exports provided: getProjects, getProjectsByCategory, getProject, postProject, deleteProject, patchProject */
+/*! exports provided: getProjects, getProjectsByCategory, getProject, postProject, deleteProject, patchProject, patchProjectBacking */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3144,6 +3266,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "postProject", function() { return postProject; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteProject", function() { return deleteProject; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "patchProject", function() { return patchProject; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "patchProjectBacking", function() { return patchProjectBacking; });
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 var getProjects = function getProjects() {
@@ -3188,6 +3311,15 @@ var patchProject = function patchProject(projectId, project) {
     data: project,
     contentType: false,
     processData: false
+  });
+};
+var patchProjectBacking = function patchProjectBacking(projectId, project) {
+  return $.ajax({
+    url: "api/projects/".concat(projectId),
+    method: "PATCH",
+    data: {
+      project: project
+    }
   });
 };
 

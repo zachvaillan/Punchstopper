@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :users, only: [ :index, :create, :show ] 
     resources :projects, only: [ :create, :index, :update, :show ]
     resources :rewards, only: [ :create ]
+    resources :backs, only: [ :create ]
     resource :session
     resources :projects, path: '/projectsin/:category', only: [ :index ]
   end

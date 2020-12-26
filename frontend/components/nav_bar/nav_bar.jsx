@@ -38,8 +38,6 @@ class NavBar extends React.Component {
         const topRightNav = this.props.currentUser ? (
             <div className="right-menu">
                 <div className="prof-img-cont">
-                    {console.log(this.props.currentUser)}
-                    {console.log(this.props.currentUser.photoUrl)}
                     <img className="profile-img" src={this.props.currentUser.photoUrl} onMouseEnter={() => this.showMenu()}/>
                     {dropDownMenu}
                 </div>

@@ -47,3 +47,11 @@ export const patchProject = (projectId, project) => {
         processData: false
     });
 };
+
+export const patchProjectBacking = (projectId, project) => {
+    return $.ajax({
+        url: `api/projects/${projectId}`,
+        method: `PATCH`,
+        data: { project }
+    });
+};
