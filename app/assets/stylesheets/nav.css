@@ -77,11 +77,16 @@
     color: #656969;
 }
 
+.menu-container{
+    position: relative;
+}
+
 .menu {
     position: absolute;
     background-color: white;
     border: 1px solid black;
     width: 200px;
     height: 100px;
-    margin-top: 30px;
+    top: 30px;
+    right: 20px;
 }

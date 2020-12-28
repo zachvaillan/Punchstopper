@@ -2074,7 +2074,14 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
         onMouseLeave: function onMouseLeave() {
           return _this2.showMenu();
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "HELLLLLOOOOOO")) : null;
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "HELLLLLOOOOOO"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/".concat(this.props.currentUser.id)
+      }, "My projects"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "logout-btn",
+        onClick: function onClick() {
+          return _this2.props.logoutUser();
+        }
+      }, "Logout")) : null;
       var topRightNav = this.props.currentUser ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "right-menu"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2085,16 +2092,9 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
         onMouseEnter: function onMouseEnter() {
           return _this2.showMenu();
         }
-      }), dropDownMenu), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "nav-items-wrapper"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/".concat(this.props.currentUser.id)
-      }, "My projects"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "logout-btn",
-        onClick: function onClick() {
-          return _this2.props.logoutUser();
-        }
-      }, "Logout"))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "menu-container"
+      }, dropDownMenu))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "right-menu"
       }, loginCorner);
       var newProjectLink = this.props.currentUser ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {

@@ -30,6 +30,8 @@ class NavBar extends React.Component {
         const dropDownMenu = (this.state.menu === "open") ? (
             <div className="menu" onMouseLeave={() => this.showMenu()}>
                 <p>HELLLLLOOOOOO</p>
+                <Link to={`/${this.props.currentUser.id}`}>My projects</Link>
+                <button className="logout-btn" onClick={() => this.props.logoutUser()}>Logout</button>
             </div>
         ) : (
             null
@@ -39,11 +41,9 @@ class NavBar extends React.Component {
             <div className="right-menu">
                 <div className="prof-img-cont">
                     <img className="profile-img" src={this.props.currentUser.photoUrl} onMouseEnter={() => this.showMenu()}/>
-                    {dropDownMenu}
-                </div>
-                <div className="nav-items-wrapper">
-                    <Link to={`/${this.props.currentUser.id}`}>My projects</Link>
-                    <button className="logout-btn" onClick={() => this.props.logoutUser()}>Logout</button>
+                    <div className="menu-container">
+                        {dropDownMenu}
+                    </div>
                 </div>
             </div>
         ) : (
