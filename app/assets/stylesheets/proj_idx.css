@@ -180,3 +180,52 @@
 /* .featured-inner{
     width: 560px;
 } */
+
+.fresh-favorites{
+    width: 70%;
+    margin: auto;
+}
+
+.fresh-favs-wrapper{
+    margin: 70px 0px;
+}
+
+.fresh-favs-p{
+    margin: 10px;
+}
+
+.user-projects-list{
+    display: flex;
+    overflow: auto;
+}
+
+.user-proj{
+    margin: 10px;
+}
+
+.userproj-img{
+    object-fit: cover;
+    width: 250px;
+    height: 140.625px;
+    padding-right: 10px;
+}
+
+.github-logo{
+    width: 150px;
+}
+
+.linkedin-logo{
+    width: 150px;
+}
+
+.linkedin-cont{
+    margin: auto;
+}
+
+.logos-container{
+    display: flex;
+}
+
+.logos-container > a {
+    padding: 0px 20px;
+}
