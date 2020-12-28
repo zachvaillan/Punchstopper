@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { logoutUser } from '../../actions/session';
+import MenuProjects from './menu_projects';
 
 class NavBar extends React.Component { 
     
@@ -29,8 +30,22 @@ class NavBar extends React.Component {
 
         const dropDownMenu = (this.state.menu === "open") ? (
             <div className="menu" onMouseLeave={() => this.showMenu()}>
-                <p>HELLLLLOOOOOO</p>
-                <Link to={`/${this.props.currentUser.id}`}>My projects</Link>
+                <div className="upper-menu-cont">
+                    <div className="upper-menu-nav">
+                        <p className="menu-col-heading">YOUR ACCOUNT</p>
+                        <p>Recommended for you</p>
+                        <p>Profile</p>
+                        <p>Settings</p>
+                        <p>Activity</p>
+                    </div>
+                    <div className="upper-menu-account">
+                        <p className="menu-col-heading">CREATED PROJECTS</p>
+                        {console.log(this.props.currentUser)}
+                        <MenuProjects projects={this.props.currentUser.projects}/>
+                        <p className="new-project-from-dropdown">New</p>
+                        <div><Link to={`/${this.props.currentUser.id}`}>View all</Link></div>
+                    </div>
+                </div>
                 <button className="logout-btn" onClick={() => this.props.logoutUser()}>Logout</button>
             </div>
         ) : (

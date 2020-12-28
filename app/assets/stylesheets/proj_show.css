@@ -109,11 +109,11 @@
 }
 
 .about-nav{
-    width: 25%;
+    width: 15%;
 }
 
 .story{
-    width: 50%;
+    width: 55%;
 }
 
 .proj-body-container{
@@ -124,10 +124,13 @@
 }
 
 .rewards-index-sidebar{
-    width: 25%;
+    width: 30%;
     display: flex;
     justify-content: flex-end;
     flex-wrap: wrap;
+    max-height: 80vh;
+    overflow: auto;
+    padding: 0px 20px;
 }
 
 .support{
@@ -142,7 +145,6 @@
     border: 1px solid #DCDEDD;
     flex-wrap: wrap;
     padding: 20px;
-    width: 100%;
     margin-bottom: 20px;
 }
 
