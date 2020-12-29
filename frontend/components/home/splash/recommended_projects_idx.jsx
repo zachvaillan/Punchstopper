@@ -15,6 +15,22 @@ class RecommendedProjectsIndex extends React.Component {
         };
     }
 
+    nextPage(){
+        return e => {
+            if (this.state.page < 3) {
+                this.setState({ page: this.state.page += 1 })
+            }
+        }
+    }
+
+    prevPage(){
+        return e => {
+            if (this.state.page > 1) {
+                this.setState({ page: this.state.page -= 1 })
+            }
+        }
+    }
+
     render(){
 
         let projectsArray = this.props.projects;
@@ -42,16 +58,45 @@ class RecommendedProjectsIndex extends React.Component {
                 })}
             </div>)
         }
+        let underlinedButton = (
+            <div className="rec-idx-nav">
+                <p onClick={this.prevPage()} style={{color: "gray"}}>{"<"}</p>
+                <button onClick={this.onClick(1)} style={{ textDecoration: "underline", color: "#003BFF"}}>1</button>
+                <button onClick={this.onClick(2)}>2</button>
+                <button onClick={this.onClick(3)}>3</button>
+                <p onClick={this.nextPage()}>{">"}</p>
+            </div>
+        );
+
+        if(this.state.page === 2){
+            underlinedButton = (
+                <div className="rec-idx-nav">
+                    <p onClick={this.prevPage()}>{"<"}</p>
+                    <button onClick={this.onClick(1)}>1</button>
+                    <button onClick={this.onClick(2)} style={{ textDecoration: "underline", color: "#003BFF" }}>2</button>
+                    <button onClick={this.onClick(3)}>3</button>
+                    <p onClick={this.nextPage()}>{">"}</p>
+                </div>
+            );
+        }
+
+        if(this.state.page === 3){
+            underlinedButton = (
+                <div className="rec-idx-nav">
+                    <p onClick={this.prevPage()}>{"<"}</p>
+                    <button onClick={this.onClick(1)}>1</button>
+                    <button onClick={this.onClick(2)}>2</button>
+                    <button onClick={this.onClick(3)} style={{ textDecoration: "underline", color: "#003BFF" }}>3</button>
+                    <p onClick={this.nextPage()} style={{ color: "gray" }}>{">"}</p>
+                </div>
+            );
+        }
 
         return(
             <div>
                 {showcase}
                 <div className="rec-idx-nav-cont">
-                    <div className="rec-idx-nav">
-                        <button onClick={this.onClick(1)}>1</button>
-                        <button onClick={this.onClick(2)}>2</button>
-                        <button onClick={this.onClick(3)}>3</button>
-                    </div>
+                    {underlinedButton}
                 </div>
             </div>
         )

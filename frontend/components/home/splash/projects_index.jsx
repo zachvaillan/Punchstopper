@@ -56,6 +56,39 @@ class Projects extends React.Component{
                         <UserProjects projects={this.props.projects} />
                     </div>
                 </div>
+                <div className="footer-cont">
+                    <div className="footer">
+                        <div className="foot-col">
+                            <div className="image-of-me-cont">
+                                <img className="image-of-me" src="https://punchstopper-seeds.s3-us-west-1.amazonaws.com/B120B6B0-53C6-40DC-8386-CFA8BE6A6675.JPEG" />
+                            </div>
+                            <p>I have a passion for creation and growth.
+                            As a full stack developer, I'm able to take advantage of tools such as
+                            JavaScript, React / Redux, Ruby on Rails, PostgreSQL and more to turn
+                            ideas into reality. By constantly assessing and looking for ways
+                        my work could be improved, innovation naturally follows.</p>
+                        </div>
+                        <div className="foot-col">
+                            My interest in programming and technology
+                            came to fruition as I realized how much I loved working with start ups.
+                            This was the perfect playing field for me - offering a chance for me to be creative,
+                            continually revise and improve, and watch my work directly effect growth.
+                            As soon as I got involved with the Chronic Pain Science group, I realized
+                            the fast-pace and versatility in work that start ups offered was unmatched
+                            anywhere else. To be able to offer more, and help build the product
+                            and not just the business, I decided I had to learn to code.
+                    </div>
+                        <div className="foot-col">
+                            My mentality of reiteration and constant
+                            improvement doesn't end with my professional life. It is something
+                            I embody every day. I spend my free time bodybuilding, with aspirations
+                            of getting pro card within two years. This sport is a lifestyle - not
+                            only does every single thing I eat matter, but my sleep and the quality of it,
+                            will determine whether tomorrow is spent getting better or remaining stagnant.
+                            In my freeER time, I satisfy my curiosity by reading, or my hunger for adventure by backpacking.
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }

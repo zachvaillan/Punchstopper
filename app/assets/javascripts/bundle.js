@@ -1650,7 +1650,11 @@ var FeaturedProject = function FeaturedProject(props) {
     className: "featured-proj-title"
   }, props.projects[0].title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "featured-proj-desc"
-  }, props.projects[0].description)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, props.projects[0].owner)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null);
+  }, props.projects[0].description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "owner-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "By\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "featured-owner"
+  }, props.projects[0].owner)))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, featured);
 };
 
@@ -1785,7 +1789,22 @@ var Projects = /*#__PURE__*/function (_React$Component) {
         className: "fresh-favorites"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_user_projects__WEBPACK_IMPORTED_MODULE_3__["default"], {
         projects: this.props.projects
-      }))));
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "footer-cont"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "footer"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "foot-col"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "image-of-me-cont"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "image-of-me",
+        src: "https://punchstopper-seeds.s3-us-west-1.amazonaws.com/B120B6B0-53C6-40DC-8386-CFA8BE6A6675.JPEG"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "I have a passion for creation and growth. As a full stack developer, I'm able to take advantage of tools such as JavaScript, React / Redux, Ruby on Rails, PostgreSQL and more to turn ideas into reality. By constantly assessing and looking for ways my work could be improved, innovation naturally follows.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "foot-col"
+      }, "My interest in programming and technology came to fruition as I realized how much I loved working with start ups. This was the perfect playing field for me - offering a chance for me to be creative, continually revise and improve, and watch my work directly effect growth. As soon as I got involved with the Chronic Pain Science group, I realized the fast-pace and versatility in work that start ups offered was unmatched anywhere else. To be able to offer more, and help build the product and not just the business, I decided I had to learn to code."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "foot-col"
+      }, "My mentality of reiteration and constant improvement doesn't end with my professional life. It is something I embody every day. I spend my free time bodybuilding, with aspirations of getting pro card within two years. This sport is a lifestyle - not only does every single thing I eat matter, but my sleep and the quality of it, will determine whether tomorrow is spent getting better or remaining stagnant. In my freeER time, I satisfy my curiosity by reading, or my hunger for adventure by backpacking."))));
     }
   }]);
 
@@ -1902,6 +1921,32 @@ var RecommendedProjectsIndex = /*#__PURE__*/function (_React$Component) {
       };
     }
   }, {
+    key: "nextPage",
+    value: function nextPage() {
+      var _this3 = this;
+
+      return function (e) {
+        if (_this3.state.page < 3) {
+          _this3.setState({
+            page: _this3.state.page += 1
+          });
+        }
+      };
+    }
+  }, {
+    key: "prevPage",
+    value: function prevPage() {
+      var _this4 = this;
+
+      return function (e) {
+        if (_this4.state.page > 1) {
+          _this4.setState({
+            page: _this4.state.page -= 1
+          });
+        }
+      };
+    }
+  }, {
     key: "render",
     value: function render() {
       var projectsArray = this.props.projects;
@@ -1936,17 +1981,73 @@ var RecommendedProjectsIndex = /*#__PURE__*/function (_React$Component) {
         }));
       }
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, showcase, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "rec-idx-nav-cont"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      var underlinedButton = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "rec-idx-nav"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.onClick(1)
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        onClick: this.prevPage(),
+        style: {
+          color: "gray"
+        }
+      }, "<"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.onClick(1),
+        style: {
+          textDecoration: "underline",
+          color: "#003BFF"
+        }
       }, "1"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.onClick(2)
       }, "2"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.onClick(3)
-      }, "3"))));
+      }, "3"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        onClick: this.nextPage()
+      }, ">"));
+
+      if (this.state.page === 2) {
+        underlinedButton = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "rec-idx-nav"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          onClick: this.prevPage()
+        }, "<"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          onClick: this.onClick(1)
+        }, "1"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          onClick: this.onClick(2),
+          style: {
+            textDecoration: "underline",
+            color: "#003BFF"
+          }
+        }, "2"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          onClick: this.onClick(3)
+        }, "3"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          onClick: this.nextPage()
+        }, ">"));
+      }
+
+      if (this.state.page === 3) {
+        underlinedButton = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "rec-idx-nav"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          onClick: this.prevPage()
+        }, "<"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          onClick: this.onClick(1)
+        }, "1"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          onClick: this.onClick(2)
+        }, "2"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          onClick: this.onClick(3),
+          style: {
+            textDecoration: "underline",
+            color: "#003BFF"
+          }
+        }, "3"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          onClick: this.nextPage(),
+          style: {
+            color: "gray"
+          }
+        }, ">"));
+      }
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, showcase, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "rec-idx-nav-cont"
+      }, underlinedButton));
     }
   }]);
 
@@ -1990,7 +2091,11 @@ var RecommendedProjectsIndexItem = function RecommendedProjectsIndexItem(props) 
     className: "rec-proj-title"
   }, props.project.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "rec-proj-perc"
-  }, props.project.funding_amount / props.project.funding_goal * 100, "%"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "By ", props.project.owner))));
+  }, props.project.funding_amount / props.project.funding_goal * 100, "%"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "owner-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "By\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "featured-owner"
+  }, props.project.owner)))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (RecommendedProjectsIndexItem);
@@ -2106,10 +2211,16 @@ var UserProjectsIndexItem = function UserProjectsIndexItem(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/projects/".concat(props.project.id)
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    className: "rec-proj-title"
-  }, props.project.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    className: "rec-proj-perc"
-  }, props.project.funding_amount / props.project.funding_goal * 100, "%"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "By ", props.project.owner)));
+    className: "useridx-proj-title"
+  }, props.project.title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/projects/".concat(props.project.id)
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "useridx-proj-desc"
+  }, props.project.description)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "owner-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "By\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "featured-owner"
+  }, props.project.owner))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (UserProjectsIndexItem);
@@ -2127,6 +2238,7 @@ var UserProjectsIndexItem = function UserProjectsIndexItem(props) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2148,6 +2260,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 
 
 
@@ -2186,7 +2299,8 @@ var MenuProjects = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "menu-projects-list"
       }, this.state.projects.slice(0, 3).map(function (project) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/projects/".concat(project.id, "/edit"),
           key: project.id,
           className: "menu-project-item"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -2264,47 +2378,57 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
       menu: "closed"
     };
     _this.showMenu = _this.showMenu.bind(_assertThisInitialized(_this));
+    _this.closeMenu = _this.closeMenu.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(NavBar, [{
     key: "showMenu",
     value: function showMenu() {
-      if (this.state.menu === "closed") {
-        this.setState({
+      var _this2 = this;
+
+      return function (e) {
+        _this2.setState({
           menu: "open"
         });
-      } else {
-        this.setState({
-          menu: "closed"
-        });
-      }
+      };
+    }
+  }, {
+    key: "closeMenu",
+    value: function closeMenu() {
+      var _this3 = this;
+
+      return function (e) {
+        setTimeout(function () {
+          return _this3.setState({
+            menu: "closed"
+          });
+        }, 200);
+      };
     }
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this4 = this;
 
       var loginCorner = this.props.location.pathname === "/login" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/login"
       }, "Login");
       var dropDownMenu = this.state.menu === "open" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "menu"
+        className: "menu",
+        ref: this.menu,
+        target: "2"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "upper-menu-cont"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "upper-menu-nav"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "menu-col-heading"
-      }, "YOUR ACCOUNT"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, "YOUR ACCOUNT"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "menu-nav-link"
-      }, "Recommended for you"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "menu-nav-link"
-      }, "Profile"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "menu-nav-link"
-      }, "Settings"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "menu-nav-link"
-      }, "Activity")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Recommended for you"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "upper-menu-account"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "menu-col-heading"
@@ -2312,23 +2436,23 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
         currentUser: this.props.currentUser,
         fetchUser: this.props.fetchUser
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/".concat(this.props.currentUser.id),
+        to: "/projects/new",
         className: "menu-new-cont"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "menu-new-icon"
       }, "+"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "new-project-from-dropdown"
+        className: "menu-new-project-from-dropdown"
       }, "New")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "view-all-cont"
+        className: "menu-view-all-cont"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        className: "view-all",
+        className: "menu-view-all",
         to: "/".concat(this.props.currentUser.id)
       }, "View all")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "logout-btn-cont"
+        className: "menu-logout-btn-cont"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "logout-btn",
+        className: "menu-logout-btn",
         onClick: function onClick() {
-          return _this2.props.logoutUser();
+          return _this4.props.logoutUser();
         }
       }, "Log out"))) : null;
       var topRightNav = this.props.currentUser ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2338,15 +2462,11 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "profile-img",
         src: this.props.currentUser.photoUrl,
-        onFocus: function onFocus() {
-          return _this2.showMenu();
-        },
+        onFocus: this.showMenu(),
+        onBlur: this.closeMenu(),
         tabIndex: "1"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "menu-container",
-        onBlur: function onBlur() {
-          return _this2.showMenu();
-        }
+        className: "menu-container"
       }, dropDownMenu))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "right-menu"
       }, loginCorner);

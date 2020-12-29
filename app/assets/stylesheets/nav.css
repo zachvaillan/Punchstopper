@@ -66,15 +66,16 @@
     margin: 0 20px;
 }
 
-.logout-btn{
+.menu-logout-btn{
     font-size: 14px;
     font-family: sans-serif;
     width: 100%;
     text-align: left;
     margin-top: 30px;
+    background-color: transparent;
 }
 
-.logout-btn:hover{
+.menu-logout-btn:hover{
     color: #037362;
     text-decoration: underline;
 }
@@ -180,7 +181,7 @@
     background-position: -100% 0;
 }
 
-.menu-new-cont:hover > .new-project-from-dropdown{
+.menu-new-cont:hover > .menu-new-project-from-dropdown{
     color: white;
 }
 
@@ -201,7 +202,7 @@
     background-size: 275.8px;
 }
 
-.new-project-from-dropdown{
+.menu-new-project-from-dropdown{
     color: rgba(0, 0, 0, 0.726);
     margin: auto 0px;
     font-size: 14px;
@@ -210,7 +211,7 @@
     padding-left: 10px;
 }
 
-.logout-btn-cont{
+.menu-logout-btn-cont{
     color: rgba(0, 0, 0, 0.726);
     width: 100%;
     display: flex;
@@ -218,17 +219,17 @@
     margin-top: 70px;
 }
 
-.view-all-cont{
+.menu-view-all-cont{
     margin-top: 40px;
 }
 
-.view-all{
+.menu-view-all{
     color: rgba(0, 0, 0, 0.726);
     font-size: 14px;
     font-family: "Maison Neue Book", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-.view-all:hover{
+.menu-view-all:hover{
     color: #037362;
     text-decoration: underline;
 }

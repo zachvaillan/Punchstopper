@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class MenuProjects extends React.Component {
     constructor(props) {
@@ -22,10 +23,10 @@ class MenuProjects extends React.Component {
             <div className="menu-projects-list">
                 {this.state.projects.slice(0, 3).map((project) => {
                     return (
-                        <div key={project.id} className="menu-project-item">
+                        <Link to={`/projects/${project.id}/edit`} key={project.id} className="menu-project-item">
                             <img className="menu-proj-img" src={project.photoUrl}/>
                             <p className="menu-proj-cat">{project.category} project</p>
-                        </div>
+                        </Link>
                     )
                 })}
             </div>

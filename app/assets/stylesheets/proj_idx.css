@@ -27,7 +27,9 @@
 
 .projects{
     display: flex;
-    margin: 70px 0px;
+    margin: auto;
+    width: 75%;
+    padding: 70px 0px;
 }
 
 .featured{
@@ -35,12 +37,10 @@
     padding: 0px 60px;
     box-sizing: border-box;
     width: 54%;
-    display: flex;
-    justify-content: flex-end;
 }
 
 .featured-proj-img{
-    width: 622.22px;
+    width: 100%;
     height: 350px;
     object-fit: cover;
 }
@@ -66,6 +66,12 @@
     font-size: 13px;
     width: 100%;
     margin-bottom: 20px;
+}
+
+.rec-proj-title{
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.603);
+    margin-bottom: 8px;
 }
 
 .subscribe-wrapper{
@@ -129,12 +135,11 @@
     flex-wrap: wrap;
 }
 
-.rec-proj-title{
-    margin-bottom: 5px;
-}
-
 .rec-proj-perc{
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    color: #037362;
+    font-size: 13px;
+    font-weight: bold;
 }
 
 .rec-proj-cont{
@@ -146,13 +151,20 @@
 
 .rec-idx-nav-cont {
     display: flex; 
-    justify-content: right;
+    justify-content: flex-end;
+    margin-top: 40px;
 }
 
-.rec-idx-nav > button{
-    background-color: transparent;
-    padding: 0px 20px;
+.rec-idx-nav{
+    display: flex;
+}
 
+.rec-idx-nav > *{
+    background-color: transparent;
+    padding: 0px 10px;
+    color: rgba(43,96,255,0.9);
+    font-size: 17px;
+    cursor: pointer;
 }
 
 .rec-idx-nav > button:focus{
@@ -168,13 +180,41 @@
 }
 
 .featured-proj-title{
-    font-size: 26px;
+    font-size: 28px;
     font-family: "Maison Neue Book", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    margin-bottom: 20px;
+    margin: 20px 0px;
+    color: rgba(0, 0, 0, 0.788);
+}
+
+.featured:hover .featured-proj-title{
+    color: #037362;
+    text-decoration: underline;
+}
+
+.featured-owner{
+    cursor: pointer;
+}
+
+.featured-owner:hover{
+    text-decoration: underline
+}
+
+.owner-container{
+    color: #656969;
+    display: flex;
+    font-size: 13px;
+}
+
+.rec-owner{
+    color: #656969;
+    font-size: 13px;
 }
 
 .featured-proj-desc{
-    margin-bottom: 20px;
+    font-family: "Cooper Light", Georgia, Times, "Times New Roman", serif;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.637);
+    margin-bottom: 40px;
 }
 
 /* .featured-inner{
@@ -186,12 +226,12 @@
     margin: auto;
 }
 
-.fresh-favs-wrapper{
-    margin: 70px 0px;
-}
-
 .fresh-favs-p{
-    margin: 10px;
+    margin-bottom: 70px;
+    font-family: "Maison Neue Book", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #656969;
+    font-weight: 560;
+    font-size: 13px;
 }
 
 .user-projects-list{
@@ -200,7 +240,18 @@
 }
 
 .user-proj{
-    margin: 10px;
+    margin-right: 10px;
+}
+
+.user-proj:hover .useridx-proj-title{
+    text-decoration: underline;
+    color: #037362;
+    text-decoration-color: #037362;
+}
+
+.useridx-proj-title{
+    font-size: 20px;
+    margin-top: 20px;
 }
 
 .userproj-img{
@@ -228,4 +279,54 @@
 
 .logos-container > a {
     padding: 0px 20px;
+}
+
+.useridx-proj-desc{
+    font-size: 15px;
+    margin: 15px 0px;
+    line-height: 1.5;
+    font-family: "Cooper Light", Georgia, Times, "Times New Roman", serif;
+    color: rgba(0, 0, 0, 0.733);
+}
+
+.useridx-proj-desc:hover{
+    text-decoration: underline;
+    text-decoration-color: #037362;
+}
+
+.user-projects{
+    padding: 70px 0px;
+    border-bottom: 1px solid #E8E8E8;
+}
+
+.footer-cont{
+    background-color: #F0F0F0;
+}
+
+.footer{
+    display: flex;
+    padding: 70px 0px; 
+    width: 70%;
+    margin: auto;
+}
+
+.foot-col{
+    width: 33.33%;
+    box-sizing: border-box;
+    padding: 0px 25px;
+    margin: auto;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.image-of-me{
+    width: 150px;
+    object-fit: cover;
+    border-radius: 30px;
+}
+
+.image-of-me-cont{
+    padding-right: 15px;
+    padding-bottom: 15px;
+    float: left;
 }

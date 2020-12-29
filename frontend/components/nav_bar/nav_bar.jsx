@@ -12,13 +12,18 @@ class NavBar extends React.Component {
             menu: "closed"
         };
         this.showMenu = this.showMenu.bind(this);
+        this.closeMenu = this.closeMenu.bind(this);
     }
 
     showMenu(){
-        if(this.state.menu === "closed"){
+        return e => {
             this.setState({ menu: "open" });
-        } else {
-            this.setState({ menu: "closed" });
+        }
+    }
+
+    closeMenu(){
+        return e => {
+            setTimeout(() => this.setState({ menu: "closed" }), 200);
         }
     }
 
@@ -30,27 +35,27 @@ class NavBar extends React.Component {
         (<Link to="/login">Login</Link>);
 
         const dropDownMenu = (this.state.menu === "open") ? (
-            <div className="menu">
+            <div className="menu" ref={this.menu} target="2">
                 <div className="upper-menu-cont">
                     <div className="upper-menu-nav">
                         <p className="menu-col-heading">YOUR ACCOUNT</p>
-                        <p className="menu-nav-link">Recommended for you</p>
-                        <p className="menu-nav-link">Profile</p>
-                        <p className="menu-nav-link">Settings</p>
-                        <p className="menu-nav-link">Activity</p>
+                        <Link to="/"><p className="menu-nav-link">Recommended for you</p></Link>
+                        {/* <p className="menu-nav-link">Profile</p> */}
+                        {/* <p className="menu-nav-link">Settings</p> */}
+                        {/* <p className="menu-nav-link">Activity</p> */}
                     </div>
                     <div className="upper-menu-account">
                         <p className="menu-col-heading">CREATED PROJECTS</p>
                         <MenuProjects currentUser={this.props.currentUser} fetchUser={this.props.fetchUser}/>
-                        <Link to={`/${this.props.currentUser.id}`} className="menu-new-cont">
+                        <Link to={`/projects/new`} className="menu-new-cont">
                             <div className="menu-new-icon">+</div>
-                            <p className="new-project-from-dropdown">New</p>
+                            <p className="menu-new-project-from-dropdown">New</p>
                         </Link> 
-                        <div className='view-all-cont'><Link className="view-all" to={`/${this.props.currentUser.id}`}>View all</Link></div>
+                        <div className='menu-view-all-cont'><Link className="menu-view-all" to={`/${this.props.currentUser.id}`}>View all</Link></div>
                     </div>
                 </div>
-                <div className="logout-btn-cont">
-                    <button className="logout-btn" onClick={() => this.props.logoutUser()}>Log out</button>
+                <div className="menu-logout-btn-cont">
+                    <button className="menu-logout-btn" onClick={() => this.props.logoutUser()}>Log out</button>
                 </div>   
             </div>
         ) : (
@@ -60,8 +65,8 @@ class NavBar extends React.Component {
         const topRightNav = this.props.currentUser ? (
             <div className="right-menu">
                 <div className="prof-img-cont">
-                    <img className="profile-img" src={this.props.currentUser.photoUrl} onFocus={() => this.showMenu()} tabIndex="1" />
-                    <div className="menu-container" onBlur={() => this.showMenu()} >
+                    <img className="profile-img" src={this.props.currentUser.photoUrl} onFocus={this.showMenu()} onBlur={this.closeMenu()} tabIndex="1" />
+                    <div className="menu-container" >
                         {dropDownMenu}
                     </div>
                 </div>

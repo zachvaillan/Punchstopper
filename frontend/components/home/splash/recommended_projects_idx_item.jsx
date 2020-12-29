@@ -9,7 +9,9 @@ const RecommendedProjectsIndexItem = props => {
                 <div className="rec-proj-info">
                     <Link to={`/projects/${props.project.id}`}><p className="rec-proj-title">{props.project.title}</p></Link>
                     <p className="rec-proj-perc">{(props.project.funding_amount / props.project.funding_goal) * 100}%</p>
-                    <p>By {props.project.owner}</p>
+                    <div className="owner-container">
+                        <p>By&nbsp;</p><p className='featured-owner'>{props.project.owner}</p>
+                    </div>
                 </div>
             </div>
         </li> 

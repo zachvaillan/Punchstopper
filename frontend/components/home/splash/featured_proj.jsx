@@ -10,8 +10,10 @@ const FeaturedProject = props => {
                 <img className="featured-proj-img" src={props.projects[0].photoUrl} />
                 <p className="featured-proj-title">{props.projects[0].title}</p>
                 <p className="featured-proj-desc">{props.projects[0].description}</p>
+                <div className="owner-container">
+                    <p>By&nbsp;</p><p className='featured-owner'>{props.projects[0].owner}</p>
+                </div>
             </Link>
-            <p>{props.projects[0].owner}</p>
         </div>
     ) :
     (<p></p>);
