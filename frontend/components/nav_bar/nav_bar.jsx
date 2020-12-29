@@ -29,24 +29,28 @@ class NavBar extends React.Component {
         (<Link to="/login">Login</Link>);
 
         const dropDownMenu = (this.state.menu === "open") ? (
-            <div className="menu" onMouseLeave={() => this.showMenu()}>
+            <div className="menu">
                 <div className="upper-menu-cont">
                     <div className="upper-menu-nav">
                         <p className="menu-col-heading">YOUR ACCOUNT</p>
-                        <p>Recommended for you</p>
-                        <p>Profile</p>
-                        <p>Settings</p>
-                        <p>Activity</p>
+                        <p className="menu-nav-link">Recommended for you</p>
+                        <p className="menu-nav-link">Profile</p>
+                        <p className="menu-nav-link">Settings</p>
+                        <p className="menu-nav-link">Activity</p>
                     </div>
                     <div className="upper-menu-account">
                         <p className="menu-col-heading">CREATED PROJECTS</p>
-                        {console.log(this.props.currentUser)}
-                        <MenuProjects projects={this.props.currentUser.projects}/>
-                        <p className="new-project-from-dropdown">New</p>
-                        <div><Link to={`/${this.props.currentUser.id}`}>View all</Link></div>
+                        <MenuProjects currentUser={this.props.currentUser} fetchUser={this.props.fetchUser}/>
+                        <Link to={`/${this.props.currentUser.id}`} className="menu-new-cont">
+                            <div className="menu-new-icon">+</div>
+                            <p className="new-project-from-dropdown">New</p>
+                        </Link> 
+                        <div className='view-all-cont'><Link className="view-all" to={`/${this.props.currentUser.id}`}>View all</Link></div>
                     </div>
                 </div>
-                <button className="logout-btn" onClick={() => this.props.logoutUser()}>Logout</button>
+                <div className="logout-btn-cont">
+                    <button className="logout-btn" onClick={() => this.props.logoutUser()}>Log out</button>
+                </div>   
             </div>
         ) : (
             null
@@ -55,7 +59,7 @@ class NavBar extends React.Component {
         const topRightNav = this.props.currentUser ? (
             <div className="right-menu">
                 <div className="prof-img-cont">
-                    <img className="profile-img" src={this.props.currentUser.photoUrl} onMouseEnter={() => this.showMenu()}/>
+                    <img className="profile-img" src={this.props.currentUser.photoUrl} onFocus={() => this.showMenu()}  tabIndex="1" />
                     <div className="menu-container">
                         {dropDownMenu}
                     </div>

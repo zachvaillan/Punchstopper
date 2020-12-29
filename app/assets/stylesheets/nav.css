@@ -56,18 +56,26 @@
     object-fit: cover;
 }
 
+.profile-img:focus{
+    outline: none;
+}
+
 .prof-img-cont{
     display: flex;
     margin: 0 20px;
 }
 
 .logout-btn{
-    font-size: 15px;
-    color: #656969;
+    font-size: 14px;
     font-family: sans-serif;
     width: 100%;
     text-align: left;
-    margin-top: 20px;
+    margin-top: 30px;
+}
+
+.logout-btn:hover{
+    color: #037362;
+    text-decoration: underline;
 }
 
 .nav-items-wrapper{
@@ -86,12 +94,13 @@
 .menu {
     position: absolute;
     background-color: white;
-    border: 1px solid black;
+    border: 1px solid #656969;
     width: 575px;
     top: 65px;
     right: -20px;
-    padding: 40px;
+    padding: 30px 40px;
     box-sizing: border-box;
+    color: rgba(0, 0, 0, 0.726)
 }
 
 .upper-menu-cont{
@@ -100,8 +109,6 @@
 }
 
 .upper-menu-nav{
-    display: flex;
-    flex-wrap: wrap;
     width: 40%;
 }
 
@@ -126,4 +133,112 @@
     color: #282828;
     font-weight: 700;
     margin-bottom: 40px;
+    margin-top: 10px;
+}
+
+.menu-proj-img{
+    width: 50px;
+    height: 28.125px;
+    object-fit: cover;
+}
+
+.menu-project-item{
+    display: flex;
+    width: 100%;
+    margin: 15px 0px;
+}
+
+.menu-proj-cat{
+    height: 100%;
+    margin: auto 0px;
+    padding-left: 10px;
+    font-size: 14px;
+    font-family: "Maison Neue Book", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.menu-projects-list{
+    padding-bottom: 30px;
+    border-bottom: 1.5px solid #6569699d;
+}
+
+.menu-new-cont{
+    margin: 20px 0px;
+    display: flex;
+    background-image: linear-gradient(to right, transparent 51%, #003BFF 49%);
+    background-size: 200%;
+    transition: all 0.3s;
+}
+
+.menu-proj-cat:hover{
+    color: #037362;
+    text-decoration: underline;
+}
+
+.menu-new-cont:hover{
+    background-image: linear-gradient(to right, transparent 50%, #003BFF 50%);
+    background-position: -100% 0;
+}
+
+.menu-new-cont:hover > .new-project-from-dropdown{
+    color: white;
+}
+
+.menu-new-cont:hover > .menu-new-icon{
+    background-position: -100% 0;
+    background-image: linear-gradient(to right, #F7F7F6 50%, #003BFF 50%);
+}
+
+.menu-new-icon{
+    background-image: linear-gradient(to right, #F7F7F6 51%, #003BFF 49%);
+    width: 50px;
+    color: #003BFF;
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+    padding: 3px 0px;
+    transition: 0.3s;
+    background-size: 275.8px;
+}
+
+.new-project-from-dropdown{
+    color: rgba(0, 0, 0, 0.726);
+    margin: auto 0px;
+    font-size: 14px;
+    font-family: "Maison Neue Book", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    transition: 0.3s;
+    padding-left: 10px;
+}
+
+.logout-btn-cont{
+    color: rgba(0, 0, 0, 0.726);
+    width: 100%;
+    display: flex;
+    border-top: 1px solid #DCDEDD;
+    margin-top: 70px;
+}
+
+.view-all-cont{
+    margin-top: 40px;
+}
+
+.view-all{
+    color: rgba(0, 0, 0, 0.726);
+    font-size: 14px;
+    font-family: "Maison Neue Book", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.view-all:hover{
+    color: #037362;
+    text-decoration: underline;
+}
+
+.menu-nav-link{
+    margin: 20px 0px;
+    font-size: 14px;
+    font-family: "Maison Neue Book", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.menu-nav-link:hover{
+    color: #037362;
+    text-decoration: underline;
 }
