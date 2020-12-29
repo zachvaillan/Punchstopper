@@ -60,8 +60,8 @@ class NavBar extends React.Component {
         const topRightNav = this.props.currentUser ? (
             <div className="right-menu">
                 <div className="prof-img-cont">
-                    <img className="profile-img" src={this.props.currentUser.photoUrl} onFocus={() => this.showMenu()} onBlur={() => this.showMenu()} tabIndex="1" />
-                    <div className="menu-container">
+                    <img className="profile-img" src={this.props.currentUser.photoUrl} onFocus={() => this.showMenu()} tabIndex="1" />
+                    <div className="menu-container" onBlur={() => this.showMenu()} >
                         {dropDownMenu}
                     </div>
                 </div>

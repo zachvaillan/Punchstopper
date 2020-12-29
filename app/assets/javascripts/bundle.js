@@ -2341,12 +2341,12 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
         onFocus: function onFocus() {
           return _this2.showMenu();
         },
-        onBlur: function onBlur() {
-          return _this2.showMenu();
-        },
         tabIndex: "1"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "menu-container"
+        className: "menu-container",
+        onBlur: function onBlur() {
+          return _this2.showMenu();
+        }
       }, dropDownMenu))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "right-menu"
       }, loginCorner);
