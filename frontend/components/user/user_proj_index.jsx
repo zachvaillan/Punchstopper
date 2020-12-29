@@ -5,19 +5,21 @@ import UserProj from './user_proj';
 class UserProjects extends React.Component{
     constructor(props){
         super(props);
+        this.state = {};
     }
 
     componentDidMount(){
-        this.props.fetchUser(this.props.user);
+        this.props.fetchUser(this.props.user)
+            .then(user => this.setState({user: user}))
     }
 
     render(){
-        if (!this.props.userPage) return null;
+        if (!this.state.user) return null;
 
-        let projects = !this.props.userPage.projects ? (
+        let projects = !this.state.user.projects ? (
             null
         ) : (
-            <UserProj userPage={this.props.userPage} />
+            <UserProj userPage={this.state.user} />
         )
 
         return(

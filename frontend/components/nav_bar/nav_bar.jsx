@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { logoutUser } from '../../actions/session';
 import MenuProjects from './menu_projects';
+import UserProjIndex from '../user/user_proj_index';
 
 class NavBar extends React.Component { 
     
@@ -59,7 +60,7 @@ class NavBar extends React.Component {
         const topRightNav = this.props.currentUser ? (
             <div className="right-menu">
                 <div className="prof-img-cont">
-                    <img className="profile-img" src={this.props.currentUser.photoUrl} onFocus={() => this.showMenu()}  tabIndex="1" />
+                    <img className="profile-img" src={this.props.currentUser.photoUrl} onFocus={() => this.showMenu()} onBlur={() => this.showMenu()} tabIndex="1" />
                     <div className="menu-container">
                         {dropDownMenu}
                     </div>

@@ -2220,6 +2220,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _actions_session__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/session */ "./frontend/actions/session.js");
 /* harmony import */ var _menu_projects__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./menu_projects */ "./frontend/components/nav_bar/menu_projects.jsx");
+/* harmony import */ var _user_user_proj_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../user/user_proj_index */ "./frontend/components/user/user_proj_index.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2241,6 +2242,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 
 
 
@@ -2337,6 +2339,9 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
         className: "profile-img",
         src: this.props.currentUser.photoUrl,
         onFocus: function onFocus() {
+          return _this2.showMenu();
+        },
+        onBlur: function onBlur() {
           return _this2.showMenu();
         },
         tabIndex: "1"
@@ -3187,22 +3192,32 @@ var UserProjects = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(UserProjects);
 
   function UserProjects(props) {
+    var _this;
+
     _classCallCheck(this, UserProjects);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.state = {};
+    return _this;
   }
 
   _createClass(UserProjects, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchUser(this.props.user);
+      var _this2 = this;
+
+      this.props.fetchUser(this.props.user).then(function (user) {
+        return _this2.setState({
+          user: user
+        });
+      });
     }
   }, {
     key: "render",
     value: function render() {
-      if (!this.props.userPage) return null;
-      var projects = !this.props.userPage.projects ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_user_proj__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        userPage: this.props.userPage
+      if (!this.state.user) return null;
+      var projects = !this.state.user.projects ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_user_proj__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        userPage: this.state.user
       });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-show-bg"

@@ -20,7 +20,8 @@ class UserProj extends React.Component{
                 );
             
 
-                return <li key={project.id} className="user-project">
+                return (
+                    <li key={project.id} className="user-project">
                     {projectImage}
                     <div className="space-between">
                         <div className="user-proj-info-cont">
@@ -32,6 +33,7 @@ class UserProj extends React.Component{
                         </div>
                     </div>
                 </li>
+                );
             })
         )
     }
