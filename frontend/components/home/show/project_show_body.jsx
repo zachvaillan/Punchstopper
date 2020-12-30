@@ -51,7 +51,7 @@ class ProjectShowBody extends React.Component{
                             Continue
                         </button>
                     </div>
-                    <RewardsIndex rewards={this.props.project.rewards} />
+                    <RewardsIndex currentUser={this.props.currentUser} addBack={this.props.addBack} rewards={this.props.project.rewards} project={this.props.project} />
                 </div>
             </div>
         )

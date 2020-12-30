@@ -14,10 +14,18 @@ class ProjectShow extends React.Component{
             .then( project => this.setState({project}));
     }
 
+    componentDidUpdate(prevProps, prevState){
+        if(this.state.rerender === "trigger"){
+            this.setState({rerender: null});
+            this.props.fetchProject(this.props.match.params.projectId)
+                .then(project => this.setState({ project }));
+        }
+    }
+
     addBack(projectId, newProject, back){
         this.props.createBack(back);
         this.props.addBackingAmount(projectId, newProject)
-            .then( project => console.log(project));
+            .then(() => this.setState({rerender: "trigger"}))
     }
 
     render(){

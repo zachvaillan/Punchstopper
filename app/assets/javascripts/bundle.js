@@ -1314,11 +1314,31 @@ var ProjectShow = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps, prevState) {
+      var _this3 = this;
+
+      if (this.state.rerender === "trigger") {
+        this.setState({
+          rerender: null
+        });
+        this.props.fetchProject(this.props.match.params.projectId).then(function (project) {
+          return _this3.setState({
+            project: project
+          });
+        });
+      }
+    }
+  }, {
     key: "addBack",
     value: function addBack(projectId, newProject, back) {
+      var _this4 = this;
+
       this.props.createBack(back);
-      this.props.addBackingAmount(projectId, newProject).then(function (project) {
-        return console.log(project);
+      this.props.addBackingAmount(projectId, newProject).then(function () {
+        return _this4.setState({
+          rerender: "trigger"
+        });
       });
     }
   }, {
@@ -1456,7 +1476,10 @@ var ProjectShowBody = /*#__PURE__*/function (_React$Component) {
           return _this3.props.addBack(_this3.props.project.id, _this3.state.project, _this3.state.back);
         }
       }, "Continue")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rewards_rewards_index__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        rewards: this.props.project.rewards
+        currentUser: this.props.currentUser,
+        addBack: this.props.addBack,
+        rewards: this.props.project.rewards,
+        project: this.props.project
       })));
     }
   }]);
@@ -2617,11 +2640,16 @@ var RewardsIndex = /*#__PURE__*/function (_React$Component) {
   _createClass(RewardsIndex, [{
     key: "render",
     value: function render() {
+      var _this = this;
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.rewards.map(function (reward) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           className: "reward-idx-li",
           key: reward.id
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rewards_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          currentUser: _this.props.currentUser,
+          project: _this.props.project,
+          addBack: _this.props.addBack,
           reward: reward
         }));
       }));
@@ -2678,14 +2706,41 @@ var RewardsIndexItem = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(RewardsIndexItem);
 
   function RewardsIndexItem(props) {
+    var _this;
+
     _classCallCheck(this, RewardsIndexItem);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.handleUpdate = _this.handleUpdate.bind(_assertThisInitialized(_this));
+    _this.state = {
+      project: _this.props.project,
+      back: null
+    };
+    return _this;
   }
 
   _createClass(RewardsIndexItem, [{
+    key: "handleUpdate",
+    value: function handleUpdate() {
+      var _this2 = this;
+
+      console.log(this.props);
+      return function (e) {
+        _this2.setState({
+          back: {
+            backing_amount: e.target.value,
+            backer_id: _this2.props.currentUser.id,
+            reward_id: _this2.props.reward.id
+          }
+        });
+      };
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
+      var backerCount = !this.props.reward.backs ? 0 : this.props.reward.backs.length;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "rewards-idx-item"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
@@ -2710,7 +2765,16 @@ var RewardsIndexItem = /*#__PURE__*/function (_React$Component) {
         className: "reward-info"
       }, "Anywhere in the world")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "backers-count"
-      }, "### backers")));
+      }, backerCount, " backers"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "backing-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        onChange: this.handleUpdate()
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this3.props.addBack(_this3.props.project.id, _this3.state.project, _this3.state.back);
+        }
+      }, "Add Back"))));
     }
   }]);
 
