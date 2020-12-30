@@ -3259,7 +3259,9 @@ var UserProj = /*#__PURE__*/function (_React$Component) {
   _createClass(UserProj, [{
     key: "render",
     value: function render() {
-      return Object.values(this.props.userPage.projects).map(function (project) {
+      var _this = this;
+
+      return Object.values(this.props.projects).map(function (project) {
         var projectTitle = project.title ? project.title : "Edit to add title!";
         console.log(project);
         console.log(project.photo);
@@ -3269,6 +3271,17 @@ var UserProj = /*#__PURE__*/function (_React$Component) {
           src: project.photoUrl,
           className: "project-image"
         }));
+        var buttons = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "edit-button-cont"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/projects/".concat(project.id, "/edit"),
+          className: "edit-button"
+        }, "EDIT"));
+        {
+          if (_this.props.backed) {
+            buttons = null;
+          }
+        }
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: project.id,
           className: "user-project"
@@ -3276,12 +3289,7 @@ var UserProj = /*#__PURE__*/function (_React$Component) {
           className: "space-between"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "user-proj-info-cont"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, projectTitle), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, project.description)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "edit-button-cont"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-          to: "/projects/".concat(project.id, "/edit"),
-          className: "edit-button"
-        }, "EDIT"))));
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, projectTitle), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, project.description)), buttons));
       });
     }
   }]);
@@ -3381,7 +3389,10 @@ var UserProjects = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, UserProjects);
 
     _this = _super.call(this, props);
-    _this.state = {};
+    _this.state = {
+      page: "created-projects"
+    };
+    _this.handlePageSwitch = _this.handlePageSwitch.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -3397,25 +3408,71 @@ var UserProjects = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "handlePageSwitch",
+    value: function handlePageSwitch() {
+      var _this3 = this;
+
+      return function (e) {
+        _this3.setState({
+          page: e.target.className
+        });
+      };
+    }
+  }, {
     key: "render",
     value: function render() {
       if (!this.state.user) return null;
       var projects = !this.state.user.projects ? null : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_user_proj__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        userPage: this.state.user
+        projects: this.state.user.projects
       });
+      var highlight = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "current-user-nav"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "backed-projs",
+        onClick: this.handlePageSwitch()
+      }, "Backed projects"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "created-projs",
+        style: {
+          textDecoration: "underline"
+        }
+      }, "Created projects"));
+      var heading = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "created-projects"
+      }, "Created projects"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "created-projects-subhead"
+      }, "A place to keep track of all your created projects"));
+
+      if (this.state.page === "backed-projs") {
+        highlight = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "current-user-nav"
+        }, console.log(this.state.user), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "backed-projs",
+          style: {
+            textDecoration: "underline"
+          }
+        }, "Backed projects"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "created-projs",
+          onClick: this.handlePageSwitch()
+        }, "Created projects"));
+        projects = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_user_proj__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          projects: this.state.user.backed_projects,
+          backed: true
+        });
+        heading = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "created-projects"
+        }, "Backed projects"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "created-projects-subhead"
+        }, "A place to keep track of all your backed projects"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "started"
+        }, "Started"));
+      }
+
+      ;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-show-bg"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row-width"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "current-user-nav"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Activity"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Backed projects"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Created projects"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Settings"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Profile")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "created-projects"
-      }, "Created projects"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "created-projects-subhead"
-      }, "A place to keep track of all your created projects"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "started"
-      }, "Started"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, highlight, heading, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "user-project-list"
       }, projects)));
     }

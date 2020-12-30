@@ -15,6 +15,10 @@ class User < ApplicationRecord
         foreign_key: :backer_id,
         class_name: "Back"
 
+    has_many :backed_projects, 
+        through: :backings,
+        source: :project
+
     has_one_attached :photo
 
     def self.find_by_credentials(email, password)

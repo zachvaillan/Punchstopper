@@ -80,6 +80,7 @@
 
 .current-user-nav > p{
     margin: 0px 10px;
+    cursor: pointer;
 }
 
 .created-projects{

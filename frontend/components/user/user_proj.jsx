@@ -9,7 +9,7 @@ class UserProj extends React.Component{
     render(){
 
         return(
-            Object.values(this.props.userPage.projects).map( project => {
+            Object.values(this.props.projects).map( project => {
                 let projectTitle = project.title ? project.title : "Edit to add title!";
                 console.log(project)
                 console.log(project.photo)
@@ -18,6 +18,16 @@ class UserProj extends React.Component{
                         <img src={project.photoUrl} className="project-image"></img>
                     </div>
                 );
+
+                let buttons = (
+                    <div className="edit-button-cont">
+                        <Link to={`/projects/${project.id}/edit`} className="edit-button">EDIT</Link>
+                    </div>
+                )
+
+                {if(this.props.backed){
+                    buttons = null;
+                }}
             
 
                 return (
@@ -28,9 +38,7 @@ class UserProj extends React.Component{
                             <div>{projectTitle}</div>
                             <div>{project.description}</div>
                         </div>
-                        <div className="edit-button-cont">
-                            <Link to={`/projects/${project.id}/edit`} className="edit-button">EDIT</Link>
-                        </div>
+                        {buttons}
                     </div>
                 </li>
                 );
