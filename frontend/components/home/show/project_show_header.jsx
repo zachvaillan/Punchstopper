@@ -3,9 +3,25 @@ import React from 'react';
 class ProjectShowHeader extends React.Component{
     constructor(props){
         super(props);
+        this.handleClickScroll = this.handleClickScroll.bind(this);
+    }
+
+    handleClickScroll(e) {
+        e.preventDefault();
+        let element = document.getElementById('no-reward-cont')
+        element.scrollIntoView({
+            behavior: "smooth"
+        });
     }
 
     render(){
+
+        let width;
+        if ((this.props.project.funding_amount / this.props.project.funding_goal) * 100 > 100) {
+            width = 100;
+        } else {
+            width = (this.props.project.funding_amount / this.props.project.funding_goal) * 100;
+        }
 
         return(
             <div className="proj-show-head-cont">
@@ -25,22 +41,25 @@ class ProjectShowHeader extends React.Component{
                         </div>
                         <div className="proj-show-head-right">
                             <div className="proj-show-head-list">
+                                <div className="funding-bar-bg">
+                                    <div className="funding-bar" style={{ width: `${width}%` }}></div>
+                                </div>
                                 <div>
                                     <p className="proj-fund-amnt">${this.props.project.funding_amount}</p>
-                                    <p className="proj-head-p">pledged of $100,000 goal</p>
+                                    <p className="proj-head-p">pledged of {this.props.project.funding_goal} goal</p>
                                 </div>
 
                                 <div>
-                                    <p className="proj-head-h">5,000</p>
+                                    <p className="proj-head-h">{this.props.project.backers ? this.props.project.backers.length : null}</p>
                                     <p className="proj-head-p">backers</p>
                                 </div>
 
                                 <div>
-                                    <p className="proj-head-h">50</p>
-                                    <p className="proj-head-p">days to go</p>
+                                    {/* <p className="proj-head-h">{ this.pro -  : "Unlimited"}</p> */}
+                                    {/* <p className="proj-head-p">days to go</p> */}
                                 </div>
                                 
-                                <button className="proj-head-back-btn">Back this project</button>
+                                <button onClick={this.handleClickScroll} className="proj-head-back-btn">Back this project</button>
 
                             </div>
                         </div>
@@ -49,11 +68,11 @@ class ProjectShowHeader extends React.Component{
 
                 <div className="proj-body-nav">
                         <div className="proj-body-nav-tabs">
-                            <a href="#">Campaign</a>
-                            <a href="#">FAQ</a>
+                            <a>Campaign</a>
+                            {/* <a href="#">FAQ</a>
                             <a href="#">Updates</a>
                             <a href="#">Comments</a>
-                            <a href="#">Community</a>
+                            <a href="#">Community</a> */}
                         </div>
 
                         {/* <div className="proj-body-nav-actions">

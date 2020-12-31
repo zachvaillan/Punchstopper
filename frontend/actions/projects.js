@@ -26,12 +26,10 @@ export const createProject = project => dispatch => (
 
 export const updateProject = (projectId, project) => dispatch => (
     patchProject(projectId, project)
-        .then( project => console.log(project))
 );
 
 export const addBackingAmount = (projectId, project) => dispatch => (
     patchProjectBacking(projectId, project)
-        .then( project => console.log(project))
 );
 
 export const fetchProject = projectId => dispatch => (

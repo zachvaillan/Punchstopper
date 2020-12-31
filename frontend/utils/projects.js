@@ -6,7 +6,6 @@ export const getProjects = () => {
 };
 
 export const getProjectsByCategory = category => {
-    console.log("IN UTIL");
     return $.ajax({
         url: `api/projectsin/${category}`,
         method: `GET`
@@ -14,7 +13,6 @@ export const getProjectsByCategory = category => {
 };
 
 export const getProject = projectId => {
-    console.log(typeof projectId)
     return $.ajax({
         url: `api/projects/${projectId}`,
         method: `GET`

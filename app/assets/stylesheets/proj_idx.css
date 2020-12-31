@@ -237,10 +237,12 @@
 .user-projects-list{
     display: flex;
     overflow: auto;
+    min-height: 300px;
 }
 
 .user-proj{
-    margin-right: 10px;
+    margin-right: 20px;
+    width: 250px;
 }
 
 .user-proj:hover .useridx-proj-title{
@@ -329,4 +331,17 @@
     padding-right: 15px;
     padding-bottom: 15px;
     float: left;
+}
+
+.funding-bar-bg{
+    width: 100%;
+    background-color: lightgrey;
+    height: 10px;
+    margin-top: -3px;
+}
+
+.funding-bar{
+    height: 10px;
+    background-color: green;
+    width: 0px;
 }

@@ -14,8 +14,10 @@ class UserProjects extends React.Component {
         let projectsArray = this.props.projects;
         let showcase = (
             <div className="user-projects-list">
-                {projectsArray.slice(0).map(project => {
-                    return (<UserProjectsIndexItem project={project} key={project.id} />)
+                {projectsArray.slice(projectsArray.length - 20).map(project => {
+                    if(project.launched){
+                        return (<UserProjectsIndexItem project={project} key={project.id} />)
+                    }
                 })}
             </div>)
 

@@ -12,16 +12,21 @@ class ProjectShowBody extends React.Component{
     }
 
     handleUpdate(){
-        console.log("hello")
         return e => {
-            console.log(this.state)
             this.setState({
                 back: {
-                    backing_amount: e.target.value,
+                    backing_amount: parseInt(e.target.value),
                     backer_id: this.props.currentUser.id,
                     reward_id: 1
                 }
             })
+            setTimeout(() => {
+                console.log(this.state)
+                let newProject = this.state.project;
+                newProject.funding_amount = this.state.back.backing_amount ? parseInt(newProject.funding_amount) + this.state.back.backing_amount : newProject.funding_amount;
+                this.setState({ project: newProject });
+            }, 100)
+                
         }
     }
 
@@ -30,13 +35,13 @@ class ProjectShowBody extends React.Component{
 
         return(
             <div className="proj-body-container">
-                <div className="about-nav">Hello</div>
+                <div className="about-nav"><p>Story</p></div>
 
-                <p className="story">Hello</p>
+                <div className="story">{this.props.project.story ? this.props.project.story : "This project does not have a story."}</div>
 
                 <div className="rewards-index-sidebar">
                     <p className="support">Support</p>
-                    <div className="no-reward-cont">
+                    <div id="no-reward-cont" className="no-reward-cont">
                         <p className="reward-amount">Pledge without a reward</p>
                         <div className="backing-input-cont">
                             <p className="dollar">$</p>

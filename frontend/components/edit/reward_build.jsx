@@ -26,7 +26,6 @@ class RewardBuild extends React.Component{
     render(){
         return(
             <form>
-                {console.log(this.props.projectId)}
                 <p>Title</p>
                 <input type="text" onChange={this.handleUpdate("title")} />
                 <p>Description</p>
@@ -34,7 +33,7 @@ class RewardBuild extends React.Component{
                 <p>Delivery Date</p>
                 <input type="date" onChange={this.handleUpdate("deliver_date")} />
                 <p>Minimum Amount</p>
-                <input type="text" onChange={this.handleUpdate("min_amount")} />
+                <input type="number" onChange={this.handleUpdate("min_amount")} />
                 <button type="submit" onClick={this.handleSubmit}>Create Reward</button>
             </form>
         )

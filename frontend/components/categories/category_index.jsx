@@ -1,6 +1,7 @@
 import React from 'react';
 import RecommendedProjectsIndex from '../home/splash/recommended_projects_idx';
 import FeaturedProject from '../home/splash/featured_proj';
+import UserProjectsIndexItem from '../home/splash/user_projects_idx_item';
 import { Link } from 'react-router-dom';
 
 
@@ -34,6 +35,16 @@ class CategoryIndex extends React.Component {
     render() {
         if (!this.props.projects) return null;
 
+        let projectsArray = this.props.projects;
+        let showcase = (
+            <div className="user-projects-list">
+                {projectsArray.slice(projectsArray.length - 20).map(project => {
+                    if (project.launched) {
+                        return (<UserProjectsIndexItem project={project} key={project.id} />)
+                    }
+                })}
+            </div>)
+
         return (
             <div>
                 <div>{this.props.currentUser.photo}</div>
@@ -63,12 +74,20 @@ class CategoryIndex extends React.Component {
                 </div>
                 <div className="subscribe-wrapper">
                     <div className="subscribe-container">
-                        <h2>Discover the best and brightest projects on Kickstarter</h2>
-                        <h4>Sign up to receive our weekly Projects We Love newsletter.</h4>
-                        <form>
-                            <input className="email-subscribe-input" type="text" placeholder="Enter email address" />
-                            <button type="submit" className="subscribe-btn">Subscribe</button>
-                        </form>
+                        <h2>Discover more projects by Zach Vaillancourt</h2>
+                        <h4>Connect with me on LinkedIn and follow me on Github for more projects.</h4>
+                        <div className="logos-container">
+                            <a className="linkedin-cont" href="https://www.linkedin.com/in/zach-s-vaillancourt-0b0342112/" target="_blank"><img className="linkedin-logo" src="https://punchstopper-seeds.s3-us-west-1.amazonaws.com/LI-Logo.png" /></a>
+                            <a href="https://github.com/zachvaillan/Punchstopper" target="_blank"><img className="github-logo" src='https://punchstopper-seeds.s3-us-west-1.amazonaws.com/GitHub_Logo.png' /></a>
+                        </div>
+                    </div>
+                </div>
+                <div className="user-projects">
+                    <div className="fresh-favorites">
+                        <div className="fresh-favs-wrapper">
+                            <p className="fresh-favs-p">FRESH FAVORITES</p>
+                            {showcase}
+                        </div>
                     </div>
                 </div>
             </div>

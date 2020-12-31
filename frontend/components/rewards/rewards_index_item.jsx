@@ -12,15 +12,20 @@ class RewardsIndexItem extends React.Component{
     }
 
     handleUpdate() {
-        console.log(this.props)
         return e => {
             this.setState({
                 back: {
-                    backing_amount: e.target.value,
+                    backing_amount: parseInt(e.target.value),
                     backer_id: this.props.currentUser.id,
                     reward_id: this.props.reward.id
                 }
             })
+            setTimeout(() => {
+                console.log(this.state)
+                let newProject = this.state.project;
+                newProject.funding_amount = parseInt(newProject.funding_amount) + this.state.back.backing_amount;
+                this.setState({ project: newProject });
+            }, 100)
         }
     }
 
@@ -43,7 +48,7 @@ class RewardsIndexItem extends React.Component{
                     </div>
                     <p className="backers-count">{backerCount} backers</p>
                     <div className="backing-container">
-                        <input type="text" onChange={this.handleUpdate()} />
+                        <input type="number" onChange={this.handleUpdate()} />
                         <button onClick={() => this.props.addBack(this.props.project.id, this.state.project, this.state.back)}>Add Back</button>
                     </div>
                 </div>

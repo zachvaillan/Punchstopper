@@ -87,13 +87,13 @@ class NavBar extends React.Component {
         (<div className="global-nav">
             <div className="left-menu">
                 <div className="nav-items-wrapper">
-                    <a href="#">Explore</a>
+                    {/* <a href="#">Explore</a> */}
                     {newProjectLink}
                 </div>
             </div>
 
             <div className="global-logo">
-                <Link to="/"><h1 className="proj-name">PunchStopper</h1></Link>
+                <Link to="/"><h1 className="proj-name">Punchstopper</h1></Link>
             </div>
 
             {topRightNav}
@@ -107,7 +107,7 @@ class NavBar extends React.Component {
                     <div className="left-menu">
                     </div>
                     <div className="global-logo">
-                        <Link to="/"><h1 className="proj-name">PunchStopper</h1></Link>
+                        <Link to="/"><h1 className="proj-name">Punchstopper</h1></Link>
                     </div>
                     <div className="right-menu">
                     </div>

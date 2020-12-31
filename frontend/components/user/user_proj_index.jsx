@@ -52,7 +52,6 @@ class UserProjects extends React.Component{
             highlight = (
                 <div className="current-user-nav">
                     {/* <p>Activity</p> */}
-                    {console.log(this.state.user)}
                     <p className="backed-projs" style={{textDecoration: "underline"}}>Backed projects</p>
                     <p className="created-projs" onClick={this.handlePageSwitch()}>Created projects</p>
                     {/* <p>Settings</p>
