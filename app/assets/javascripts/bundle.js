@@ -2185,7 +2185,7 @@ var RecommendedProjectsIndex = /*#__PURE__*/function (_React$Component) {
       var projectsArray = this.props.projects;
       var showcase = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "recommended-inner"
-      }, projectsArray.slice(0, 3).map(function (project) {
+      }, projectsArray.slice(1, 4).map(function (project) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_recommended_projects_idx_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           project: project,
           key: project.id
@@ -2195,7 +2195,7 @@ var RecommendedProjectsIndex = /*#__PURE__*/function (_React$Component) {
       if (this.state.page === 2) {
         showcase = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "recommended-inner"
-        }, projectsArray.slice(3, 6).map(function (project) {
+        }, projectsArray.slice(4, 7).map(function (project) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_recommended_projects_idx_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
             project: project,
             key: project.id
@@ -2206,7 +2206,7 @@ var RecommendedProjectsIndex = /*#__PURE__*/function (_React$Component) {
       if (this.state.page === 3) {
         showcase = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "recommended-inner"
-        }, projectsArray.slice(6, 9).map(function (project) {
+        }, projectsArray.slice(7, 10).map(function (project) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_recommended_projects_idx_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
             project: project,
             key: project.id

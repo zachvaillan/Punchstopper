@@ -1,6 +1,8 @@
 class Project < ApplicationRecord
 
-    validates :description, length: { maximum: 135 }
+    validates :description, presence: true, length: { maximum: 135 }
+    validates :category, :launched, :owner_id, :location, presence: true
+    validates :funding_amount, numericality: { only_integer: true }
 
     belongs_to :owner,
         foreign_key: :owner_id,

@@ -36,7 +36,7 @@ class RecommendedProjectsIndex extends React.Component {
         let projectsArray = this.props.projects;
         let showcase = (
             <div className="recommended-inner">
-                {projectsArray.slice(0, 3).map( project => { 
+                {projectsArray.slice(1, 4).map( project => { 
                     return (<RecommendedProjectsIndexItem project={project} key={project.id} />) 
                 })}
             </div>)
@@ -44,7 +44,7 @@ class RecommendedProjectsIndex extends React.Component {
         if (this.state.page === 2){
             showcase = (
             <div className="recommended-inner">
-                {projectsArray.slice(3, 6).map( project => { 
+                {projectsArray.slice(4, 7).map( project => { 
                     return (<RecommendedProjectsIndexItem project={project} key={project.id} />) 
                 })}
             </div>)
@@ -53,7 +53,7 @@ class RecommendedProjectsIndex extends React.Component {
         if (this.state.page === 3){
             showcase = (
             <div className="recommended-inner">
-                {projectsArray.slice(6, 9).map( project => { 
+                {projectsArray.slice(7, 10).map( project => { 
                     return (<RecommendedProjectsIndexItem project={project} key={project.id} />) 
                 })}
             </div>)

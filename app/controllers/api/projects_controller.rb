@@ -6,7 +6,7 @@ class Api::ProjectsController < ApplicationController
         if @project.save
             render :index
         else
-            render json: @project.errors.full_messages
+            puts @project.errors.full_messages
         end
     end
 
