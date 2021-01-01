@@ -23,10 +23,7 @@
     "test": "test"
   },
   "devDependencies": {},
-  "scripts": {
-    "postinstall": "webpack",
-    "start": "webpack --watch --mode=development"
-  },
+ 
   "engines": {
     "node": "12.5.0",
     "npm": "6.9.0"
