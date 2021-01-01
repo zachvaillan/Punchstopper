@@ -1598,8 +1598,7 @@ var ProjectShowBody = /*#__PURE__*/function (_React$Component) {
         _this2.setState({
           back: {
             backing_amount: parseInt(e.target.value),
-            backer_id: _this2.props.currentUser.id,
-            reward_id: 1
+            backer_id: _this2.props.currentUser.id
           }
         });
 

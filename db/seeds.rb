@@ -15,4 +15,25 @@ guest = User.create!({
 })
 
 # guest.photo.attach(io: File.open('/Users/zachvaillancourt/Downloads/jr-korpa-iTFu87JYsr4-unsplash.jpg'), filename: 'jr-korpa-iTFu87JYsr4-unsplash.jpg')
-# guest.photo.attach(io: File.open('/Users/zachvaillancourt/Downloads/jr-korpa-iTFu87JYsr4-unsplash.jpg'), filename: 'jr-korpa-iTFu87JYsr4-unsplash.jpg')
+guest.photo.attach(io: File.open('/Users/zachvaillancourt/Downloads/jr-korpa-iTFu87JYsr4-unsplash.jpg'), filename: 'jr-korpa-iTFu87JYsr4-unsplash.jpg')
+
+project_maker = User.create!({
+  id: 4,
+  name: 'Project Man',
+  email: 'project-man12@gmail.com',
+  password: 'project-king!'
+})
+
+project1 = Project.create!({
+  title: "Build the Eiffel Tower",
+  description: "Build a monument to Paris!",
+  funding_goal: 10000,
+  funding_amount: 100,
+  owner_id: 4,
+  location: "Australia",
+  category: "Comics",
+  launched: true
+})
+
+project1.photo.attach(io: File.open('/Users/zachvaillancourt/Downloads/kitera-dent-klcIcBJ-0Vc-unsplash.jpg'), filename: 'kitera-dent-klcIcBJ-0Vc-unsplash.jpg')
+
