@@ -16,8 +16,7 @@ class ProjectShowBody extends React.Component{
             this.setState({
                 back: {
                     backing_amount: parseInt(e.target.value),
-                    backer_id: this.props.currentUser.id,
-                    reward_id: 1
+                    backer_id: this.props.currentUser.id
                 }
             })
             setTimeout(() => {

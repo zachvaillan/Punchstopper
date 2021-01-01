@@ -637,6 +637,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _reward_build__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reward_build */ "./frontend/components/edit/reward_build.jsx");
+/* harmony import */ var _rewards_rewards_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../rewards/rewards_index */ "./frontend/components/rewards/rewards_index.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -664,6 +666,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
+
 var ProjectBuild = /*#__PURE__*/function (_React$Component) {
   _inherits(ProjectBuild, _React$Component);
 
@@ -678,6 +682,8 @@ var ProjectBuild = /*#__PURE__*/function (_React$Component) {
     _this.state = {};
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.handleFile = _this.handleFile.bind(_assertThisInitialized(_this));
+    _this.handleAddReward = _this.handleAddReward.bind(_assertThisInitialized(_this));
+    _this.handleLaunch = _this.handleLaunch.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -691,55 +697,131 @@ var ProjectBuild = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
-    key: "handleUpdate",
-    value: function handleUpdate(field) {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps, prevState) {
       var _this3 = this;
 
+      if (this.state.rerender === "trigger") {
+        this.setState({
+          rerender: null
+        });
+        this.props.fetchProject(this.props.match.params.projectId).then(function (project) {
+          return _this3.setState(project);
+        });
+      }
+    }
+  }, {
+    key: "handleUpdate",
+    value: function handleUpdate(field) {
+      var _this4 = this;
+
       return function (e) {
-        _this3.setState(_defineProperty({}, field, e.target.value));
+        console.log(_this4.state);
+
+        _this4.setState(_defineProperty({}, field, e.target.value));
       };
     }
   }, {
     key: "handleFile",
     value: function handleFile() {
-      var _this4 = this;
+      var _this5 = this;
 
       return function (e) {
-        _this4.setState({
+        _this5.setState({
           photoFile: e.target.files[0]
         });
       };
     }
   }, {
-    key: "handleSubmit",
-    value: function handleSubmit(e) {
-      var _this5 = this;
+    key: "handleAddReward",
+    value: function handleAddReward() {
+      var _this6 = this;
+
+      this.setState({
+        rerender: "trigger"
+      }).then(function () {
+        return console.log(_this6.state);
+      });
+    }
+  }, {
+    key: "handleLaunch",
+    value: function handleLaunch(e) {
+      var _this7 = this;
 
       e.preventDefault();
       var formData = new FormData();
       formData.append('project[category]', this.state.category);
       formData.append('project[location]', this.state.location);
       formData.append('project[funding_goal]', this.state.funding_goal);
-      formData.append('project[photo]', this.state.photoFile);
+      this.state.photoFile ? formData.append('project[photo]', this.state.photoFile) : null;
+      formData.append('project[title]', this.state.title);
+      formData.append('project[description]', this.state.description); // formData.append('project[owner_id]', 1);
+
+      formData.append('project[launched]', true);
+      console.log(formData);
+      this.props.updateProject(this.props.match.params.projectId, formData).then(function () {
+        return _this7.props.history.push("/".concat(_this7.props.currentUser.id));
+      });
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      var _this8 = this;
+
+      e.preventDefault();
+      var formData = new FormData();
+      formData.append('project[category]', this.state.category);
+      formData.append('project[location]', this.state.location);
+      formData.append('project[funding_goal]', this.state.funding_goal);
+      this.state.photoFile ? formData.append('project[photo]', this.state.photoFile) : null;
+      formData.append('project[story]', this.state.story);
       formData.append('project[title]', this.state.title);
       formData.append('project[description]', this.state.description);
       this.props.updateProject(this.props.match.params.projectId, formData).then(function () {
-        return _this5.props.history.push("/".concat(_this5.props.currentUser.id));
+        return _this8.props.history.push("/".concat(_this8.props.currentUser.id));
       });
     }
   }, {
     key: "render",
     value: function render() {
-      var _this6 = this;
+      var _this9 = this;
 
       if (!this.props.project) return null;
       var locations = ["Australia", "Belgium", "Canada", "Denmark", "France", "Germany", "Hong-Kong", "Japan", "United-States"];
       var categories = ["Art", "Comics", "Tech", "Film", "Craft", "Games", "Music", "Publishing"];
+      var launched = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "spacer"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "left-col-edit"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "edit-heading"
+      }, "Launch"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: "edit-subhead"
+      }, "When you're ready, make your project public by launching it!")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "right-col-edit"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "create-reward",
+        onClick: this.handleLaunch
+      }, "Launch"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "breaker"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+        className: "create-reward",
+        to: "/projects/".concat(this.props.project.id)
+      }, "Preview"))));
+
+      if (this.props.project.launched) {
+        launched = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "spacer"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "edit-heading"
+        }, "Launched!")));
+      }
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "edit-form"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, launched, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "spacer"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "left-col-edit"
@@ -750,13 +832,30 @@ var ProjectBuild = /*#__PURE__*/function (_React$Component) {
       }, "Write a clear brief title that helps people quickly understand the gist of your project.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "right-col-edit"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Title"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "edit-input",
         type: "text",
         placeholder: this.props.project.title || "No title yet!",
         onChange: this.handleUpdate("title")
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Subtitle"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "edit-input",
         type: "text",
         placeholder: this.props.project.description || "No subtitle yet!",
         onChange: this.handleUpdate("description")
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "spacer"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "left-col-edit"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "edit-heading"
+      }, "Project Story"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: "edit-subhead"
+      }, "Tell the your project's story. Why should people back it?")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "right-col-edit"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "edit-story",
+        type: "textarea",
+        placeholder: this.props.project.story || "No story yet!",
+        onChange: this.handleUpdate("story")
       })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "spacer"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -768,6 +867,7 @@ var ProjectBuild = /*#__PURE__*/function (_React$Component) {
       }, "Choose a picture that represents your project.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "right-col-edit"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "edit-input",
         type: "file",
         onChange: this.handleFile()
       })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -781,11 +881,12 @@ var ProjectBuild = /*#__PURE__*/function (_React$Component) {
       }, "Choose the category that most closely aligns with your project.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "right-col-edit"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        className: "edit-input",
         onChange: this.handleUpdate("category")
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: this.props.project.category
       }, this.props.project.category), categories.map(function (cat) {
-        if (cat != _this6.props.category) {
+        if (cat != _this9.props.category) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
             value: cat
           }, cat);
@@ -801,11 +902,12 @@ var ProjectBuild = /*#__PURE__*/function (_React$Component) {
       }, "Enter the location that best describes where your country is based.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "right-col-edit"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        className: "edit-input",
         onChange: this.handleUpdate("location")
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: this.props.project.location
       }, this.props.project.location), locations.map(function (loc) {
-        if (loc != _this6.props.project.location) {
+        if (loc != _this9.props.project.location) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
             value: loc
           }, loc.split("-").join(" "));
@@ -821,6 +923,7 @@ var ProjectBuild = /*#__PURE__*/function (_React$Component) {
       }, "Set an achievable goal that covers what you need to complete your project.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "right-col-edit"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "edit-input",
         type: "number",
         placeholder: this.props.project.funding_goal || "10,000",
         onChange: this.handleUpdate("funding_goal")
@@ -834,13 +937,22 @@ var ProjectBuild = /*#__PURE__*/function (_React$Component) {
         onClick: this.handleSubmit
       }, "Update Info")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "spacer"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "left-col-edit"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "edit-heading"
       }, "Add reward"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reward_build__WEBPACK_IMPORTED_MODULE_1__["default"], {
         project: this.props.project,
         projectId: this.props.project.id,
-        createReward: this.props.createReward
-      })));
+        createReward: this.props.createReward,
+        handleAddReward: this.handleAddReward
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "right-col-edit"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Rewards"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "edit-rewards-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rewards_rewards_index__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        rewards: this.props.project.rewards
+      }))))));
     }
   }]);
 
@@ -970,25 +1082,30 @@ var RewardBuild = /*#__PURE__*/function (_React$Component) {
       e.preventDefault();
       var reward = Object.assign({}, this.state);
       this.props.createReward(reward).then(function () {
-        return _this3.props.history.push("/projects/".concat(_this3.props.projectId, "/edit"));
+        return _this3.props.handleAddReward();
       });
     }
   }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Title"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "edit-input",
         type: "text",
         onChange: this.handleUpdate("title")
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Description"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "edit-input",
         type: "text",
         onChange: this.handleUpdate("description")
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Delivery Date"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "edit-input",
         type: "date",
         onChange: this.handleUpdate("deliver_date")
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Minimum Amount"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "edit-input",
         type: "number",
         onChange: this.handleUpdate("min_amount")
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "create-reward",
         type: "submit",
         onClick: this.handleSubmit
       }, "Create Reward"));

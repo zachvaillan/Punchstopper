@@ -145,8 +145,6 @@
 
 .left-col-edit{
     width: 40%;
-    display: flex;
-    flex-wrap: wrap;
 }
 
 .left-col-edit > * {
@@ -178,11 +176,11 @@
 
 .edit-heading{
     font-size: 22px;
-    padding: 10px;
+    padding-bottom: 10px;
 }
 
 .edit-subhead{
-    padding: 10px;
+    /* padding: 10px; */
 }
 
 .proj-name{
@@ -193,4 +191,48 @@
 
 .update-container{
     justify-content: center;
+}
+
+.edit-rewards-container{
+    max-height: 500px;
+    overflow: auto;
+}
+
+.edit-input{
+    font-size: 18px;
+    height: 40px;
+    margin: 10px 0px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.edit-input:focus{
+    outline-color: #009E74;
+}
+
+.create-reward{
+    background-color: #009E74;
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    color: white;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.breaker{
+    height: 10px;
+    background-color: transparent;
+}
+
+.edit-story{
+    font-size: 18px;
+    height: 200px;
+    margin: 10px 0px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.edit-story:focus{
+    outline-color: #009E74;
 }

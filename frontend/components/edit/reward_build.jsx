@@ -20,21 +20,21 @@ class RewardBuild extends React.Component{
         e.preventDefault();
         let reward = Object.assign({}, this.state);
         this.props.createReward(reward)
-            .then( () => this.props.history.push(`/projects/${this.props.projectId}/edit`))
+            .then( () => this.props.handleAddReward());
     }
 
     render(){
         return(
             <form>
                 <p>Title</p>
-                <input type="text" onChange={this.handleUpdate("title")} />
+                <input className="edit-input" type="text" onChange={this.handleUpdate("title")} />
                 <p>Description</p>
-                <input type="text" onChange={this.handleUpdate("description")} />
+                <input className="edit-input" type="text" onChange={this.handleUpdate("description")} />
                 <p>Delivery Date</p>
-                <input type="date" onChange={this.handleUpdate("deliver_date")} />
+                <input className="edit-input" type="date" onChange={this.handleUpdate("deliver_date")} />
                 <p>Minimum Amount</p>
-                <input type="number" onChange={this.handleUpdate("min_amount")} />
-                <button type="submit" onClick={this.handleSubmit}>Create Reward</button>
+                <input className="edit-input" type="number" onChange={this.handleUpdate("min_amount")} />
+                <button className="create-reward" type="submit" onClick={this.handleSubmit}>Create Reward</button>
             </form>
         )
     }

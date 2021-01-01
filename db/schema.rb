@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2020_12_16_212955) do
 
   create_table "backs", force: :cascade do |t|
     t.integer "backer_id", null: false
-    t.integer "reward_id", null: false
+    t.integer "reward_id"
     t.integer "backing_amount", null: false
     t.index ["backer_id"], name: "index_backs_on_backer_id"
     t.index ["reward_id"], name: "index_backs_on_reward_id"
