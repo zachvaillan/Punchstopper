@@ -17,7 +17,7 @@ guest = User.create!({
 })
 
 # guest.photo.attach(io: File.open('/Users/zachvaillancourt/Downloads/jr-korpa-iTFu87JYsr4-unsplash.jpg'), filename: 'jr-korpa-iTFu87JYsr4-unsplash.jpg')
-guest.photo.attach(io: open('https://punchstopper-seeds.s3-us-west-1.amazonaws.com/jr-korpa-iTFu87JYsr4-unsplash.jpg'), filename: 'jr-korpa-iTFu87JYsr4-unsplash.jpg')
+# guest.photo.attach(io: open('https://punchstopper-seeds.s3-us-west-1.amazonaws.com/jr-korpa-iTFu87JYsr4-unsplash.jpg'), filename: 'jr-korpa-iTFu87JYsr4-unsplash.jpg')
 
 project_maker = User.create!({
   id: 4,
@@ -37,5 +37,5 @@ project1 = Project.create!({
   launched: true
 })
 
-project1.photo.attach(io: open('https://punchstopper-seeds.s3-us-west-1.amazonaws.com/francisco-gomes-RktLzQoDe9Y-unsplash.jpg'), filename: 'kitera-dent-klcIcBJ-0Vc-unsplash.jpg')
+project1.photo.attach(io: open('https://punchstopper-prod.s3-us-west-1.amazonaws.com/francisco-gomes-RktLzQoDe9Y-unsplash.jpg'), filename: 'kitera-dent-klcIcBJ-0Vc-unsplash.jpg')
 
