@@ -15,7 +15,7 @@ guest = User.create!({
 })
 
 # guest.photo.attach(io: File.open('/Users/zachvaillancourt/Downloads/jr-korpa-iTFu87JYsr4-unsplash.jpg'), filename: 'jr-korpa-iTFu87JYsr4-unsplash.jpg')
-guest.photo.attach(io: File.open('/Users/zachvaillancourt/Downloads/jr-korpa-iTFu87JYsr4-unsplash.jpg'), filename: 'jr-korpa-iTFu87JYsr4-unsplash.jpg')
+# guest.photo.attach(io: File.open('/Users/zachvaillancourt/Downloads/jr-korpa-iTFu87JYsr4-unsplash.jpg'), filename: 'jr-korpa-iTFu87JYsr4-unsplash.jpg')
 
 project_maker = User.create!({
   id: 4,
