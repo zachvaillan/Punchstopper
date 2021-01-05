@@ -15,7 +15,7 @@ guest = User.create!({
 })
 
 # guest.photo.attach(io: File.open('/Users/zachvaillancourt/Downloads/jr-korpa-iTFu87JYsr4-unsplash.jpg'), filename: 'jr-korpa-iTFu87JYsr4-unsplash.jpg')
-guest.photo.attach(io: File.open('/Users/zachvaillancourt/Downloads/jr-korpa-iTFu87JYsr4-unsplash.jpg'), filename: 'jr-korpa-iTFu87JYsr4-unsplash.jpg')
+guest.photo.attach(io: File.open('https://punchstopper-seeds.s3-us-west-1.amazonaws.com/jr-korpa-iTFu87JYsr4-unsplash.jpg'), filename: 'jr-korpa-iTFu87JYsr4-unsplash.jpg')
 
 project_maker = User.create!({
   id: 4,
@@ -25,8 +25,8 @@ project_maker = User.create!({
 })
 
 project1 = Project.create!({
-  title: "Build the Eiffel Tower",
-  description: "Build a monument to Paris!",
+  title: "Build the Sphinx",
+  description: "With an unbreakable nose",
   funding_goal: 10000,
   funding_amount: 100,
   owner_id: 4,
@@ -35,5 +35,5 @@ project1 = Project.create!({
   launched: true
 })
 
-project1.photo.attach(io: File.open('/Users/zachvaillancourt/Downloads/kitera-dent-klcIcBJ-0Vc-unsplash.jpg'), filename: 'kitera-dent-klcIcBJ-0Vc-unsplash.jpg')
+project1.photo.attach(io: File.open('https://punchstopper-seeds.s3-us-west-1.amazonaws.com/francisco-gomes-RktLzQoDe9Y-unsplash.jpg'), filename: 'kitera-dent-klcIcBJ-0Vc-unsplash.jpg')
 
