@@ -51,11 +51,11 @@ class NavBar extends React.Component {
                             <div className="menu-new-icon">+</div>
                             <p className="menu-new-project-from-dropdown">New</p>
                         </Link> 
-                        <div className='menu-view-all-cont'><Link className="menu-view-all" to={`/${this.props.currentUser.id}`}>View all</Link></div>
+                        <div className='menu-view-all-cont'><Link className="menu-view-all" to={`/${this.props.currentUser ? this.props.currentUser.id :null}`}>View all</Link></div>
                     </div>
                 </div>
                 <div className="menu-logout-btn-cont">
-                    <button className="menu-logout-btn" onClick={() => this.props.logoutUser()}>Log out</button>
+                    <button className="menu-logout-btn" onClick={() => this.props.logoutUser().then(() => this.props.history.push('/'))}>Log out</button>
                 </div>   
             </div>
         ) : (

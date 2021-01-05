@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2020_12_16_212955) do
   create_table "projects", force: :cascade do |t|
     t.string "title"
     t.string "category", null: false
-    t.boolean "launched", default: false, null: false
+    t.boolean "launched", default: false
     t.text "story"
     t.text "description", null: false
     t.string "location", null: false

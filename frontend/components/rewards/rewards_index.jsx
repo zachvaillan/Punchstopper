@@ -7,6 +7,8 @@ class RewardsIndex extends React.Component{
     }
 
     render(){
+        if (!this.props.rewards) return null;
+
         return(
             <ul>
                 {this.props.rewards.map(reward => {

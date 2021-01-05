@@ -30,7 +30,7 @@ class ProjectShowBody extends React.Component{
     }
 
     render(){
-        if (!this.props.project.rewards) return null;
+        if (!this.props.project) return null;
 
         return(
             <div className="proj-body-container">

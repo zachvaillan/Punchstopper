@@ -1618,7 +1618,7 @@ var ProjectShowBody = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this3 = this;
 
-      if (!this.props.project.rewards) return null;
+      if (!this.props.project) return null;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "proj-body-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2696,13 +2696,15 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
         className: "menu-view-all-cont"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "menu-view-all",
-        to: "/".concat(this.props.currentUser.id)
+        to: "/".concat(this.props.currentUser ? this.props.currentUser.id : null)
       }, "View all")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "menu-logout-btn-cont"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "menu-logout-btn",
         onClick: function onClick() {
-          return _this4.props.logoutUser();
+          return _this4.props.logoutUser().then(function () {
+            return _this4.props.history.push('/');
+          });
         }
       }, "Log out"))) : null;
       var topRightNav = this.props.currentUser ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2867,6 +2869,7 @@ var RewardsIndex = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this = this;
 
+      if (!this.props.rewards) return null;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.rewards.map(function (reward) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           className: "reward-idx-li",

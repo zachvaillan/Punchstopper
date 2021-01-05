@@ -3,7 +3,7 @@ class CreateProjects < ActiveRecord::Migration[5.2]
     create_table :projects do |t|
       t.string :title
       t.string :category, null: false
-      t.boolean :launched, null: false, :default => false
+      t.boolean :launched, :default => false
       t.text :story
       t.text :description, null: false
       t.string :location, null: false
