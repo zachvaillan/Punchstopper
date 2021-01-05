@@ -35,5 +35,5 @@ project1 = Project.create!({
   launched: true
 })
 
-project1.photo.attach(io: File.open('/Users/zachvaillancourt/Downloads/kitera-dent-klcIcBJ-0Vc-unsplash.jpg'), filename: 'kitera-dent-klcIcBJ-0Vc-unsplash.jpg')
+# project1.photo.attach(io: File.open('/Users/zachvaillancourt/Downloads/kitera-dent-klcIcBJ-0Vc-unsplash.jpg'), filename: 'kitera-dent-klcIcBJ-0Vc-unsplash.jpg')
 
