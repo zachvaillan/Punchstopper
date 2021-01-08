@@ -17,7 +17,7 @@ guest = User.create!({
 })
 
 # guest.photo.attach(io: File.open('/Users/zachvaillancourt/Downloads/jr-korpa-iTFu87JYsr4-unsplash.jpg'), filename: 'jr-korpa-iTFu87JYsr4-unsplash.jpg')
-file1 = open('https://punchstopper-seeds.s3-us-west-1.amazonaws.com/jr-korpa-iTFu87JYsr4-unsplash.jpg')
+file1 = open('https://punchstopper-newseeds.s3-us-west-1.amazonaws.com/jr-korpa-iTFu87JYsr4-unsplash.jpg')
 guest.photo.attach(io: file1, filename: 'jr-korpa-iTFu87JYsr4-unsplash.jpg')
 
 project_maker = User.create!({
