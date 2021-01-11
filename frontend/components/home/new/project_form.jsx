@@ -22,6 +22,12 @@ class ProjectForm extends React.Component{
         };
     }
 
+    handleImagePreview(){
+        return e => {
+            
+        }
+    }
+
     handleNext(e){
         e.preventDefault();
         this.setState( (prevState) => ({page: prevState.page + 1}) )
@@ -45,7 +51,17 @@ class ProjectForm extends React.Component{
 
     handleFile() {
         return e => {
-            this.setState({ photoFile: e.target.files[0] })
+            this.setState({ photoFile: e.target.files[0] });
+            const reader = new FileReader();
+            const file = e.currentTarget.files[0];
+            reader.onloadend = () =>
+                this.setState({ imageUrl: reader.result, imageFile: file });
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                this.setState({ imageUrl: "", imageFile: null });
+            }
         }
     }
 
@@ -137,6 +153,9 @@ class ProjectForm extends React.Component{
                     <form onSubmit={this.handleSubmit}>
                         {formDisplay}
                     </form>
+                </div>
+                <div className="image-preview-cont">
+                    {this.state.imageUrl ? <img className="image-preview" src={this.state.imageUrl} /> : null}
                 </div>
             </div>
         )

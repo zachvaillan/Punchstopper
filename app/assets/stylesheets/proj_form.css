@@ -232,3 +232,15 @@
 .edit-story:focus{
     outline-color: #009E74;
 }
+
+.image-preview-cont{
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.image-preview{
+    object-fit: cover;
+    width: 320px;
+    height: 180px;
+}

@@ -1191,6 +1191,11 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
       };
     }
   }, {
+    key: "handleImagePreview",
+    value: function handleImagePreview() {
+      return function (e) {};
+    }
+  }, {
     key: "handleNext",
     value: function handleNext(e) {
       e.preventDefault();
@@ -1234,6 +1239,25 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
         _this4.setState({
           photoFile: e.target.files[0]
         });
+
+        var reader = new FileReader();
+        var file = e.currentTarget.files[0];
+
+        reader.onloadend = function () {
+          return _this4.setState({
+            imageUrl: reader.result,
+            imageFile: file
+          });
+        };
+
+        if (file) {
+          reader.readAsDataURL(file);
+        } else {
+          _this4.setState({
+            imageUrl: "",
+            imageFile: null
+          });
+        }
       };
     }
   }, {
@@ -1368,7 +1392,12 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
         className: "project-form-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
-      }, formDisplay)));
+      }, formDisplay)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "image-preview-cont"
+      }, this.state.imageUrl ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "image-preview",
+        src: this.state.imageUrl
+      }) : null));
     }
   }]);
 
