@@ -21,9 +21,9 @@ class Projects extends React.Component{
                     <ul className="project-cats">
                         <li><Link className="cat-link" to="/projectsin/arts">Arts</Link></li>
                         <li><Link className="cat-link" to="/projectsin/comics">Comics and Illustration</Link></li>
-                        <li><Link className="cat-link" to="/projectsin/design">Design & Tech</Link></li>
+                        <li><Link className="cat-link" to="/projectsin/tech">Design & Tech</Link></li>
                         <li><Link className="cat-link" to="/projectsin/film">Film</Link></li>
-                        <li><Link className="cat-link" to="/projectsin/food">Food & Craft</Link></li>
+                        <li><Link className="cat-link" to="/projectsin/craft">Food & Craft</Link></li>
                         <li><Link className="cat-link" to="/projectsin/games">Games</Link></li>
                         <li><Link className="cat-link" to="/projectsin/music">Music</Link></li>
                         <li><Link className="cat-link" to="/projectsin/publishing">Publishing</Link></li>
