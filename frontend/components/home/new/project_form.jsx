@@ -22,12 +22,6 @@ class ProjectForm extends React.Component{
         };
     }
 
-    handleImagePreview(){
-        return e => {
-            
-        }
-    }
-
     handleNext(e){
         e.preventDefault();
         this.setState( (prevState) => ({page: prevState.page + 1}) )

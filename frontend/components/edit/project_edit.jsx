@@ -36,6 +36,16 @@ class ProjectBuild extends React.Component{
     handleFile(){
         return e => {
             this.setState({ photoFile: e.target.files[0] })
+            const reader = new FileReader();
+            const file = e.currentTarget.files[0];
+            reader.onloadend = () =>
+                this.setState({ imageUrl: reader.result, imageFile: file });
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                this.setState({ imageUrl: "", imageFile: null });
+            }
         }
     }
 
@@ -150,6 +160,9 @@ class ProjectBuild extends React.Component{
                             </div>
                             <div className="right-col-edit">
                                 <input className="edit-input" type="file" onChange={this.handleFile()} />
+                                <div>
+                                    {this.state.imageUrl ? <img className="image-preview" src={this.state.imageUrl}/> : <img className="image-preview" src={this.props.project.photoUrl}/>}
+                                </div>
                             </div>
                         </div>
                     </div>

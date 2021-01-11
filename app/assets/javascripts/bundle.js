@@ -730,6 +730,25 @@ var ProjectBuild = /*#__PURE__*/function (_React$Component) {
         _this5.setState({
           photoFile: e.target.files[0]
         });
+
+        var reader = new FileReader();
+        var file = e.currentTarget.files[0];
+
+        reader.onloadend = function () {
+          return _this5.setState({
+            imageUrl: reader.result,
+            imageFile: file
+          });
+        };
+
+        if (file) {
+          reader.readAsDataURL(file);
+        } else {
+          _this5.setState({
+            imageUrl: "",
+            imageFile: null
+          });
+        }
       };
     }
   }, {
@@ -870,7 +889,13 @@ var ProjectBuild = /*#__PURE__*/function (_React$Component) {
         className: "edit-input",
         type: "file",
         onChange: this.handleFile()
-      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.imageUrl ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "image-preview",
+        src: this.state.imageUrl
+      }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "image-preview",
+        src: this.props.project.photoUrl
+      }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "spacer"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "left-col-edit"
@@ -1189,11 +1214,6 @@ var ProjectForm = /*#__PURE__*/function (_React$Component) {
       return function (e) {
         _this2.setState(_defineProperty({}, field, e.target.value));
       };
-    }
-  }, {
-    key: "handleImagePreview",
-    value: function handleImagePreview() {
-      return function (e) {};
     }
   }, {
     key: "handleNext",
