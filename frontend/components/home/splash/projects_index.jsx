@@ -56,7 +56,7 @@ class Projects extends React.Component{
                         <UserProjects projects={this.props.projects} />
                     </div>
                 </div>
-                <div className="footer-cont">
+                {/* <div className="footer-cont">
                     <div className="footer">
                         <div className="foot-col">
                             <div className="image-of-me-cont">
@@ -88,7 +88,7 @@ class Projects extends React.Component{
                             In my freeER time, I satisfy my curiosity by reading, or my hunger for adventure by backpacking.
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         )
     }
